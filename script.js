@@ -1,4 +1,10 @@
- // CURSOR
+ /*
+ * ÎæmCherry — Tech · Fashion · Empire
+ * © 2026 Cherry Ihuoma. All rights reserved.
+ * Unauthorized reproduction prohibited.
+ * contact: treasurecherish4life@gmail.com
+ */
+// CURSOR
 const cursor = document.getElementById('cursor'), ring = document.getElementById('cursorRing');
       
 let mx = 0, my = 0, rx = 0, ry = 0;
