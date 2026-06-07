@@ -1890,7 +1890,7 @@ body.splash-active {
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 4px;
-  max-width: 480px;
+  max-width: 900px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
@@ -1922,13 +1922,13 @@ body.splash-active {
   color: var(--text);
 }
 .modal-inner {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 .modal-img-wrap {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 3/4;
+  min-height: 500px;
   width: 100%;
 }
 .modal-img {
@@ -2496,8 +2496,16 @@ body.splash-active {
   .article-next-grid {
     grid-template-columns: 1fr;
   }
+}
 
+@media (max-width: 700px) {
+  .modal-inner {
+    grid-template-columns: 1fr;
+  }
+  .modal-img-wrap {
+    min-height: 280px;
+  }
   .modal-info {
-    padding: 20px 20px 28px;
+    padding: 28px 24px;
   }
 }
