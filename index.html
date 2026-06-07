@@ -32,6 +32,23 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <style>
+      .page-header-title-large {
+        font-size: clamp(40px, 5vw, 72px);
+      }
+      .no-margin-bottom {
+        margin-bottom: 0;
+      }
+      .footer-bottom-centered {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .btn-fullwidth {
+        width: 100%;
+        margin-top: 8px;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
     <div class="splash" id="splash">
@@ -53,65 +70,18 @@
       <a
         href="#"
         class="nav-logo"
-        onclick="
-          showPage('home');
-          return false;
-        "
+        onclick="showPage('home'); return false;"
         ><em>Îæm</em></a
       >
       <ul class="nav-links">
-        <li>
-          <a
-            href="#"
-            onclick="
-              showPage('home');
-              return false;
-            "
-            >Home</a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            onclick="
-              showPage('shop');
-              return false;
-            "
-            >Shop</a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            onclick="
-              showPage('about');
-              return false;
-            "
-            >About</a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            onclick="
-              showPage('journal');
-              return false;
-            "
-            >Journal</a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            onclick="
-              showPage('contact');
-              return false;
-            "
-            >Contact</a
-          >
-        </li>
+        <li><a href="#" onclick="showPage('home'); return false;">Home</a></li>
+        <li><a href="#" onclick="showPage('shop'); return false;">Shop</a></li>
+        <li><a href="#" onclick="showPage('about'); return false;">About</a></li>
+        <li><a href="#" onclick="showPage('journal'); return false;">Journal</a></li>
+        <li><a href="#" onclick="showPage('contact'); return false;">Contact</a></li>
       </ul>
       <button
+        type="button"
         class="hamburger"
         id="hamburger"
         onclick="toggleMenu()"
@@ -121,63 +91,53 @@
         <span></span>
         <span></span>
       </button>
-      <button class="theme-toggle" onclick="toggleTheme()">
+      <button type="button" class="theme-toggle" onclick="toggleTheme()">
         <div class="toggle-track"><div class="toggle-thumb"></div></div>
         <span id="themeLabel">Night</span>
       </button>
     </nav>
+
     <div class="mobile-menu" id="mobileMenu">
       <a href="#" onclick="navTo('home')">Home</a>
       <a href="#" onclick="navTo('shop')">Shop</a>
       <a href="#" onclick="navTo('about')">About</a>
       <a href="#" onclick="navTo('journal')">Journal</a>
       <a href="#" onclick="navTo('contact')">Contact</a>
+      <button class="mobile-theme-toggle" onclick="toggleTheme()">
+        <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        <span id="themeLabelMobile">Night</span>
+      </button>
     </div>
 
+    <!-- ═══ HOME PAGE ═══ -->
     <div class="page active" id="page-home">
       <section class="hero">
         <div class="hero-left">
           <p class="hero-eyebrow">Tech · Fashion</p>
           <h1 class="hero-name"><em>Îæm</em></h1>
-          <p class="hero-tagline">Where code meet cloth.</p>
+          <p class="hero-tagline">Where code meets cloth.</p>
           <p class="hero-desc">
             A brand built at the intersection of silicon and silk — for those
             who refuse to separate how they think from how they show up in the
             world.
           </p>
           <div class="hero-ctas">
-            <a
-              href="#"
-              class="btn-primary"
-              onclick="
-                showPage('shop');
-                return false;
-              "
-              >Shop Collection</a
-            >
-            <a
-              href="#"
-              class="btn-secondary"
-              onclick="
-                showPage('about');
-                return false;
-              "
-              >Our Story</a
-            >
+            <a href="#" class="btn-primary" onclick="showPage('shop'); return false;">Shop Collection</a>
+            <a href="#" class="btn-secondary" onclick="showPage('about'); return false;">Our Story</a>
           </div>
           <div class="hero-meta-divider"></div>
           <div class="hero-meta">
             <div class="hero-meta-item">
-              <span class="hero-meta-num">SS26</span
-              ><span class="hero-meta-label">Current Season</span>
+              <span class="hero-meta-num">SS26</span>
+              <span class="hero-meta-label">Current Season</span>
             </div>
             <div class="hero-meta-item">
-              <span class="hero-meta-num">∞</span
-              ><span class="hero-meta-label">Possibilities</span>
+              <span class="hero-meta-num">∞</span>
+              <span class="hero-meta-label">Possibilities</span>
             </div>
             <div class="hero-meta-item">
-              <span class="hero-meta-num">01</span
-              ><span class="hero-meta-label">Brand. One Vision.</span>
+              <span class="hero-meta-num">01</span>
+              <span class="hero-meta-label">Brand. One Vision.</span>
             </div>
           </div>
         </div>
@@ -217,30 +177,18 @@
 
       <div class="intro-strip">
         <div class="strip-inner">
-          <span class="strip-item">Tech · Fashion · Empire</span
-          ><span class="strip-dot"></span
-          ><span class="strip-item">Where Silicon Meets Silk</span
-          ><span class="strip-dot"></span
-          ><span class="strip-item">Premium. Fearless. Iconic.</span
-          ><span class="strip-dot"></span
-          ><span class="strip-item">Îæm — SS 2026</span
-          ><span class="strip-dot"></span
-          ><span class="strip-item">Built at the Edge</span
-          ><span class="strip-dot"></span
-          ><span class="strip-item">Precision · Duality · Authority</span
-          ><span class="strip-dot"></span>
-          <span class="strip-item">Tech · Fashion · Empire</span
-          ><span class="strip-dot"></span
-          ><span class="strip-item">Where Silicon Meets Silk</span
-          ><span class="strip-dot"></span
-          ><span class="strip-item">Premium. Fearless. Iconic.</span
-          ><span class="strip-dot"></span
-          ><span class="strip-item">Îæm — SS 2026</span
-          ><span class="strip-dot"></span
-          ><span class="strip-item">Built at the Edge</span
-          ><span class="strip-dot"></span
-          ><span class="strip-item">Precision · Duality · Authority</span
-          ><span class="strip-dot"></span>
+          <span class="strip-item">Tech · Fashion · Empire</span><span class="strip-dot"></span>
+          <span class="strip-item">Where Silicon Meets Silk</span><span class="strip-dot"></span>
+          <span class="strip-item">Premium. Fearless. Iconic.</span><span class="strip-dot"></span>
+          <span class="strip-item">Îæm — SS 2026</span><span class="strip-dot"></span>
+          <span class="strip-item">Built at the Edge</span><span class="strip-dot"></span>
+          <span class="strip-item">Precision · Duality · Authority</span><span class="strip-dot"></span>
+          <span class="strip-item">Tech · Fashion · Empire</span><span class="strip-dot"></span>
+          <span class="strip-item">Where Silicon Meets Silk</span><span class="strip-dot"></span>
+          <span class="strip-item">Premium. Fearless. Iconic.</span><span class="strip-dot"></span>
+          <span class="strip-item">Îæm — SS 2026</span><span class="strip-dot"></span>
+          <span class="strip-item">Built at the Edge</span><span class="strip-dot"></span>
+          <span class="strip-item">Precision · Duality · Authority</span><span class="strip-dot"></span>
         </div>
       </div>
 
@@ -253,44 +201,28 @@
             coder who dresses sharply. The designer who thinks in systems. The
             founder who walks into any room and owns it before saying a word.
           </p>
-          <a
-            href="#"
-            class="btn-secondary"
-            onclick="
-              showPage('about');
-              return false;
-            "
-            >Read Our Story</a
-          >
+          <a href="#" class="btn-secondary" onclick="showPage('about'); return false;">Read Our Story</a>
         </div>
         <div class="at-right">
           <div class="at-card">
             <div class="at-card-num">01</div>
             <div class="at-card-label">Precision</div>
-            <div class="at-card-desc">
-              Every decision is intentional. Every detail earns its place.
-            </div>
+            <div class="at-card-desc">Every decision is intentional. Every detail earns its place.</div>
           </div>
           <div class="at-card">
             <div class="at-card-num">02</div>
             <div class="at-card-label">Duality</div>
-            <div class="at-card-desc">
-              Two languages. One conversation. Infinite expression.
-            </div>
+            <div class="at-card-desc">Two languages. One conversation. Infinite expression.</div>
           </div>
           <div class="at-card">
             <div class="at-card-num">03</div>
             <div class="at-card-label">Authority</div>
-            <div class="at-card-desc">
-              We set the moment. We don't wait for permission.
-            </div>
+            <div class="at-card-desc">We set the moment. We don't wait for permission.</div>
           </div>
           <div class="at-card">
             <div class="at-card-num">04</div>
             <div class="at-card-label">Warmth</div>
-            <div class="at-card-desc">
-              Premium doesn't mean cold. It means considered.
-            </div>
+            <div class="at-card-desc">Premium doesn't mean cold. It means considered.</div>
           </div>
         </div>
       </div>
@@ -298,72 +230,86 @@
       <div class="featured">
         <div class="featured-header">
           <h2 class="featured-title">Featured <em>Drops</em></h2>
-          <a
-            href="#"
-            class="btn-secondary"
-            onclick="
-              showPage('shop');
-              return false;
-            "
-            >View All</a
-          >
+          <a href="#" class="btn-secondary" onclick="showPage('shop'); return false;">View All</a>
         </div>
         <div class="featured-grid">
-          <div class="product-card">
-            <div class="product-img">
-              <img src="images/product-img.jpeg" alt="Empire Jacket" />
+          <!-- Empire Jacket -->
+          <div class="product-card" onclick="openProduct('empire-jacket')">
+            <div
+              class="product-img pi-swatch-host"
+              data-auto="true"
+              data-colours='[
+                {"name":"Coffee Brown","hex":"#4B2E2B","img":"images/brown empire jacket.jpg"},
+                {"name":"Soft Black","hex":"#1C1412","img":"images/black empire jacket.png"},
+                {"name":"Cream","hex":"#F5E9E2","img":"images/cream empire jacket.png"},
+                {"name":"Cherry Red","hex":"#8B0000","img":"images/burgandy empire jacket.png"},
+                {"name":"Navy Blue","hex":"#000080","img":"images/navy blue.png"},
+                {"name":"Forest Green","hex":"#003314","img":"images/forest green empire jacket.jpg"}
+              ]'
+            >
+              <img class="pi-layer pi-layer-a" src="images/black empire jacket.png" alt="Empire Jacket" />
+              <img class="pi-layer pi-layer-b" src="images/cream empire jacket.png" alt="Empire Jacket" />
               <div class="product-tag-overlay">New</div>
+              <div class="pi-swatches"></div>
             </div>
             <div class="product-info">
               <div class="product-category">Fashion · Outerwear</div>
               <div class="product-name">The Empire Jacket</div>
-              <a
-                href="https://wa.me/2348078970306?text=Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20place%20an%20order.%20What%20are%20the%20available%20pieces%20and%20prices%3F%20%F0%9F%A4%8E"
-                class="btn-whatsapp"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Order via WhatsApp
-              </a>
+              <button type="button" class="btn-view">View Details</button>
             </div>
           </div>
-          <div class="product-card">
-            <div class="product-img">
-              <img src="images/silk t shirt.jpeg" alt="tee" />
+
+          <!-- Satin Circuits Tee — FIXED: removed trailing "yYyy" from JSON -->
+          <div class="product-card" onclick="openProduct('silk-tee')">
+            <div
+              class="product-img pi-swatch-host"
+              data-auto="true"
+              data-colours='[
+                {"name":"Coffee Brown","hex":"#4B2E2B","img":"images/coffee brown satin top.png"},
+                {"name":"Navy Blue","hex":"#000080","img":"images/navy blue satin top.jpg"},
+                {"name":"Soft Black","hex":"#1C1412","img":"images/black satin stop.png"},
+                {"name":"Cherry Red","hex":"#8B0000","img":"images/burgandy satin top.jpg"},
+                {"name":"Cream","hex":"#F5E9E2","img":"images/silk t shirt.jpeg"}
+              ]'
+            >
+              <img class="pi-layer pi-layer-a" src="images/silk t shirt.jpeg" alt="Satin Circuits Tee" />
+              <img class="pi-layer pi-layer-b" src="images/burgandy satin top.jpg" alt="Satin Circuits Tee" />
+              <div class="pi-swatches"></div>
             </div>
             <div class="product-info">
               <div class="product-category">Tech · Wearable</div>
-              <div class="product-name">Silk Circuits Tee</div>
-              <a
-                href="https://wa.me/2348078970306?text=Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20place%20an%20order.%20What%20are%20the%20available%20pieces%20and%20prices%3F%20%F0%9F%A4%8E"
-                class="btn-whatsapp"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Order via WhatsApp
-              </a>
+              <div class="product-name">Satin Circuits Tee</div>
+              <button type="button" class="btn-view">View Details</button>
             </div>
           </div>
-          <div class="product-card">
-            <div class="product-img">
-              <img src="images/2 piece.jpeg" alt="cap" />
+
+          <!-- Two/Three Piece — FIXED: removed Forest Green entry with empty img -->
+          <div class="product-card" onclick="openProduct('two-piece')">
+            <div
+              class="product-img pi-swatch-host"
+              data-auto="true"
+              data-colours='[
+                {"name":"Coffee Brown","hex":"#4B2E2B","img":"images/coffee brown 2 piece.jpg"},
+                {"name":"Navy Blue","hex":"#000080","img":"images/navy blue two piece.png"},
+                {"name":"Soft Black","hex":"#1C1412","img":"images/soft black 2 piece.png"},
+                {"name":"Cherry Red","hex":"#8B0000","img":"images/burgandy 2 piece.png"},
+                {"name":"Cream","hex":"#F5E9E2","img":"images/2 piece.jpeg"}
+              ]'
+            >
+              <img class="pi-layer pi-layer-a" src="images/coffee brown 2 piece.jpg" alt="Two piece" />
+              <img class="pi-layer pi-layer-b" src="images/2 piece.jpeg" alt="Two piece" />
+              <div class="pi-swatches"></div>
             </div>
             <div class="product-tag-overlay">SS26</div>
             <div class="product-info">
               <div class="product-category">Fashion · Outwear</div>
-              <div class="product-name">Two Piece</div>
-              <a
-                href="https://wa.me/2348078970306?text=Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20place%20an%20order.%20What%20are%20the%20available%20pieces%20and%20prices%3F%20%F0%9F%A4%8E"
-                class="btn-whatsapp"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Order via WhatsApp
-              </a>
+              <div class="product-name">Two/Three Piece</div>
+              <button type="button" class="btn-view">View Details</button>
             </div>
           </div>
         </div>
       </div>
+
       <div class="manifesto">
         <p class="manifesto-quote">
           "The most powerful thing you can wear is the <em>certainty</em> that
@@ -375,23 +321,13 @@
       <div class="journal-teaser">
         <div class="jt-header">
           <h2 class="section-title">From the <em>Journal</em></h2>
-          <a
-            href="#"
-            class="btn-secondary"
-            onclick="
-              showPage('journal');
-              return false;
-            "
-            >All Posts</a
-          >
+          <a href="#" class="btn-secondary" onclick="showPage('journal'); return false;">All Posts</a>
         </div>
         <div class="journal-grid">
           <div class="journal-card">
             <div class="jc-date">Apr 28, 2026</div>
             <span class="jc-tag">Tech × Fashion</span>
-            <h3 class="jc-title">
-              Why the most stylish people I know all think like engineers
-            </h3>
+            <h3 class="jc-title">Why the most stylish people I know all think like engineers</h3>
             <p class="jc-excerpt">
               There's a pattern I keep noticing. The people with the sharpest
               aesthetic instincts are the same ones who obsess over systems,
@@ -404,8 +340,7 @@
             <span class="jc-tag">Brand</span>
             <h3 class="jc-title">Building in public before the doors open</h3>
             <p class="jc-excerpt">
-              Why I started Îæm before I had a single product, a team, or an
-              office.
+              Why I started Îæm before I had a single product, a team, or an office.
             </p>
             <a href="#" class="jc-read">Read More</a>
           </div>
@@ -434,178 +369,38 @@
           <div>
             <div class="footer-col-title">Navigate</div>
             <ul class="footer-links">
-              <li>
-                <a
-                  href="#"
-                  onclick="
-                    showPage('home');
-                    return false;
-                  "
-                  >Home</a
-                >
-              </li>
-              <li>
-                <a
-                  href="shop"
-                  onclick="
-                    showPage('shop');
-                    return false;
-                  "
-                  >Shop</a
-                >
-              </li>
-              <li>
-                <a
-                  href="about"
-                  onclick="
-                    showPage('about');
-                    return false;
-                  "
-                  >About</a
-                >
-              </li>
-              <li>
-                <a
-                  href="journal"
-                  onclick="
-                    showPage('journal');
-                    return false;
-                  "
-                  >Journal</a
-                >
-              </li>
+              <li><a href="#" onclick="showPage('home'); return false;">Home</a></li>
+              <li><a href="#" onclick="showPage('shop'); return false;">Shop</a></li>
+              <li><a href="#" onclick="showPage('about'); return false;">About</a></li>
+              <li><a href="#" onclick="showPage('journal'); return false;">Journal</a></li>
             </ul>
           </div>
           <div>
             <div class="footer-col-title">Connect</div>
             <ul class="footer-links">
-              <li>
-                <a
-                  href="#"
-                  onclick="
-                    showPage('contact');
-                    return false;
-                  "
-                  >Instagram</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onclick="
-                    showPage('contact');
-                    return false;
-                  "
-                  >LinkedIn</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onclick="
-                    showPage('contact');
-                    return false;
-                  "
-                  >TikTok</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onclick="
-                    showPage('contact');
-                    return false;
-                  "
-                  >Contact</a
-                >
-              </li>
+              <li><a href="#" onclick="showPage('contact'); return false;">Instagram</a></li>
+              <li><a href="#" onclick="showPage('contact'); return false;">LinkedIn</a></li>
+              <li><a href="#" onclick="showPage('contact'); return false;">TikTok</a></li>
+              <li><a href="#" onclick="showPage('contact'); return false;">Contact</a></li>
             </ul>
           </div>
           <div>
             <div class="footer-col-title">Brand</div>
             <ul class="footer-links">
               <li><a href="#">Press Kit</a></li>
-              <li>
-                <a
-                  href="#"
-                  onclick="
-                    showPage('contact');
-                    return false;
-                  "
-                  >Collaborations</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onclick="
-                    showPage('about');
-                    return false;
-                  "
-                  >Brand Values</a
-                >
-              </li>
+              <li><a href="#" onclick="showPage('contact'); return false;">Collaborations</a></li>
+              <li><a href="#" onclick="showPage('about'); return false;">Brand Values</a></li>
             </ul>
           </div>
         </div>
-        <!-- NEWSLETTER SECTION -->
-        <div class="newsletter-section">
-          <div class="newsletter-inner">
-            <div class="newsletter-left">
-              <p class="nl-eyebrow">Stay in the loop</p>
-              <h2 class="nl-headline">
-                Be first to know<br />about every <em>drop.</em>
-              </h2>
-              <p class="nl-body">
-                No spam. No noise. Just Îæm — drops, journal updates, and brand
-                moments. Unsubscribe anytime.
-              </p>
-            </div>
-            <div class="newsletter-right">
-              <form
-                action="https://f051ee4d.sibforms.com/serve/MUIFAOiMYVTiVHgo4pGqtO5qBGECta8e4bM3shxQp12jCnUgTuZReahqJze87NzgP6Bsf0do1UFUch8RwJM6wTzJNyjjrzTo87HFa5P4RgqiNFIoZ9p9JnwmPXFadmQxkQa42np5gc9CzJRA1Fc8OCJsb-anVs13J2ZoWwIdfQqfzw7xCF6rJbxUOU0WB84B9aIn7EHg4_kaVtZqjA=="
-                method="POST"
-                class="nl-form"
-              >
-                <div class="nl-field">
-                  <label class="nl-label">Name</label>
-                  <input
-                    type="text"
-                    name="NAME"
-                    class="nl-input"
-                    placeholder="Your name"
-                    required
-                  />
-                </div>
-                <div class="nl-field">
-                  <label class="nl-label">Email</label>
-                  <input
-                    type="email"
-                    name="EMAIL"
-                    class="nl-input"
-                    placeholder="your@email.com"
-                    required
-                  />
-                </div>
-                <button
-                  type="submit"
-                  class="btn-primary"
-                  style="width: 100%; margin-top: 8px; text-align: center"
-                >
-                  Join the List
-                </button>
-                <p class="nl-disclaimer">No spam. Ever. Unsubscribe anytime.</p>
-              </form>
-            </div>
-          </div>
-        </div>
         <div class="footer-bottom">
-          <span class="footer-copy">© 2026 Îæm. All rights reserved.</span
-          ><span class="footer-copy">// tech.fashion.empire</span>
+          <span class="footer-copy">© 2026 Îæm. All rights reserved.</span>
+          <span class="footer-copy">// tech.fashion.empire</span>
         </div>
       </footer>
     </div>
 
+    <!-- ═══ SHOP PAGE ═══ -->
     <div class="page" id="page-shop">
       <div class="page-header">
         <p class="page-header-eyebrow">SS 2026 Collection</p>
@@ -614,161 +409,184 @@
       <div class="shop-layout">
         <div class="shop-sidebar">
           <div class="sidebar-label">Category</div>
-          <a href="#" class="filter-item active">All</a
-          ><a href="#" class="filter-item">Fashion</a
-          ><a href="#" class="filter-item">Tech</a
-          ><a href="#" class="filter-item">Accessories</a
-          ><a href="#" class="filter-item">Wearables</a>
+          <a href="#" class="filter-item active" data-group="category" data-filter="all">All</a>
+          <a href="#" class="filter-item" data-group="category" data-filter="fashion">Fashion</a>
+          <a href="#" class="filter-item" data-group="category" data-filter="tech">Tech</a>
+          <a href="#" class="filter-item" data-group="category" data-filter="accessories">Accessories</a>
+          <a href="#" class="filter-item" data-group="category" data-filter="wearables">Wearables</a>
+
           <div class="sidebar-label">Season</div>
-          <a href="#" class="filter-item active">SS 2026</a
-          ><a href="#" class="filter-item">Archive</a>
+          <a href="#" class="filter-item active" data-group="season" data-filter="all">SS 2026</a>
+          <a href="#" class="filter-item" data-group="season" data-filter="archive">Archive</a>
+
           <div class="sidebar-label">Status</div>
-          <a href="#" class="filter-item">Available</a
-          ><a href="#" class="filter-item">Coming Soon</a>
+          <a href="#" class="filter-item active" data-group="status" data-filter="all">All</a>
+          <a href="#" class="filter-item" data-group="status" data-filter="available">Available</a>
+          <a href="#" class="filter-item" data-group="status" data-filter="coming-soon">Coming Soon</a>
         </div>
+
         <div class="shop-grid-wrap">
           <div class="shop-grid">
-            <div class="product-card">
-              <div class="product-img">
-                <img src="images/Gen z Dress.jpeg" alt="Empire Jacket" />
+
+            <!-- FIXED: was pointing to wrong image (Gen z Dress.jpeg) -->
+            <div class="product-card shop-product-card" data-category="fashion" data-season="ss2026" data-status="available" onclick="openProduct('empire-jacket')">
+              <div class="product-img pi-swatch-host" data-auto="true"
+                data-colours='[
+                  {"name":"Coffee Brown","hex":"#4B2E2B","img":"images/brown empire jacket.jpg"},
+                  {"name":"Soft Black","hex":"#1C1412","img":"images/black empire jacket.png"},
+                  {"name":"Cream","hex":"#F5E9E2","img":"images/cream empire jacket.png"},
+                  {"name":"Cherry Red","hex":"#8B0000","img":"images/burgandy empire jacket.png"},
+                  {"name":"Navy Blue","hex":"#000080","img":"images/navy blue.png"},
+                  {"name":"Forest Green","hex":"#003314","img":"images/forest green empire jacket.jpg"}
+                ]'>
+                <img class="pi-layer pi-layer-a" src="images/black empire jacket.png" alt="Empire Jacket" />
+                <img class="pi-layer pi-layer-b" src="images/cream empire jacket.png" alt="Empire Jacket" />
                 <div class="product-tag-overlay">New</div>
+                <div class="pi-swatches"></div>
               </div>
               <div class="product-info">
                 <div class="product-category">Fashion · Outerwear</div>
                 <div class="product-name">The Empire Jacket</div>
-                <a
-                  href="https://wa.me/2348078970306?text=Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20place%20an%20order.%20What%20are%20the%20available%20pieces%20and%20prices%3F%20%F0%9F%A4%8E"
-                  class="btn-whatsapp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Order via WhatsApp
-                </a>
+                <button type="button" class="btn-view">View Details</button>
               </div>
             </div>
-            <div class="product-card">
-              <div class="product-img">
-                <img src="images/silk t shirt.jpeg" alt="Silk Circuits Tee" />
+
+            <div class="product-card shop-product-card" data-category="tech" data-season="ss2026" data-status="available" onclick="openProduct('silk-tee')">
+              <div class="product-img pi-swatch-host" data-auto="true"
+                data-colours='[
+                  {"name":"Coffee Brown","hex":"#4B2E2B","img":"images/coffee brown satin top.png"},
+                  {"name":"Navy Blue","hex":"#000080","img":"images/navy blue satin top.jpg"},
+                  {"name":"Soft Black","hex":"#1C1412","img":"images/black satin stop.png"},
+                  {"name":"Cherry Red","hex":"#8B0000","img":"images/burgandy satin top.jpg"},
+                  {"name":"Cream","hex":"#F5E9E2","img":"images/silk t shirt.jpeg"}
+                ]'>
+                <img class="pi-layer pi-layer-a" src="images/silk t shirt.jpeg" alt="Silk Circuits Tee" />
+                <img class="pi-layer pi-layer-b" src="images/burgandy satin top.jpg" alt="Silk Circuits Tee" />
+                <div class="pi-swatches"></div>
               </div>
               <div class="product-info">
                 <div class="product-category">Tech · Wearable</div>
                 <div class="product-name">Silk Circuits Tee</div>
-                <a
-                  href="https://wa.me/2348078970306?text=Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20place%20an%20order.%20What%20are%20the%20available%20pieces%20and%20prices%3F%20%F0%9F%A4%8E"
-                  class="btn-whatsapp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Order via WhatsApp
-                </a>
+                <button type="button" class="btn-view">View Details</button>
               </div>
             </div>
-            <div class="product-card">
+
+            <div class="product-card shop-product-card" data-category="accessories" data-season="ss2026" data-status="available" onclick="openProduct('interface-cap')">
               <div class="product-img">
-                <img
-                  src="images/Brand identity & pitch deck design for Soma.jpeg"
-                  alt="Interface Cap"
-                />
+                <img src="images/Brand identity & pitch deck design for Soma.jpeg" alt="Interface Cap" />
                 <div class="product-tag-overlay">SS26</div>
               </div>
               <div class="product-info">
                 <div class="product-category">Fashion · Accessories</div>
                 <div class="product-name">Interface Cap</div>
-                <a
-                  href="https://wa.me/2348078970306?text=Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20place%20an%20order.%20What%20are%20the%20available%20pieces%20and%20prices%3F%20%F0%9F%A4%8E"
-                  class="btn-whatsapp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Order via WhatsApp
-                </a>
+                <button type="button" class="btn-view">View Details</button>
               </div>
             </div>
-            <div class="product-card">
+
+            <div class="product-card shop-product-card" data-category="fashion" data-season="ss2026" data-status="available" onclick="openProduct('coffee-trench')">
               <div class="product-img">
-                <img
-                  src="images/Casaco Trench Longo Minimalista Casual e Elegante de Ajuste Solto com Manga Longa e Dupla Fileira de Botões com Cinto, Cinza Puro, Primavera_Outono_Inverno.jpeg"
-                  alt="Coffee Trench"
-                />
+                <img src="images/Casaco Trench Longo Minimalista Casual e Elegante de Ajuste Solto com Manga Longa e Dupla Fileira de Botões com Cinto, Cinza Puro, Primavera_Outono_Inverno.jpeg" alt="Coffee Trench" />
               </div>
               <div class="product-info">
                 <div class="product-category">Fashion · Outerwear</div>
                 <div class="product-name">Coffee Trench</div>
-                <a
-                  href="https://wa.me/2348078970306?text=Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20place%20an%20order.%20What%20are%20the%20available%20pieces%20and%20prices%3F%20%F0%9F%A4%8E"
-                  class="btn-whatsapp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Order via WhatsApp
-                </a>
+                <button type="button" class="btn-view">View Details</button>
               </div>
             </div>
-            <div class="product-card">
+
+            <div class="product-card shop-product-card" data-category="wearables" data-season="ss2026" data-status="available" onclick="openProduct('smart-band')">
               <div class="product-img">
-                <img
-                  src="images/Fitbit Inspire 3.jpeg"
-                  alt="Cherry Smart Band"
-                />
+                <img src="images/Fitbit Inspire 3.jpeg" alt="Cherry Smart Band" />
               </div>
               <div class="product-info">
                 <div class="product-category">Tech · Wearable</div>
                 <div class="product-name">Cherry Smart Band</div>
-                <a
-                  href="https://wa.me/2348078970306?text=Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20place%20an%20order.%20What%20are%20the%20available%20pieces%20and%20prices%3F%20%F0%9F%A4%8E"
-                  class="btn-whatsapp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Order via WhatsApp
-                </a>
+                <button type="button" class="btn-view">View Details</button>
               </div>
             </div>
-            <div class="product-card">
+
+            <div class="product-card shop-product-card" data-category="accessories" data-season="ss2026" data-status="available" onclick="openProduct('gold-chain')">
               <div class="product-img">
-                <img
-                  src="images/14K Solid Gold Franco Chain Necklace_ Diamond Cut Foxtail Design.jpeg"
-                  alt="Imperial Gold Chain"
-                />
+                <img src="images/14K Solid Gold Franco Chain Necklace_ Diamond Cut Foxtail Design.jpeg" alt="Imperial Gold Chain" />
               </div>
               <div class="product-info">
                 <div class="product-category">Fashion · Jewellery</div>
                 <div class="product-name">Imperial Gold Chain</div>
-                <a
-                  href="https://wa.me/2348078970306?text=Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20place%20an%20order.%20What%20are%20the%20available%20pieces%20and%20prices%3F%20%F0%9F%A4%8E"
-                  class="btn-whatsapp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Order via WhatsApp
-                </a>
+                <button type="button" class="btn-view">View Details</button>
               </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="shop-detail-panel" id="shopDetailPanel">
+          <div class="sdp-empty" id="sdpEmpty">
+            <div class="sdp-empty-icon">Îæm</div>
+            <p class="sdp-empty-text">Select a product to view details</p>
+          </div>
+          <div class="sdp-content" id="sdpContent" style="display:none;">
+            <div class="sdp-img-wrap">
+              <img src="" alt="" id="sdpImg" class="sdp-img" />
+              <div class="sdp-tag" id="sdpTag"></div>
+            </div>
+            <div class="sdp-info">
+              <p class="sdp-category" id="sdpCategory"></p>
+              <h2 class="sdp-name" id="sdpName"></h2>
+              <div class="sdp-divider"></div>
+              <p class="sdp-desc" id="sdpDesc"></p>
+              <div class="sdp-details">
+                <div class="sdp-detail-item">
+                  <span class="sdp-detail-label">Type</span>
+                  <span class="sdp-detail-val" id="sdpType"></span>
+                </div>
+                <div class="sdp-detail-item">
+                  <span class="sdp-detail-label">Choose Colour</span>
+                  <div class="sdp-colours" id="sdpColours"></div>
+                </div>
+                <div class="sdp-detail-item">
+                  <span class="sdp-detail-label">Sizing</span>
+                  <span class="sdp-detail-val">Made to your exact measurements — no standard sizing. We send a simple measurement guide on order.</span>
+                </div>
+                <div class="sdp-detail-item">
+                  <span class="sdp-detail-label">Production</span>
+                  <span class="sdp-detail-val">Made to order — crafted specifically for you</span>
+                </div>
+                <div class="sdp-detail-item">
+                  <span class="sdp-detail-label">Delivery</span>
+                  <span class="sdp-detail-val">7 to 21 days from measurement confirmation</span>
+                </div>
+              </div>
+              <div class="sdp-price-row">
+                <span class="sdp-price-label">Price</span>
+                <span class="sdp-price-val" id="sdpPrice"></span>
+              </div>
+              <a href="#" class="btn-whatsapp" id="sdpWhatsapp" target="_blank" rel="noopener noreferrer">
+                Order via WhatsApp
+              </a>
+              <p class="sdp-note">We'll confirm your size, measurements, and delivery details personally.</p>
             </div>
           </div>
         </div>
       </div>
+
       <footer>
-        <div class="footer-bottom" style="max-width: 1200px; margin: 0 auto">
-          <span class="footer-copy"
-            >© 2026 Îæm. All Rights Reserved. Part Of Cherychoicy Classic
-            Communication</span
-          ><span class="footer-copy">// tech.fashion</span>
+        <div class="footer-bottom footer-bottom-centered">
+          <span class="footer-copy">© 2026 Îæm. All Rights Reserved. Part Of Cherychoicy Classic Communication</span>
+          <span class="footer-copy">// tech.fashion</span>
         </div>
       </footer>
     </div>
 
+    <!-- ═══ ABOUT PAGE ═══ -->
     <div class="page" id="page-about">
       <div class="about-layout">
         <div class="about-hero">
           <div class="about-hero-left">
             <p class="page-header-eyebrow">Who We Are</p>
-            <h1
-              class="page-header-title"
-              style="font-size: clamp(40px, 5vw, 72px)"
-            >
+            <h1 class="page-header-title page-header-title-large">
               Built at the <em>edge.</em>
             </h1>
-            <p class="at-body" style="max-width: 480px; margin-bottom: 0">
+            <p class="at-body no-margin-bottom">
               Îæm is not a fashion brand that dabbles in tech. It is not a tech
               brand that makes merch. It is something that didn't have a name
               before — so we named it ourselves.
@@ -784,33 +602,22 @@
           <div class="pillar">
             <div class="pillar-num">01</div>
             <div class="pillar-title">Precision</div>
-            <div class="pillar-desc">
-              Every pixel, every stitch, every line of code is intentional. No
-              noise — only decisions.
-            </div>
+            <div class="pillar-desc">Every pixel, every stitch, every line of code is intentional. No noise — only decisions.</div>
           </div>
           <div class="pillar">
             <div class="pillar-num">02</div>
             <div class="pillar-title">Duality</div>
-            <div class="pillar-desc">
-              Tech and fashion are the same conversation spoken in different
-              languages. We are fluent in both.
-            </div>
+            <div class="pillar-desc">Tech and fashion are the same conversation spoken in different languages. We are fluent in both.</div>
           </div>
           <div class="pillar">
             <div class="pillar-num">03</div>
             <div class="pillar-title">Authority</div>
-            <div class="pillar-desc">
-              We define the moment and move on before the crowd arrives.
-            </div>
+            <div class="pillar-desc">We define the moment and move on before the crowd arrives.</div>
           </div>
-          <div clamss="pillar">
+          <div class="pillar">
             <div class="pillar-num">04</div>
             <div class="pillar-title">Warmth</div>
-            <div class="pillar-desc">
-              Coffee brown grounds everything. Premium is not cold — it is
-              considered, layered, and rich.
-            </div>
+            <div class="pillar-desc">Coffee brown grounds everything. Premium is not cold — it is considered, layered, and rich.</div>
           </div>
         </div>
         <div class="about-body">
@@ -850,6 +657,7 @@
       </div>
     </div>
 
+    <!-- ═══ JOURNAL PAGE ═══ -->
     <div class="page" id="page-journal">
       <div class="page-header">
         <p class="page-header-eyebrow">Thoughts from the intersection</p>
@@ -858,167 +666,75 @@
       <div class="journal-layout">
         <div class="journal-full-grid">
           <div class="jf-card">
-            <div class="jf-img">
-              <img src="images/fashiontech.jpg" alt="FashionTech" />
-            </div>
+            <div class="jf-img"><img src="images/fashiontech.jpg" alt="FashionTech" /></div>
             <div class="jf-body">
               <div class="jc-date">Apr 28, 2026</div>
               <span class="jc-tag">Tech × Fashion</span>
-              <h3 class="jc-title">
-                Why the most stylish people I know all think like engineers
-              </h3>
-              <p class="jc-excerpt">
-                There's a pattern I keep noticing. The people with the sharpest
-                aesthetic instincts obsess over systems.
-              </p>
-              <a
-                href="#"
-                class="jc-read"
-                onclick="
-                  openArticle(1);
-                  return false;
-                "
-                >Read More</a
-              >
+              <h3 class="jc-title">Why the most stylish people I know all think like engineers</h3>
+              <p class="jc-excerpt">There's a pattern I keep noticing. The people with the sharpest aesthetic instincts obsess over systems.</p>
+              <a href="#" class="jc-read" onclick="openArticle(1); return false;">Read More</a>
             </div>
           </div>
           <div class="jf-card">
-            <div class="jf-img">
-              <img src="images/brandtech.jpg" alt="BrandTech" />
-            </div>
+            <div class="jf-img"><img src="images/brandtech.jpg" alt="BrandTech" /></div>
             <div class="jf-body">
               <div class="jc-date">Apr 14, 2026</div>
               <span class="jc-tag">Brand</span>
               <h3 class="jc-title">Building in public before the doors open</h3>
-              <p class="jc-excerpt">
-                Why I started Îæm before I had a product, a team, or an office.
-              </p>
-              <a
-                href="#"
-                class="jc-read"
-                onclick="
-                  openArticle(2);
-                  return false;
-                "
-                >Read More</a
-              >
+              <p class="jc-excerpt">Why I started Îæm before I had a product, a team, or an office.</p>
+              <a href="#" class="jc-read" onclick="openArticle(2); return false;">Read More</a>
             </div>
           </div>
           <div class="jf-card">
-            <div class="jf-img">
-              <img src="images/empiretech.jpg" alt="EmpireTech" />
-            </div>
+            <div class="jf-img"><img src="images/empiretech.jpg" alt="EmpireTech" /></div>
             <div class="jf-body">
               <div class="jc-date">Mar 30, 2026</div>
               <span class="jc-tag">Empire</span>
               <h3 class="jc-title">The campus is the first market</h3>
-              <p class="jc-excerpt">
-                University isn't just where you learn. It's your first audience
-                and first real test of brand.
-              </p>
-              <a
-                href="#"
-                class="jc-read"
-                onclick="
-                  openArticle(3);
-                  return false;
-                "
-                >Read More</a
-              >
+              <p class="jc-excerpt">University isn't just where you learn. It's your first audience and first real test of brand.</p>
+              <a href="#" class="jc-read" onclick="openArticle(3); return false;">Read More</a>
             </div>
           </div>
           <div class="jf-card">
-            <div class="jf-img">
-              <img src="images/colortech.jpg" alt="ColorTech" />
-            </div>
+            <div class="jf-img"><img src="images/colortech.jpg" alt="ColorTech" /></div>
             <div class="jf-body">
               <div class="jc-date">Mar 15, 2026</div>
               <span class="jc-tag">Fashion</span>
-              <h3 class="jc-title">
-                Coffee brown and why warm colours own the room
-              </h3>
-              <p class="jc-excerpt">
-                Colour psychology, brand identity, and why I chose a shade most
-                brands are afraid of.
-              </p>
-              <a
-                href="#"
-                class="jc-read"
-                onclick="
-                  openArticle(4);
-                  return false;
-                "
-                >Read More</a
-              >
+              <h3 class="jc-title">Coffee brown and why warm colours own the room</h3>
+              <p class="jc-excerpt">Colour psychology, brand identity, and why I chose a shade most brands are afraid of.</p>
+              <a href="#" class="jc-read" onclick="openArticle(4); return false;">Read More</a>
             </div>
           </div>
           <div class="jf-card">
-            <div class="jf-img">
-              <img src="images/fashiontech2.jpg" alt="FashionTech" />
-            </div>
+            <div class="jf-img"><img src="images/fashiontech2.jpg" alt="FashionTech" /></div>
             <div class="jf-body">
               <div class="jc-date">Mar 01, 2026</div>
               <span class="jc-tag">Tech</span>
-              <h3 class="jc-title">
-                What wearable tech gets wrong about fashion people
-              </h3>
-              <p class="jc-excerpt">
-                Tech companies keep making wearables for engineers. Nobody asked
-                them to.
-              </p>
-              <a
-                href="#"
-                class="jc-read"
-                onclick="
-                  openArticle(5);
-                  return false;
-                "
-                >Read More</a
-              >
+              <h3 class="jc-title">What wearable tech gets wrong about fashion people</h3>
+              <p class="jc-excerpt">Tech companies keep making wearables for engineers. Nobody asked them to.</p>
+              <a href="#" class="jc-read" onclick="openArticle(5); return false;">Read More</a>
             </div>
           </div>
           <div class="jf-card">
-            <div class="jf-img">
-              <img src="images/brandtech2.jpg" alt="ÎæmTech" />
-            </div>
+            <div class="jf-img"><img src="images/brandtech2.jpg" alt="ÎæmTech" /></div>
             <div class="jf-body">
               <div class="jc-date">Feb 20, 2026</div>
               <span class="jc-tag">Empire</span>
               <h3 class="jc-title">The name: why Îæm means what it means</h3>
-              <p class="jc-excerpt">
-                A breakdown of the thinking behind the characters, the
-                pronunciation, and the intention.
-              </p>
-              <a
-                href="#"
-                class="jc-read"
-                onclick="
-                  openArticle(6);
-                  return false;
-                "
-                >Read More</a
-              >
+              <p class="jc-excerpt">A breakdown of the thinking behind the characters, the pronunciation, and the intention.</p>
+              <a href="#" class="jc-read" onclick="openArticle(6); return false;">Read More</a>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     <!-- ═══ ARTICLE PAGE ═══ -->
     <div class="page" id="page-article">
       <div class="article-layout">
-        <!-- back button -->
         <div class="article-back">
-          <a
-            href="#"
-            onclick="
-              showPage('journal');
-              return false;
-            "
-          >
-            ← Back to Journal
-          </a>
+          <a href="#" onclick="showPage('journal'); return false;">← Back to Journal</a>
         </div>
-
         <div class="article-header">
           <div class="article-meta-row">
             <span class="article-date" id="articleDate"></span>
@@ -1027,12 +743,8 @@
           <h1 class="article-title" id="articleTitle"></h1>
           <p class="article-subtitle" id="articleSubtitle"></p>
         </div>
-
         <div class="article-hero-img" id="articleHeroImg"></div>
-
         <div class="article-body" id="articleBody"></div>
-
-        <!-- next article -->
         <div class="article-footer">
           <div class="article-footer-label">Continue Reading</div>
           <div class="article-next-grid" id="articleNextGrid"></div>
@@ -1040,80 +752,103 @@
       </div>
     </div>
 
+    <!-- ═══ CONTACT PAGE ═══ -->
     <div class="page" id="page-contact">
       <div class="contact-layout">
         <div class="contact-left">
           <p class="page-header-eyebrow">Get in Touch</p>
-          <h1 class="contact-headline">
-            Let's build<br />something <em>real.</em>
-          </h1>
-          <p class="at-body" style="margin-bottom: 0">
+          <h1 class="contact-headline">Let's build<br />something <em>real.</em></h1>
+          <p class="at-body no-margin-bottom">
             Collaborations, press, styling partnerships, or just a conversation
             — the door is open for those who mean it.
           </p>
           <div class="contact-channels">
-            <a href="mailto:iaemhq@gmail.com" class="contact-channel"
-              ><span class="cc-icon">Email</span
-              ><span class="cc-val">iaemhq@gmail.com</span></a
-            >
-            <a
-              href="https://www.tiktok.com/@iaemhq?_r=1&_t=ZS-96sysF5bQn6"
-              class="contact-channel"
-              ><span class="cc-icon">TikTok</span
-              ><span class="cc-val">Îæm</span></a
-            >
+            <a href="mailto:iaemhq@gmail.com" class="contact-channel">
+              <span class="cc-icon">Email</span>
+              <span class="cc-val">iaemhq@gmail.com</span>
+            </a>
+            <a href="https://www.tiktok.com/@iaemhq?_r=1&_t=ZS-96sysF5bQn6" class="contact-channel">
+              <span class="cc-icon">TikTok</span>
+              <span class="cc-val">Îæm</span>
+            </a>
           </div>
         </div>
         <div class="contact-right">
           <form action="https://formspree.io/f/mlgzgqdn" method="post">
             <p class="contact-form-label">Send a Message</p>
             <div class="form-group">
-              <label class="form-label" for="name">Name</label
-              ><input
-                class="form-input"
-                type="text"
-                id="name"
-                placeholder="Your name"
-                name="name"
-              />
+              <label class="form-label" for="name">Name</label>
+              <input class="form-input" type="text" id="name" placeholder="Your name" name="name" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="email">Email</label
-              ><input
-                class="form-input"
-                type="email"
-                id="email"
-                placeholder="your@email.com"
-                name="email"
-              />
+              <label class="form-label" for="email">Email</label>
+              <input class="form-input" type="email" id="email" placeholder="your@email.com" name="email" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="subject">Subject</label
-              ><input
-                class="form-input"
-                type="text"
-                id="subject"
-                placeholder="Collaboration / Press / General"
-                name="subject"
-              />
+              <label class="form-label" for="subject">Subject</label>
+              <input class="form-input" type="text" id="subject" placeholder="Collaboration / Press / General" name="subject" />
             </div>
             <div class="form-group">
-              <label class="form-label">Message</label
-              ><textarea
-                class="form-input"
-                placeholder="Tell us what you're building..."
-                id="message"
-                name="message"
-              ></textarea>
+              <label class="form-label">Message</label>
+              <textarea class="form-input" placeholder="Tell us what you're building..." id="message" name="message"></textarea>
             </div>
-            <input type="text" name="_gotcha" style="display: none" />
-            <button
-              class="btn-primary"
-              style="width: 100%; margin-top: 8px; text-align: center"
-            >
-              Send Message
-            </button>
+            <input type="hidden" name="_gotcha" />
+            <button type="submit" class="btn-primary btn-fullwidth">Send Message</button>
           </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ PRODUCT MODAL ═══ -->
+    <div class="modal-overlay" id="productModal" onclick="closeModal(event)">
+      <div class="modal-box">
+        <button type="button" class="modal-close" onclick="closeModalBtn()">✕</button>
+        <div class="modal-inner">
+          <div class="modal-img-wrap">
+            <img src="" alt="" id="modalImg" class="modal-img" />
+            <div class="modal-tag" id="modalTag"></div>
+          </div>
+          <div class="modal-info">
+            <p class="modal-category" id="modalCategory"></p>
+            <h2 class="modal-name" id="modalName"></h2>
+            <div class="modal-divider"></div>
+            <p class="modal-desc" id="modalDesc"></p>
+            <div class="modal-details">
+              <div class="modal-detail-item">
+                <span class="modal-detail-label">Type</span>
+                <span class="modal-detail-val" id="modalType"></span>
+              </div>
+              <!-- FIXED: added id="modalColours" so JS can find it -->
+              <div class="modal-detail-item" id="modalColoursRow">
+                <span class="modal-detail-label">Choose Colour</span>
+                <div class="modal-colours" id="modalColours"></div>
+              </div>
+              <div class="modal-detail-item">
+                <span class="modal-detail-label">Sizing</span>
+                <span class="modal-detail-val">
+                  Made to your exact measurements — no standard sizing. When you
+                  order via WhatsApp we send you a simple measurement guide.
+                  Your piece is crafted to fit you perfectly.
+                </span>
+              </div>
+              <div class="modal-detail-item">
+                <span class="modal-detail-label">Production</span>
+                <span class="modal-detail-val">Made to order — crafted specifically for you</span>
+              </div>
+              <div class="modal-detail-item">
+                <span class="modal-detail-label">Delivery</span>
+                <span class="modal-detail-val">7 to 21 days from measurement confirmation</span>
+              </div>
+            </div>
+            <div class="modal-price-row">
+              <span class="modal-price-label">Price</span>
+              <span class="modal-price-val" id="modalPrice"></span>
+            </div>
+            <a href="#" class="btn-whatsapp modal-whatsapp" id="modalWhatsapp" target="_blank" rel="noopener noreferrer">
+              Order via WhatsApp
+            </a>
+            <p class="modal-note">We'll confirm your size, measurements, and delivery details personally.</p>
+          </div>
         </div>
       </div>
     </div>
