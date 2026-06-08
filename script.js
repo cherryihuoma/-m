@@ -4,6 +4,7 @@
  * Unauthorized reproduction prohibited.
  * contact: iaemhq@gmail.com
  */
+/* cSpell:disable */
 
 // ─── CURSOR ───────────────────────────────────────────────
 const cursor = document.getElementById('cursor');
@@ -308,7 +309,7 @@ const products = {
       { name: 'Navy Blue',     hex: '#000080', img: 'images/navy blue.png' },
       { name: 'Forest Green',  hex: '#003314', img: 'images/forest green empire jacket.jpg' }
     ],
-    price:    'Made to Order — DM for pricing',
+    price:    'DM for pricing',
     whatsapp: 'Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20order%20The%20Empire%20Jacket.%20Please%20send%20me%20your%20measurement%20guide%20and%20pricing.%20%F0%9F%A4%8E'
   },
   'silk-tee': {
@@ -325,7 +326,7 @@ const products = {
       { name: 'Soft Black',   hex: '#1C1412', img: 'images/black satin stop.png' },
       { name: 'Cherry Red',   hex: '#8B0000', img: 'images/burgandy satin top.jpg' }
     ],
-    price:    'Made to Order — DM for pricing',
+    price:    'DM for pricing',
     whatsapp: 'Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20order%20the%20Silk%20Circuits%20Tee.%20Please%20send%20me%20your%20measurement%20guide%20and%20pricing.%20%F0%9F%A4%8E'
   },
   'two-piece': {
@@ -342,7 +343,7 @@ const products = {
       { name: 'Cherry Red',   hex: '#8B0000', img: 'images/burgandy 2 piece.png' },
       { name: 'Cream',        hex: '#F5E9E2', img: 'images/2 piece.jpeg' }
     ],
-    price:    'Made to Order — DM for pricing',
+    price:    'DM for pricing',
     whatsapp: 'Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20order%20the%20Two%20Piece%20Set.%20Please%20send%20me%20your%20measurement%20guide%20and%20pricing.%20%F0%9F%A4%8E'
   },
   'coffee-trench': {
@@ -353,7 +354,7 @@ const products = {
     desc:     'A longline trench coat in the brand\'s signature coffee brown. Structured enough to command a room, relaxed enough to move through it with ease.',
     type:     'Outerwear — Trench Coat',
     colours:  [],
-    price:    'Made to Order — DM for pricing',
+    price:    'DM for pricing',
     whatsapp: 'Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20order%20the%20Coffee%20Trench.%20Please%20send%20me%20your%20measurement%20guide%20and%20pricing.%20%F0%9F%A4%8E'
   },
   'smart-band': {
@@ -364,7 +365,7 @@ const products = {
     desc:     'Technology you actually want to wear. Tracks your vitals without announcing itself — minimal design, maximum function.',
     type:     'Accessory — Smart Wearable',
     colours:  [],
-    price:    'Made to Order — DM for pricing',
+    price:    'DM for pricing',
     whatsapp: 'Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20order%20the%20Cherry%20Smart%20Band.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
   },
   'gold-chain': {
@@ -375,7 +376,7 @@ const products = {
     desc:     'Not decoration. A statement. The finishing detail that signals everything without saying anything.',
     type:     'Accessory — Jewellery',
     colours:  [],
-    price:    'Made to Order — DM for pricing',
+    price:    'DM for pricing',
     whatsapp: 'Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20order%20the%20Imperial%20Gold%20Chain.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
   },
   'interface-cap': {
@@ -386,7 +387,7 @@ const products = {
     desc:     'The cap that signals everything. Clean construction, considered detail, unmistakable presence.',
     type:     'Accessory — Cap',
     colours: [],
-    price:    'Made to Order — DM for pricing',
+    price:    'DM for pricing',
     whatsapp: 'Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20order%20the%20Interface%20Cap.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
   }
 };
