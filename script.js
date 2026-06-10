@@ -4,7 +4,6 @@
  * Unauthorized reproduction prohibited.
  * contact: iaemhq@gmail.com
  */
-/* cSpell:disable */
 
 // ─── CURSOR ───────────────────────────────────────────────
 const cursor = document.getElementById('cursor');
@@ -292,109 +291,117 @@ function openArticle(id) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ─── PRODUCTS DATA ─────────────────────────────────────────
-const products = {
-  'empire-jacket': {
-    name:     'The Empire Jacket',
-    category: 'Fashion · Outerwear',
-    tag:      'New',
-    img:      'images/black empire jacket.png',
-    desc:     'A structured statement jacket built for those who walk into every room already owning it. Clean architectural lines, premium fabric, and the unmistakable Îæm precision in every seam.',
-    type:     'Outerwear — Jacket',
-    colours: [
-      { name: 'Coffee Brown',  hex: '#4B2E2B', img: 'images/brown empire jacket.jpg' },
-      { name: 'Soft Black',    hex: '#1C1412', img: 'images/black empire jacket.png' },
-      { name: 'Cream',         hex: '#F5E9E2', img: 'images/cream empire jacket.png' },
-      { name: 'Cherry Red',    hex: '#8B0000', img: 'images/burgandy empire jacket.png' },
-      { name: 'Navy Blue',     hex: '#000080', img: 'images/navy blue.png' },
-      { name: 'Forest Green',  hex: '#003314', img: 'images/forest green empire jacket.jpg' }
-    ],
-    price:    'Made to Order — DM for pricing',
-    whatsapp: 'Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20order%20The%20Empire%20Jacket.%20Please%20send%20me%20your%20measurement%20guide%20and%20pricing.%20%F0%9F%A4%8E'
-  },
-  'silk-tee': {
-    name:     'Satin Circuits Tee',
-    category: 'Tech · Wearable',
-    tag:      'SS26',
-    img:      'images/silk t shirt.jpeg',
-    desc:     'Where the softness of silk meets the precision of a circuit. A premium tee engineered for comfort without compromising on intention. The tech is in the thinking.',
-    type:     'Top — T-Shirt',
-    colours: [
-      { name: 'Cream',        hex: '#F5E9E2', img: 'images/silk t shirt.jpeg' },
-      { name: 'Coffee Brown', hex: '#4B2E2B', img: 'images/coffee brown satin top.png' },
-      { name: 'Navy Blue',    hex: '#000080', img: 'images/navy blue satin top.jpg' },
-      { name: 'Soft Black',   hex: '#1C1412', img: 'images/black satin stop.png' },
-      { name: 'Cherry Red',   hex: '#8B0000', img: 'images/burgandy satin top.jpg' }
-    ],
-    price:    'Made to Order — DM for pricing',
-    whatsapp: 'Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20order%20the%20Silk%20Circuits%20Tee.%20Please%20send%20me%20your%20measurement%20guide%20and%20pricing.%20%F0%9F%A4%8E'
-  },
-  'two-piece': {
-    name:     'Two Piece Set',
-    category: 'Fashion · Co-ord',
-    tag:      'SS26',
-    img:      'images/coffee brown 2 piece.jpg',
-    desc:     'The first physical artifact of Îæm. A structured co-ord set designed as a system — every proportion intentional, every detail earned. Built to be worn with certainty.',
-    type:     'Co-ord Set — Top & Trousers',
-    colours: [
-      { name: 'Coffee Brown', hex: '#4B2E2B', img: 'images/coffee brown 2 piece.jpg' },
-      { name: 'Navy Blue',    hex: '#000080', img: 'images/navy blue two piece.png' },
-      { name: 'Soft Black',   hex: '#1C1412', img: 'images/soft black 2 piece.png' },
-      { name: 'Cherry Red',   hex: '#8B0000', img: 'images/burgandy 2 piece.png' },
-      { name: 'Cream',        hex: '#F5E9E2', img: 'images/2 piece.jpeg' }
-    ],
-    price:    'Made to Order — DM for pricing',
-    whatsapp: 'Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20order%20the%20Two%20Piece%20Set.%20Please%20send%20me%20your%20measurement%20guide%20and%20pricing.%20%F0%9F%A4%8E'
-  },
-  'coffee-trench': {
-    name:     'Coffee Trench',
-    category: 'Fashion · Outerwear',
-    tag:      null,
-    img:      'images/Casaco Trench Longo Minimalista Casual e Elegante de Ajuste Solto com Manga Longa e Dupla Fileira de Botões com Cinto, Cinza Puro, Primavera_Outono_Inverno.jpeg',
-    desc:     'A longline trench coat in the brand\'s signature coffee brown. Structured enough to command a room, relaxed enough to move through it with ease.',
-    type:     'Outerwear — Trench Coat',
-    colours:  [],
-    price:    'Made to Order — DM for pricing',
-    whatsapp: 'Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20order%20the%20Coffee%20Trench.%20Please%20send%20me%20your%20measurement%20guide%20and%20pricing.%20%F0%9F%A4%8E'
-  },
-  'smart-band': {
-    name:     'Cherry Smart Band',
-    category: 'Tech · Wearable',
-    tag:      null,
-    img:      'images/Fitbit Inspire 3.jpeg',
-    desc:     'Technology you actually want to wear. Tracks your vitals without announcing itself — minimal design, maximum function.',
-    type:     'Accessory — Smart Wearable',
-    colours:  [],
-    price:    'Made to Order — DM for pricing',
-    whatsapp: 'Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20order%20the%20Cherry%20Smart%20Band.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
-  },
-  'gold-chain': {
-    name:     'Imperial Gold Chain',
-    category: 'Fashion · Jewellery',
-    tag:      null,
-    img:      'images/14K Solid Gold Franco Chain Necklace_ Diamond Cut Foxtail Design.jpeg',
-    desc:     'Not decoration. A statement. The finishing detail that signals everything without saying anything.',
-    type:     'Accessory — Jewellery',
-    colours:  [],
-    price:    'Made to Order — DM for pricing',
-    whatsapp: 'Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20order%20the%20Imperial%20Gold%20Chain.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
-  },
-  'interface-cap': {
-    name:     'Interface Cap',
-    category: 'Fashion · Accessories',
-    tag:      'SS26',
-    img:      'images/Brand identity & pitch deck design for Soma.jpeg',
-    desc:     'The cap that signals everything. Clean construction, considered detail, unmistakable presence.',
-    type:     'Accessory — Cap',
-    colours: [],
-    price:    'Made to Order — DM for pricing',
-    whatsapp: 'Hi%20%C3%8Eæm%2C%20I%27d%20like%20to%20order%20the%20Interface%20Cap.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
-  }
-};
+// ─── PRODUCTS — loaded from products.js (array)
+// To look up by id quickly, build a map at runtime
+const productMap = {};
+products.forEach(p => { productMap[p.id] = p; });
+
+
+// ─── RENDER SHOP GRID FROM products.js ────────────────────
+function buildShopGrid() {
+  const grid = document.querySelector('#page-shop .shop-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  products.forEach(p => {
+    const hasColours = Array.isArray(p.colours) && p.colours.length >= 2;
+
+    // Build colour data attr string
+    const coloursAttr = hasColours
+      ? `data-colours='${JSON.stringify(p.colours).replace(/'/g, "&#39;")}'`
+      : '';
+
+    const tagHTML = p.tag
+      ? `<div class="product-tag-overlay">${p.tag}</div>` : '';
+
+    const imgInner = hasColours
+      ? `<img class="pi-layer pi-layer-a" src="${p.colours[0].img}" alt="${p.name}" />
+         <img class="pi-layer pi-layer-b" src="${p.colours[1].img}" alt="${p.name}" />
+         ${tagHTML}
+         <div class="pi-swatches"></div>`
+      : `<img src="${p.img}" alt="${p.name}" />${tagHTML}`;
+
+    const swatchClass = hasColours ? 'pi-swatch-host' : '';
+    const autoAttr    = hasColours ? 'data-auto="true"' : '';
+
+    const card = document.createElement('div');
+    card.className = `product-card shop-product-card`;
+    card.dataset.category = p.filter;
+    card.dataset.season   = p.season;
+    card.dataset.status   = p.status;
+    card.setAttribute('onclick', `openProduct('${p.id}')`);
+
+    card.innerHTML = `
+      <div class="product-img ${swatchClass}" ${autoAttr} ${coloursAttr}>
+        ${imgInner}
+      </div>
+      <div class="product-info">
+        <div class="product-category">${p.category}</div>
+        <div class="product-name">${p.name}</div>
+        <button type="button" class="btn-view">View Details</button>
+      </div>`;
+
+    grid.appendChild(card);
+  });
+
+  // Re-init swatches for newly rendered cards
+  document.querySelectorAll('#page-shop .pi-swatch-host').forEach(initSwatchHost);
+  applyShopFilters();
+}
+
+// ─── RENDER HOME FEATURED FROM products.js ────────────────
+function buildFeaturedGrid() {
+  const grid = document.querySelector('.featured-grid');
+  if (!grid) return;
+
+  const featured = products.filter(p => p.featured);
+  grid.innerHTML = '';
+
+  featured.forEach(p => {
+    const hasColours = Array.isArray(p.colours) && p.colours.length >= 2;
+    const coloursAttr = hasColours
+      ? `data-colours='${JSON.stringify(p.colours).replace(/'/g, "&#39;")}'`
+      : '';
+
+    const tagHTML = p.tag
+      ? `<div class="product-tag-overlay">${p.tag}</div>` : '';
+
+    const imgInner = hasColours
+      ? `<img class="pi-layer pi-layer-a" src="${p.colours[0].img}" alt="${p.name}" />
+         <img class="pi-layer pi-layer-b" src="${p.colours[1].img}" alt="${p.name}" />
+         ${tagHTML}
+         <div class="pi-swatches"></div>`
+      : `<img src="${p.img}" alt="${p.name}" />${tagHTML}`;
+
+    const swatchClass = hasColours ? 'pi-swatch-host' : '';
+    const autoAttr    = hasColours ? 'data-auto="true"' : '';
+
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.setAttribute('onclick', `openProduct('${p.id}')`);
+
+    card.innerHTML = `
+      <div class="product-img ${swatchClass}" ${autoAttr} ${coloursAttr}>
+        ${imgInner}
+      </div>
+      <div class="product-info">
+        <div class="product-category">${p.category}</div>
+        <div class="product-name">${p.name}</div>
+        <button type="button" class="btn-view">View Details</button>
+      </div>`;
+
+    grid.appendChild(card);
+  });
+
+  // Re-init swatches for newly rendered cards
+  document.querySelectorAll('.featured-grid .pi-swatch-host').forEach(initSwatchHost);
+}
 
 // ─── OPEN PRODUCT MODAL ────────────────────────────────────
+// FIXED: colours row hidden when product has no colours;
+//        selectColour targets .modal-colours correctly
 function openProduct(id) {
-  const p = products[id];
+  const p = productMap[id];
   if (!p) return;
 
   document.getElementById('modalImg').src              = p.img;
@@ -434,6 +441,7 @@ function openProduct(id) {
 }
 
 // ─── COLOUR SELECTION IN MODAL ─────────────────────────────
+// FIXED: correctly finds the .modal-colours container
 function selectModalColour(el, productId, colourIndex) {
   // Update selected swatch highlight
   const container = document.getElementById('modalColours');
@@ -441,7 +449,7 @@ function selectModalColour(el, productId, colourIndex) {
   el.classList.add('selected');
 
   // Also swap modal image to match chosen colour
-  const p = products[productId];
+  const p = productMap[productId];
   if (p && p.colours && p.colours[colourIndex]) {
     document.getElementById('modalImg').src = p.colours[colourIndex].img;
   }
@@ -462,9 +470,7 @@ document.addEventListener('keydown', e => {
 });
 
 // ─── PRODUCT IMAGE SWATCH SYSTEM ──────────────────────────
-(function () {
-
-  function crossfadeTo(host, imgSrc) {
+function crossfadeTo(host, imgSrc) {
     const a = host.querySelector('.pi-layer-a');
     const b = host.querySelector('.pi-layer-b');
     if (!a || !b) return;
@@ -483,13 +489,13 @@ document.addEventListener('keydown', e => {
     }
   }
 
-  function setActiveSwatch(host, index) {
+function setActiveSwatch(host, index) {
     host.querySelectorAll('.pi-swatch').forEach((s, i) => {
       s.classList.toggle('pi-active', i === index);
     });
   }
 
-  function initHost(host) {
+function initSwatchHost(host) {
     let colours;
     try {
       colours = JSON.parse(host.dataset.colours);
@@ -551,11 +557,10 @@ document.addEventListener('keydown', e => {
     startAuto();
   }
 
-  document.querySelectorAll('.pi-swatch-host').forEach(initHost);
-
-})();
+document.querySelectorAll('.pi-swatch-host').forEach(initSwatchHost);
 
 // ─── SHOP FILTER SYSTEM ────────────────────────────────────
+// FIXED: targets .shop-product-card (matching HTML class)
 (function () {
 
   const activeFilters = {
@@ -564,6 +569,7 @@ document.addEventListener('keydown', e => {
     status:   'all'
   };
 
+  // FIXED: was .shop-product-card — now matches the HTML
   const cards       = document.querySelectorAll('.shop-product-card');
   const filterLinks = document.querySelectorAll('.shop-sidebar .filter-item');
 
@@ -573,7 +579,7 @@ document.addEventListener('keydown', e => {
   noResults.textContent = 'No products match these filters.';
   if (gridWrap) gridWrap.appendChild(noResults);
 
-  function applyFilters() {
+  applyShopFilters = function () {
     let visibleCount = 0;
 
     cards.forEach(card => {
@@ -611,10 +617,16 @@ document.addEventListener('keydown', e => {
       });
       this.classList.add('active');
 
-      applyFilters();
+      applyShopFilters();
     });
   });
 
-  applyFilters();
+  applyShopFilters();
 
 })();
+
+// ─── BOOT — render grids from products.js ─────────────────
+document.addEventListener('DOMContentLoaded', function () {
+  buildFeaturedGrid();
+  buildShopGrid();
+});
