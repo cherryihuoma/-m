@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en" data-theme="night">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy — Îæm</title>
+    <meta
+      name="description"
+      content="Privacy Policy for Îæm — Tech · Fashion · Empire"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;700;800&family=DM+Mono:ital,wght@0,300;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .legal-layout {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 80px 48px 120px;
+      }
+      .legal-eyebrow {
+        font-family: var(--font-m);
+        font-size: 10px;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: var(--gold-use);
+        margin-bottom: 20px;
+        opacity: 0.8;
+      }
+      .legal-title {
+        font-family: var(--font-d);
+        font-size: clamp(40px, 6vw, 72px);
+        font-weight: 300;
+        line-height: 0.95;
+        color: var(--text);
+        letter-spacing: -0.01em;
+        margin-bottom: 12px;
+      }
+      .legal-title em {
+        font-style: italic;
+        color: var(--accent);
+      }
+      .legal-updated {
+        font-family: var(--font-m);
+        font-size: 10px;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--text3);
+        margin-bottom: 60px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid var(--border);
+      }
+      .legal-updated::before {
+        content: "Last updated — ";
+      }
+      .legal-intro {
+        font-family: var(--font-d);
+        font-style: italic;
+        font-size: clamp(18px, 2vw, 24px);
+        font-weight: 300;
+        color: var(--text2);
+        line-height: 1.6;
+        margin-bottom: 52px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid var(--border);
+      }
+      .legal-section {
+        margin-bottom: 52px;
+      }
+      .legal-section-num {
+        font-family: var(--font-m);
+        font-size: 9px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--gold-use);
+        margin-bottom: 10px;
+        opacity: 0.7;
+      }
+      .legal-section-title {
+        font-family: var(--font-d);
+        font-size: clamp(22px, 2.5vw, 30px);
+        font-weight: 400;
+        color: var(--text);
+        margin-bottom: 18px;
+        line-height: 1.1;
+      }
+      .legal-body {
+        font-family: var(--font-s);
+        font-size: 14px;
+        line-height: 2;
+        color: var(--text2);
+      }
+      .legal-body p {
+        margin-bottom: 16px;
+      }
+      .legal-body p:last-child {
+        margin-bottom: 0;
+      }
+      .legal-body strong {
+        color: var(--text);
+        font-weight: 700;
+      }
+      .legal-body ul {
+        list-style: none;
+        padding: 0;
+        margin: 12px 0 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .legal-body ul li {
+        padding-left: 20px;
+        position: relative;
+        color: var(--text2);
+      }
+      .legal-body ul li::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        color: var(--gold-use);
+        font-family: var(--font-m);
+      }
+      .legal-divider {
+        width: 40px;
+        height: 1px;
+        background: var(--gold-use);
+        opacity: 0.3;
+        margin: 52px 0;
+      }
+      .legal-highlight {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-left: 2px solid var(--gold-use);
+        padding: 24px 28px;
+        margin: 24px 0;
+        font-family: var(--font-s);
+        font-size: 13px;
+        line-height: 1.9;
+        color: var(--text2);
+      }
+      .legal-highlight strong {
+        color: var(--text);
+      }
+      .legal-contact-block {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-left: 2px solid var(--gold-use);
+        padding: 28px 32px;
+        margin-top: 52px;
+      }
+      .legal-contact-block p {
+        font-family: var(--font-s);
+        font-size: 13px;
+        line-height: 1.9;
+        color: var(--text2);
+        margin: 0;
+      }
+      .legal-contact-block a {
+        color: var(--gold-use);
+        text-decoration: none;
+      }
+      .legal-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-m);
+        font-size: 10px;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--gold-use);
+        text-decoration: none;
+        opacity: 0.7;
+        margin-bottom: 60px;
+        transition: opacity 0.2s;
+      }
+      .legal-back:hover {
+        opacity: 1;
+      }
+      .rights-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+        margin-top: 20px;
+      }
+      .rights-item {
+        background: var(--surface);
+        padding: 20px 22px;
+        border: 1px solid var(--border);
+      }
+      .rights-item-title {
+        font-family: var(--font-s);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gold-use);
+        margin-bottom: 6px;
+      }
+      .rights-item-desc {
+        font-family: var(--font-s);
+        font-size: 12px;
+        line-height: 1.7;
+        color: var(--text2);
+      }
+
+      @media (max-width: 900px) {
+        .legal-layout {
+          padding: 48px 24px 80px;
+        }
+        .rights-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <nav>
+      <a href="index.html" class="nav-logo"><em>Îæm</em></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#shop">Shop</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#journal">Journal</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <button type="button" class="theme-toggle" onclick="toggleTheme()">
+        <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        <span id="themeLabel">Night</span>
+      </button>
+    </nav>
+
+    <div style="padding-top: 72px">
+      <div class="legal-layout">
+        <a href="index.html" class="legal-back">← Back to Îæm</a>
+
+        <p class="legal-eyebrow">Legal</p>
+        <h1 class="legal-title">Privacy <em>Policy</em></h1>
+        <p class="legal-updated">June 2026</p>
+
+        <p class="legal-intro">
+          We built Îæm on intention. That extends to how we handle your data. We
+          collect only what we need, we use it only for what we say, and we
+          don't sell it. Ever.
+        </p>
+
+        <!-- 01 -->
+        <div class="legal-section">
+          <p class="legal-section-num">01</p>
+          <h2 class="legal-section-title">Who We Are</h2>
+          <div class="legal-body">
+            <p>
+              This Privacy Policy applies to Îæm, a brand operating under
+              <strong>Cherychoicy Classic Communication</strong>, based in
+              Nigeria. When we say "Îæm", "we", "us", or "our", we mean this
+              entity.
+            </p>
+            <p>
+              This policy covers data collected through our website and through
+              our WhatsApp ordering process. It is prepared in accordance with
+              Nigeria's
+              <strong>Nigeria Data Protection Regulation (NDPR) 2019</strong>
+              and the Nigeria Data Protection Act 2023.
+            </p>
+            <p>
+              Our data controller contact:
+              <a
+                href="mailto:iaemhq@gmail.com"
+                style="color: var(--gold-use); text-decoration: none"
+                >iaemhq@gmail.com</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <div class="legal-divider"></div>
+
+        <!-- 02 -->
+        <div class="legal-section">
+          <p class="legal-section-num">02</p>
+          <h2 class="legal-section-title">What Data We Collect</h2>
+          <div class="legal-body">
+            <p>
+              We collect information only when you actively give it to us.
+              Here's exactly what and when:
+            </p>
+
+            <div class="legal-highlight">
+              <strong>Via our contact form (Formspree):</strong><br />
+              Name, email address, subject, and message content. This is used
+              solely to respond to your inquiry.
+            </div>
+
+            <div class="legal-highlight">
+              <strong>Via WhatsApp ordering:</strong><br />
+              Name, phone number, body measurements, delivery address, and order
+              preferences. This is used to fulfil your order and communicate
+              with you about it.
+            </div>
+
+            <div class="legal-highlight">
+              <strong>Via website browsing:</strong><br />
+              We do not run analytics or tracking scripts. We do not use cookies
+              beyond what your browser sets automatically. We do not use Google
+              Analytics or any third-party tracking tools.
+            </div>
+          </div>
+        </div>
+
+        <div class="legal-divider"></div>
+
+        <!-- 03 -->
+        <div class="legal-section">
+          <p class="legal-section-num">03</p>
+          <h2 class="legal-section-title">How We Use Your Data</h2>
+          <div class="legal-body">
+            <p>
+              We use your information only for the purpose you provided it.
+              Specifically:
+            </p>
+            <ul>
+              <li>To process and fulfil your clothing order</li>
+              <li>To communicate with you about your order status</li>
+              <li>To respond to your inquiries and messages</li>
+              <li>To send you a measurement guide if you place an order</li>
+              <li>To arrange delivery of your completed order</li>
+            </ul>
+            <p>
+              We do <strong>not</strong> use your data for advertising,
+              profiling, or sell it to any third parties. We do not send
+              unsolicited marketing messages.
+            </p>
+          </div>
+        </div>
+
+        <div class="legal-divider"></div>
+
+        <!-- 04 -->
+        <div class="legal-section">
+          <p class="legal-section-num">04</p>
+          <h2 class="legal-section-title">Who We Share Data With</h2>
+          <div class="legal-body">
+            <p>
+              We share your data only where absolutely necessary to deliver our
+              service:
+            </p>
+            <ul>
+              <li>
+                <strong>Formspree</strong> — processes contact form submissions
+                on our behalf. Their privacy policy governs data on their
+                platform
+              </li>
+              <li>
+                <strong>WhatsApp / Meta</strong> — our ordering conversations
+                take place on WhatsApp. Meta's privacy policy applies to data
+                processed on their platform
+              </li>
+              <li>
+                <strong>Delivery partners</strong> — your name and delivery
+                address are shared with the courier fulfilling your order
+              </li>
+            </ul>
+            <p>
+              We do not share your data with advertisers, data brokers, or any
+              other third parties.
+            </p>
+          </div>
+        </div>
+
+        <div class="legal-divider"></div>
+
+        <!-- 05 -->
+        <div class="legal-section">
+          <p class="legal-section-num">05</p>
+          <h2 class="legal-section-title">How Long We Keep Your Data</h2>
+          <div class="legal-body">
+            <p>
+              We retain your order and communication data for as long as
+              reasonably necessary to fulfil your order and handle any
+              post-delivery queries — typically no longer than
+              <strong>2 years</strong> after your last interaction with us.
+            </p>
+            <p>
+              You can request deletion of your data at any time by contacting us
+              at
+              <a
+                href="mailto:iaemhq@gmail.com"
+                style="color: var(--gold-use); text-decoration: none"
+                >iaemhq@gmail.com</a
+              >. We will action deletion requests within 30 days.
+            </p>
+          </div>
+        </div>
+
+        <div class="legal-divider"></div>
+
+        <!-- 06 -->
+        <div class="legal-section">
+          <p class="legal-section-num">06</p>
+          <h2 class="legal-section-title">Your Rights</h2>
+          <div class="legal-body">
+            <p>
+              Under the Nigeria Data Protection Act 2023, you have the following
+              rights regarding your personal data:
+            </p>
+            <div class="rights-grid">
+              <div class="rights-item">
+                <div class="rights-item-title">Access</div>
+                <div class="rights-item-desc">
+                  Request a copy of the personal data we hold about you
+                </div>
+              </div>
+              <div class="rights-item">
+                <div class="rights-item-title">Correction</div>
+                <div class="rights-item-desc">
+                  Ask us to correct inaccurate or incomplete data
+                </div>
+              </div>
+              <div class="rights-item">
+                <div class="rights-item-title">Deletion</div>
+                <div class="rights-item-desc">
+                  Request that we delete your personal data
+                </div>
+              </div>
+              <div class="rights-item">
+                <div class="rights-item-title">Objection</div>
+                <div class="rights-item-desc">
+                  Object to how we process your data in certain circumstances
+                </div>
+              </div>
+              <div class="rights-item">
+                <div class="rights-item-title">Portability</div>
+                <div class="rights-item-desc">
+                  Receive your data in a structured, commonly used format
+                </div>
+              </div>
+              <div class="rights-item">
+                <div class="rights-item-title">Withdraw Consent</div>
+                <div class="rights-item-desc">
+                  Withdraw consent at any time where processing is consent-based
+                </div>
+              </div>
+            </div>
+            <p style="margin-top: 20px">
+              To exercise any of these rights, contact us at
+              <a
+                href="mailto:iaemhq@gmail.com"
+                style="color: var(--gold-use); text-decoration: none"
+                >iaemhq@gmail.com</a
+              >. We will respond within 30 days.
+            </p>
+          </div>
+        </div>
+
+        <div class="legal-divider"></div>
+
+        <!-- 07 -->
+        <div class="legal-section">
+          <p class="legal-section-num">07</p>
+          <h2 class="legal-section-title">Data Security</h2>
+          <div class="legal-body">
+            <p>
+              We take reasonable steps to protect your personal data.
+              Communications via WhatsApp are end-to-end encrypted by default.
+              Our website does not store payment information — all transactions
+              are handled through agreed methods in private WhatsApp
+              conversations.
+            </p>
+            <p>
+              While we work to protect your data, no method of transmission over
+              the internet is 100% secure. We cannot guarantee absolute security
+              but we commit to handling your data with care and discretion.
+            </p>
+          </div>
+        </div>
+
+        <div class="legal-divider"></div>
+
+        <!-- 08 -->
+        <div class="legal-section">
+          <p class="legal-section-num">08</p>
+          <h2 class="legal-section-title">Children's Privacy</h2>
+          <div class="legal-body">
+            <p>
+              Our website and services are not directed at individuals under the
+              age of 13. We do not knowingly collect personal data from
+              children. If you believe we have inadvertently collected such
+              data, please contact us immediately and we will delete it.
+            </p>
+          </div>
+        </div>
+
+        <div class="legal-divider"></div>
+
+        <!-- 09 -->
+        <div class="legal-section">
+          <p class="legal-section-num">09</p>
+          <h2 class="legal-section-title">Changes to This Policy</h2>
+          <div class="legal-body">
+            <p>
+              We may update this Privacy Policy from time to time. When we do,
+              we will update the date at the top of this page. We encourage you
+              to review this policy periodically. Continued use of our website
+              or services after changes are posted means you accept the updated
+              policy.
+            </p>
+          </div>
+        </div>
+
+        <div class="legal-contact-block">
+          <p>
+            <strong>Questions? Concerns?</strong> Reach us at
+            <a href="mailto:iaemhq@gmail.com">iaemhq@gmail.com</a>. We handle
+            data the same way we handle our brand — with intention and without
+            shortcuts.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-bottom footer-bottom-centered">
+        <span class="footer-copy"
+          >© 2026 Îæm. All Rights Reserved. Part Of Cherychoicy Classic
+          Communication</span
+        >
+        <span class="footer-copy">// tech.fashion</span>
+      </div>
+    </footer>
+
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+    <script>
+      (function () {
+        const saved = localStorage.getItem("iaem-theme") || "night";
+        document.documentElement.dataset.theme = saved;
+        const label = document.getElementById("themeLabel");
+        if (label) label.textContent = saved === "night" ? "Night" : "Day";
+        const thumb = document.querySelector(".toggle-thumb");
+        if (thumb && saved === "day")
+          thumb.style.transform = "translateX(14px)";
+      })();
+
+      function toggleTheme() {
+        const h = document.documentElement;
+        const label = document.getElementById("themeLabel");
+        const isNight = h.dataset.theme === "night";
+        h.dataset.theme = isNight ? "day" : "night";
+        localStorage.setItem("iaem-theme", h.dataset.theme);
+        if (label) label.textContent = isNight ? "Day" : "Night";
+        const thumb = document.querySelector(".toggle-thumb");
+        if (thumb)
+          thumb.style.transform = isNight
+            ? "translateX(14px)"
+            : "translateX(0)";
+      }
+    </script>
+  </body>
+</html>

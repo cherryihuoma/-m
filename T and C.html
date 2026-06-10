@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en" data-theme="night">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms & Conditions — Îæm</title>
+    <meta
+      name="description"
+      content="Terms and Conditions for Îæm — Tech · Fashion · Empire"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;700;800&family=DM+Mono:ital,wght@0,300;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .legal-layout {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 80px 48px 120px;
+      }
+      .legal-eyebrow {
+        font-family: var(--font-m);
+        font-size: 10px;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: var(--gold-use);
+        margin-bottom: 20px;
+        opacity: 0.8;
+      }
+      .legal-title {
+        font-family: var(--font-d);
+        font-size: clamp(40px, 6vw, 72px);
+        font-weight: 300;
+        line-height: 0.95;
+        color: var(--text);
+        letter-spacing: -0.01em;
+        margin-bottom: 12px;
+      }
+      .legal-title em {
+        font-style: italic;
+        color: var(--accent);
+      }
+      .legal-updated {
+        font-family: var(--font-m);
+        font-size: 10px;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--text3);
+        margin-bottom: 60px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid var(--border);
+      }
+      .legal-updated::before {
+        content: "Last updated — ";
+      }
+      .legal-section {
+        margin-bottom: 52px;
+      }
+      .legal-section-num {
+        font-family: var(--font-m);
+        font-size: 9px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--gold-use);
+        margin-bottom: 10px;
+        opacity: 0.7;
+      }
+      .legal-section-title {
+        font-family: var(--font-d);
+        font-size: clamp(22px, 2.5vw, 30px);
+        font-weight: 400;
+        color: var(--text);
+        margin-bottom: 18px;
+        line-height: 1.1;
+      }
+      .legal-body {
+        font-family: var(--font-s);
+        font-size: 14px;
+        line-height: 2;
+        color: var(--text2);
+      }
+      .legal-body p {
+        margin-bottom: 16px;
+      }
+      .legal-body p:last-child {
+        margin-bottom: 0;
+      }
+      .legal-body strong {
+        color: var(--text);
+        font-weight: 700;
+      }
+      .legal-body ul {
+        list-style: none;
+        padding: 0;
+        margin: 12px 0 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .legal-body ul li {
+        padding-left: 20px;
+        position: relative;
+        color: var(--text2);
+      }
+      .legal-body ul li::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        color: var(--gold-use);
+        font-family: var(--font-m);
+      }
+      .legal-divider {
+        width: 40px;
+        height: 1px;
+        background: var(--gold-use);
+        opacity: 0.3;
+        margin: 52px 0;
+      }
+      .legal-contact-block {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-left: 2px solid var(--gold-use);
+        padding: 28px 32px;
+        margin-top: 52px;
+      }
+      .legal-contact-block p {
+        font-family: var(--font-s);
+        font-size: 13px;
+        line-height: 1.9;
+        color: var(--text2);
+        margin: 0;
+      }
+      .legal-contact-block a {
+        color: var(--gold-use);
+        text-decoration: none;
+      }
+      .legal-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-m);
+        font-size: 10px;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--gold-use);
+        text-decoration: none;
+        opacity: 0.7;
+        margin-bottom: 60px;
+        transition: opacity 0.2s;
+      }
+      .legal-back:hover {
+        opacity: 1;
+      }
+
+      @media (max-width: 900px) {
+        .legal-layout {
+          padding: 48px 24px 80px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <nav>
+      <a href="index.html" class="nav-logo"><em>Îæm</em></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#shop">Shop</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#journal">Journal</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <button type="button" class="theme-toggle" onclick="toggleTheme()">
+        <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        <span id="themeLabel">Night</span>
+      </button>
+    </nav>
+
+    <div style="padding-top: 72px">
+      <div class="legal-layout">
+        <a href="index.html" class="legal-back">← Back to Îæm</a>
+
+        <p class="legal-eyebrow">Legal</p>
+        <h1 class="legal-title">Terms &amp; <em>Conditions</em></h1>
+        <p class="legal-updated">June 2026</p>
+
+        <!-- 01 -->
+        <div class="legal-section">
+          <p class="legal-section-num">01</p>
+          <h2 class="legal-section-title">About Îæm</h2>
+          <div class="legal-body">
+            <p>
+              Îæm is a made-to-order fashion and technology brand operating
+              under Cherychoicy Classic Communication, based in Nigeria. We
+              design and fulfil premium clothing and accessories on a per-order
+              basis. By accessing our website or placing an order with us, you
+              agree to be bound by these Terms and Conditions.
+            </p>
+            <p>
+              These terms apply to all visitors, customers, and users of
+              <strong>iaem.co</strong> and any associated communication channels
+              including WhatsApp.
+            </p>
+          </div>
+        </div>
+
+        <div class="legal-divider"></div>
+
+        <!-- 02 -->
+        <div class="legal-section">
+          <p class="legal-section-num">02</p>
+          <h2 class="legal-section-title">Made-to-Order Policy</h2>
+          <div class="legal-body">
+            <p>
+              All Îæm products are <strong>made to order</strong>. This means
+              every item is produced specifically for you after your order is
+              confirmed. As a result:
+            </p>
+            <ul>
+              <li>
+                Production begins only after your measurements and order details
+                are confirmed via WhatsApp
+              </li>
+              <li>
+                Standard production time is 7 to 21 days from measurement
+                confirmation
+              </li>
+              <li>
+                Exact timelines may vary depending on the complexity of your
+                order and current production load
+              </li>
+              <li>
+                We will keep you informed of your order status throughout the
+                process
+              </li>
+            </ul>
+            <p>
+              Because each piece is crafted specifically for you, we ask that
+              you provide accurate measurements. Îæm is not liable for fit
+              issues arising from incorrect measurements provided by the
+              customer.
+            </p>
+          </div>
+        </div>
+
+        <div class="legal-divider"></div>
+
+        <!-- 03 -->
+        <div class="legal-section">
+          <p class="legal-section-num">03</p>
+          <h2 class="legal-section-title">Ordering & Payment</h2>
+          <div class="legal-body">
+            <p>
+              All orders are placed and confirmed via <strong>WhatsApp</strong>.
+              Clicking "Order via WhatsApp" on our website initiates a
+              conversation — your order is not confirmed until you receive an
+              explicit confirmation from us in that conversation.
+            </p>
+            <p>
+              Pricing is communicated directly during the WhatsApp ordering
+              process. Prices are subject to change without notice on the
+              website, but any price agreed in your WhatsApp conversation at the
+              time of order confirmation will be honoured.
+            </p>
+            <ul>
+              <li>
+                Payment terms and methods are confirmed per order via WhatsApp
+              </li>
+              <li>We do not process payments through this website</li>
+              <li>
+                A deposit may be required before production begins on certain
+                orders
+              </li>
+              <li>
+                Full payment is required before dispatch unless otherwise agreed
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="legal-divider"></div>
+
+        <!-- 04 -->
+        <div class="legal-section">
+          <p class="legal-section-num">04</p>
+          <h2 class="legal-section-title">
+            Returns, Exchanges & Cancellations
+          </h2>
+          <div class="legal-body">
+            <p>
+              Because every Îæm piece is made to order specifically for you,
+              <strong>we do not accept returns or exchanges</strong> unless the
+              item has a manufacturing defect or is significantly different from
+              what was agreed.
+            </p>
+            <p>If you receive a defective item:</p>
+            <ul>
+              <li>
+                Contact us via WhatsApp or email within 48 hours of receiving
+                your order
+              </li>
+              <li>Provide clear photos of the defect</li>
+              <li>
+                We will assess and offer a repair, remake, or resolution at our
+                discretion
+              </li>
+            </ul>
+            <p>
+              <strong>Cancellations:</strong> Orders may be cancelled before
+              production begins. Once we have confirmed your measurements and
+              production has started, cancellations are not accepted. Any
+              deposit paid at that stage is non-refundable.
+            </p>
+          </div>
+        </div>
+
+        <div class="legal-divider"></div>
+
+        <!-- 05 -->
+        <div class="legal-section">
+          <p class="legal-section-num">05</p>
+          <h2 class="legal-section-title">Delivery</h2>
+          <div class="legal-body">
+            <p>
+              Delivery timelines and costs are confirmed per order during the
+              WhatsApp ordering process. Îæm currently delivers within Nigeria.
+              International delivery may be available on request — inquire via
+              WhatsApp or email.
+            </p>
+            <ul>
+              <li>Delivery timelines begin after production is complete</li>
+              <li>
+                Îæm is not responsible for delays caused by third-party couriers
+              </li>
+              <li>Risk of loss transfers to the customer upon dispatch</li>
+              <li>
+                Ensure your delivery address is accurate — we are not liable for
+                orders delivered to an incorrect address provided by you
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="legal-divider"></div>
+
+        <!-- 06 -->
+        <div class="legal-section">
+          <p class="legal-section-num">06</p>
+          <h2 class="legal-section-title">Intellectual Property</h2>
+          <div class="legal-body">
+            <p>
+              All content on this website — including but not limited to the Îæm
+              name, logo, brand identity, typography, design, photographs, copy,
+              and product designs — is the intellectual property of Îæm /
+              Cherychoicy Classic Communication.
+            </p>
+            <p>
+              You may not reproduce, distribute, modify, or use any of our
+              content for commercial purposes without our express written
+              permission. Unauthorised use will be pursued.
+            </p>
+          </div>
+        </div>
+
+        <div class="legal-divider"></div>
+
+        <!-- 07 -->
+        <div class="legal-section">
+          <p class="legal-section-num">07</p>
+          <h2 class="legal-section-title">Limitation of Liability</h2>
+          <div class="legal-body">
+            <p>
+              To the fullest extent permitted by Nigerian law, Îæm and
+              Cherychoicy Classic Communication shall not be liable for any
+              indirect, incidental, or consequential damages arising from your
+              use of our website or products.
+            </p>
+            <p>
+              Our total liability to you for any claim shall not exceed the
+              amount you paid for the specific order giving rise to the claim.
+            </p>
+          </div>
+        </div>
+
+        <div class="legal-divider"></div>
+
+        <!-- 08 -->
+        <div class="legal-section">
+          <p class="legal-section-num">08</p>
+          <h2 class="legal-section-title">Governing Law</h2>
+          <div class="legal-body">
+            <p>
+              These Terms and Conditions are governed by the laws of the Federal
+              Republic of Nigeria. Any disputes arising shall be subject to the
+              exclusive jurisdiction of the Nigerian courts.
+            </p>
+          </div>
+        </div>
+
+        <div class="legal-divider"></div>
+
+        <!-- 09 -->
+        <div class="legal-section">
+          <p class="legal-section-num">09</p>
+          <h2 class="legal-section-title">Changes to These Terms</h2>
+          <div class="legal-body">
+            <p>
+              We reserve the right to update these Terms and Conditions at any
+              time. Changes will be posted on this page with an updated date.
+              Your continued use of our website or services after changes are
+              posted constitutes your acceptance of the revised terms.
+            </p>
+          </div>
+        </div>
+
+        <div class="legal-contact-block">
+          <p>
+            Questions about these terms? Reach us at
+            <a href="mailto:iaemhq@gmail.com">iaemhq@gmail.com</a> or via
+            WhatsApp. We're a real brand run by real people — we'll respond.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-bottom footer-bottom-centered">
+        <span class="footer-copy"
+          >© 2026 Îæm. All Rights Reserved. Part Of Cherychoicy Classic
+          Communication</span
+        >
+        <span class="footer-copy">// tech.fashion</span>
+      </div>
+    </footer>
+
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+    <script>
+      (function () {
+        const saved = localStorage.getItem("iaem-theme") || "night";
+        document.documentElement.dataset.theme = saved;
+        const label = document.getElementById("themeLabel");
+        if (label) label.textContent = saved === "night" ? "Night" : "Day";
+        const thumb = document.querySelector(".toggle-thumb");
+        if (thumb && saved === "day")
+          thumb.style.transform = "translateX(14px)";
+      })();
+
+      function toggleTheme() {
+        const h = document.documentElement;
+        const label = document.getElementById("themeLabel");
+        const isNight = h.dataset.theme === "night";
+        h.dataset.theme = isNight ? "day" : "night";
+        localStorage.setItem("iaem-theme", h.dataset.theme);
+        if (label) label.textContent = isNight ? "Day" : "Night";
+        const thumb = document.querySelector(".toggle-thumb");
+        if (thumb)
+          thumb.style.transform = isNight
+            ? "translateX(14px)"
+            : "translateX(0)";
+      }
+    </script>
+  </body>
+</html>
