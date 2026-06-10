@@ -297,55 +297,151 @@ const productMap = {};
 products.forEach(p => { productMap[p.id] = p; });
 
 
-// ─── RENDER SHOP GRID FROM products.js ────────────────────
-function buildShopGrid() {
-  const grid = document.querySelector('#page-shop .shop-grid');
+// ─── SHOP — pagination state ──────────────────────────────
+const SHOP_PER_PAGE = 6;
+let shopPage        = 1;
+let shopFiltered    = [...products]; // products matching current filters
+
+const activeFilters = {
+  category: 'all',
+  season:   'all',
+  status:   'all'
+};
+
+// Build one card element
+function buildProductCard(p) {
+  const hasColours  = Array.isArray(p.colours) && p.colours.length >= 2;
+  const coloursAttr = hasColours
+    ? `data-colours='${JSON.stringify(p.colours).replace(/'/g, "&#39;")}'`
+    : '';
+  const tagHTML  = p.tag ? `<div class="product-tag-overlay">${p.tag}</div>` : '';
+  const imgInner = hasColours
+    ? `<img class="pi-layer pi-layer-a" src="${p.colours[0].img}" alt="${p.name}" />
+       <img class="pi-layer pi-layer-b" src="${p.colours[1].img}" alt="${p.name}" />
+       ${tagHTML}
+       <div class="pi-swatches"></div>`
+    : `<img src="${p.img}" alt="${p.name}" />${tagHTML}`;
+
+  const card = document.createElement('div');
+  card.className = 'product-card shop-product-card';
+  card.dataset.category = p.filter;
+  card.dataset.season   = p.season;
+  card.dataset.status   = p.status;
+  card.setAttribute('onclick', `openProduct('${p.id}')`);
+  card.innerHTML = `
+    <div class="product-img ${hasColours ? 'pi-swatch-host' : ''}" ${hasColours ? 'data-auto="true"' : ''} ${coloursAttr}>
+      ${imgInner}
+    </div>
+    <div class="product-info">
+      <div class="product-category">${p.category}</div>
+      <div class="product-name">${p.name}</div>
+      <button type="button" class="btn-view">View Details</button>
+    </div>`;
+  return card;
+}
+
+// Render current page of filtered products into the grid
+function renderShopPage() {
+  const grid      = document.querySelector('#page-shop .shop-grid');
+  const loadMoreBtn = document.getElementById('shopLoadMore');
+  const countEl   = document.getElementById('shopCount');
+  const noResults = document.getElementById('shopNoResults');
   if (!grid) return;
+
+  const total   = shopFiltered.length;
+  const visible = shopPage * SHOP_PER_PAGE;
+
+  // Clear and re-render all visible cards
   grid.innerHTML = '';
-
-  products.forEach(p => {
-    const hasColours = Array.isArray(p.colours) && p.colours.length >= 2;
-
-    // Build colour data attr string
-    const coloursAttr = hasColours
-      ? `data-colours='${JSON.stringify(p.colours).replace(/'/g, "&#39;")}'`
-      : '';
-
-    const tagHTML = p.tag
-      ? `<div class="product-tag-overlay">${p.tag}</div>` : '';
-
-    const imgInner = hasColours
-      ? `<img class="pi-layer pi-layer-a" src="${p.colours[0].img}" alt="${p.name}" />
-         <img class="pi-layer pi-layer-b" src="${p.colours[1].img}" alt="${p.name}" />
-         ${tagHTML}
-         <div class="pi-swatches"></div>`
-      : `<img src="${p.img}" alt="${p.name}" />${tagHTML}`;
-
-    const swatchClass = hasColours ? 'pi-swatch-host' : '';
-    const autoAttr    = hasColours ? 'data-auto="true"' : '';
-
-    const card = document.createElement('div');
-    card.className = `product-card shop-product-card`;
-    card.dataset.category = p.filter;
-    card.dataset.season   = p.season;
-    card.dataset.status   = p.status;
-    card.setAttribute('onclick', `openProduct('${p.id}')`);
-
-    card.innerHTML = `
-      <div class="product-img ${swatchClass}" ${autoAttr} ${coloursAttr}>
-        ${imgInner}
-      </div>
-      <div class="product-info">
-        <div class="product-category">${p.category}</div>
-        <div class="product-name">${p.name}</div>
-        <button type="button" class="btn-view">View Details</button>
-      </div>`;
-
+  shopFiltered.slice(0, visible).forEach(p => {
+    const card = buildProductCard(p);
     grid.appendChild(card);
   });
 
-  // Re-init swatches for newly rendered cards
-  document.querySelectorAll('#page-shop .pi-swatch-host').forEach(initSwatchHost);
+  // Init swatches on new cards
+  grid.querySelectorAll('.pi-swatch-host').forEach(initSwatchHost);
+
+  // Load More button
+  if (loadMoreBtn) {
+    if (visible < total) {
+      loadMoreBtn.style.display = 'flex';
+      loadMoreBtn.textContent   = `Load More — ${Math.min(SHOP_PER_PAGE, total - visible)} more`;
+    } else {
+      loadMoreBtn.style.display = 'none';
+    }
+  }
+
+  // Count label
+  if (countEl) {
+    countEl.textContent = `Showing ${Math.min(visible, total)} of ${total} piece${total !== 1 ? 's' : ''}`;
+  }
+
+  // No results
+  if (noResults) {
+    noResults.style.display = total === 0 ? 'block' : 'none';
+  }
+}
+
+// Apply filters and reset to page 1
+applyShopFilters = function () {
+  shopPage = 1;
+  shopFiltered = products.filter(p => {
+    const catMatch    = activeFilters.category === 'all' || activeFilters.category === p.filter;
+    const seasonMatch = activeFilters.season   === 'all' || activeFilters.season   === p.season;
+    const statusMatch = activeFilters.status   === 'all' || activeFilters.status   === p.status;
+    return catMatch && seasonMatch && statusMatch;
+  });
+  renderShopPage();
+};
+
+// Load more — increment page and re-render
+function shopLoadMore() {
+  shopPage++;
+  renderShopPage();
+  // Scroll to first new card smoothly
+  const grid  = document.querySelector('#page-shop .shop-grid');
+  const cards = grid.querySelectorAll('.product-card');
+  const firstNew = cards[(shopPage - 1) * SHOP_PER_PAGE];
+  if (firstNew) firstNew.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// Build the full shop section (grid + controls)
+function buildShopGrid() {
+  const gridWrap = document.querySelector('.shop-grid-wrap');
+  if (!gridWrap) return;
+
+  // Inject load-more controls if not already present
+  if (!document.getElementById('shopLoadMore')) {
+    const controls = document.createElement('div');
+    controls.className = 'shop-controls';
+    controls.innerHTML = `
+      <p class="shop-count" id="shopCount"></p>
+      <div class="shop-no-results" id="shopNoResults" style="display:none;">No products match these filters.</div>
+      <button type="button" class="btn-load-more" id="shopLoadMore" onclick="shopLoadMore()" style="display:none;">
+        Load More
+      </button>`;
+    gridWrap.appendChild(controls);
+  }
+
+  // Wire up filter links
+  document.querySelectorAll('.shop-sidebar .filter-item').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const group  = this.dataset.group;
+      const filter = this.dataset.filter;
+      if (!group || !filter) return;
+
+      activeFilters[group] = filter;
+
+      document.querySelectorAll(`.shop-sidebar [data-group="${group}"]`).forEach(l => {
+        l.classList.remove('active');
+      });
+      this.classList.add('active');
+      applyShopFilters();
+    });
+  });
+
+  // Initial render
   applyShopFilters();
 }
 
@@ -398,8 +494,6 @@ function buildFeaturedGrid() {
 }
 
 // ─── OPEN PRODUCT MODAL ────────────────────────────────────
-// FIXED: colours row hidden when product has no colours;
-//        selectColour targets .modal-colours correctly
 function openProduct(id) {
   const p = productMap[id];
   if (!p) return;
@@ -441,7 +535,6 @@ function openProduct(id) {
 }
 
 // ─── COLOUR SELECTION IN MODAL ─────────────────────────────
-// FIXED: correctly finds the .modal-colours container
 function selectModalColour(el, productId, colourIndex) {
   // Update selected swatch highlight
   const container = document.getElementById('modalColours');
@@ -559,71 +652,7 @@ function initSwatchHost(host) {
 
 document.querySelectorAll('.pi-swatch-host').forEach(initSwatchHost);
 
-// ─── SHOP FILTER SYSTEM ────────────────────────────────────
-// FIXED: targets .shop-product-card (matching HTML class)
-(function () {
-
-  const activeFilters = {
-    category: 'all',
-    season:   'all',
-    status:   'all'
-  };
-
-  // FIXED: was .shop-product-card — now matches the HTML
-  const cards       = document.querySelectorAll('.shop-product-card');
-  const filterLinks = document.querySelectorAll('.shop-sidebar .filter-item');
-
-  const gridWrap = document.querySelector('.shop-grid-wrap');
-  const noResults = document.createElement('div');
-  noResults.className = 'shop-no-results';
-  noResults.textContent = 'No products match these filters.';
-  if (gridWrap) gridWrap.appendChild(noResults);
-
-  applyShopFilters = function () {
-    let visibleCount = 0;
-
-    cards.forEach(card => {
-      const cat    = card.dataset.category || '';
-      const season = card.dataset.season   || '';
-      const status = card.dataset.status   || '';
-
-      const catMatch    = activeFilters.category === 'all' || activeFilters.category === cat;
-      const seasonMatch = activeFilters.season   === 'all' || activeFilters.season   === season;
-      const statusMatch = activeFilters.status   === 'all' || activeFilters.status   === status;
-
-      if (catMatch && seasonMatch && statusMatch) {
-        card.classList.remove('filter-hidden');
-        visibleCount++;
-      } else {
-        card.classList.add('filter-hidden');
-      }
-    });
-
-    noResults.classList.toggle('visible', visibleCount === 0);
-  }
-
-  filterLinks.forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-
-      const group  = this.dataset.group;
-      const filter = this.dataset.filter;
-      if (!group || !filter) return;
-
-      activeFilters[group] = filter;
-
-      document.querySelectorAll(`.shop-sidebar [data-group="${group}"]`).forEach(l => {
-        l.classList.remove('active');
-      });
-      this.classList.add('active');
-
-      applyShopFilters();
-    });
-  });
-
-  applyShopFilters();
-
-})();
+// ─── SHOP FILTER SYSTEM — now inside buildShopGrid ──────
 
 // ─── BOOT — render grids from products.js ─────────────────
 document.addEventListener('DOMContentLoaded', function () {
