@@ -2509,3 +2509,63 @@ body.splash-active {
     padding: 28px 24px;
   }
 }
+
+/* ─── SHOP PAGINATION ──────────────────────────────────── */
+.shop-controls {
+  padding: 40px 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.shop-count {
+  font-family: var(--font-m);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text3);
+  text-align: center;
+}
+.btn-load-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-s);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 16px 40px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    transform 0.2s var(--ease);
+  width: fit-content;
+}
+.btn-load-more::after {
+  content: "↓";
+  font-size: 12px;
+  transition: transform 0.3s var(--ease);
+}
+.btn-load-more:hover {
+  border-color: var(--gold-use);
+  color: var(--gold-use);
+  transform: translateY(2px);
+}
+.btn-load-more:hover::after {
+  transform: translateY(3px);
+}
+.shop-no-results {
+  padding: 60px 24px;
+  text-align: center;
+  font-family: var(--font-d);
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--text3);
+}
