@@ -370,5 +370,53 @@ const products = [
    type: 'Two Piece',
    price: 'DM for pricing',
    whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Two%20Piece.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
+  },
+  {
+    id: 'VELVET DRESS',
+    name: 'VELVET DRESS',
+    category: 'Fashion · Dresses',  
+    filter: 'fashion',
+    tag: null,
+    img: 'images/Velvet.jpeg',
+    desc: 'A luxurious velvet dress, perfect for elegant evening events.',
+    type: 'Dresses — Gown',
+    price: 'DM for pricing',
+    whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20VELVET%20DRESS.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
+  },
+  {
+    id: 'Bubu Gown',
+    name: 'Bubu Gown',
+    category: 'Fashion · Dresses',
+    filter: 'fashion',
+    tag: null,
+    img: 'images/761952830752059867.jpeg',
+    desc: 'A beautiful bubu gown, perfect for special occasions.',
+    type: 'Dresses — Gown',
+    price: 'DM for pricing',
+    whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Bubu%20Gown.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
+  },
+  {
+    id: 'Jumpsuit',
+    name: 'Jumpsuit',
+    category: 'Fashion · Jumpsuit',
+    filter: 'fashion',
+    tag: null,
+    img: 'images/782993085259372835.jpeg',
+    desc: 'A stylish jumpsuit, perfect for a modern look.',
+    type: 'Jumpsuit',
+    price: 'DM for pricing',
+    whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Jumpsuit.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
+  },
+  {
+    id: 'Gingham Gathers',
+    name: 'Gingham Gathers',
+    category: 'Fashion · Dresses',
+    filter: 'fashion',
+    tag: null,
+    img: 'images/585819864073883200.jpeg',
+    desc: 'A charming gingham dress, perfect for a casual yet stylish look.',
+    type: 'Dresses — Dress',
+    price: 'DM for pricing',
+    whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Gingham%20Gathers.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
   }
 ];
