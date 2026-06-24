@@ -2045,7 +2045,7 @@ body.splash-active {
 }
 
 .modal-price-row {
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: space-between;
 }
@@ -2058,7 +2058,7 @@ body.splash-active {
 }
 .modal-price-val {
   font-family: var(--font-d);
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 300;
   color: var(--text);
 }
