@@ -17,7 +17,7 @@ const products = [
       { name: 'Navy Blue',    hex: '#000080', img: 'images/navy blue.png' },
       { name: 'Forest Green', hex: '#003314', img: 'images/forest green empire jacket.jpg' }
     ],
-    price:    'Made to Order — DM for pricing',
+    price:    'DM for pricing',
     whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20The%20Empire%20Jacket.%20Please%20send%20me%20your%20measurement%20guide%20and%20pricing.%20%F0%9F%A4%8E',
     featured: true,
     status:   'available',
@@ -40,7 +40,7 @@ const products = [
       { name: 'Soft Black',   hex: '#1C1412', img: 'images/black satin stop.png' },
       { name: 'Cherry Red',   hex: '#8B0000', img: 'images/burgandy satin top.jpg' }
     ],
-    price:    'Made to Order — DM for pricing',
+    price:    'DM for pricing',
     whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Satin%20Circuits%20Tee.%20Please%20send%20me%20your%20measurement%20guide%20and%20pricing.%20%F0%9F%A4%8E',
     featured: true,
     status:   'available',
@@ -64,7 +64,7 @@ const products = [
       { name: 'Cream', hex: '#F5E9E2', img: 'images/2 piece.jpeg' },
       { name: 'Forest Green', hex: '#003314', img: 'images/forest green 2 piece.png' }
     ],
-    price:    'Made to Order — DM for pricing',
+    price:    'DM for pricing',
     whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Two%20Piece%20Set.%20Please%20send%20me%20your%20measurement%20guide%20and%20pricing.%20%F0%9F%A4%8E',
     featured: true,
     status:   'available',
@@ -81,7 +81,7 @@ const products = [
     desc:     'A longline trench coat in the brand\'s signature coffee brown. Structured enough to command a room, relaxed enough to move through it with ease.',
     type:     'Outerwear — Trench Coat',
     colours:  [],
-    price:    'Made to Order — DM for pricing',
+    price:    'DM for pricing',
     whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Coffee%20Trench.%20Please%20send%20me%20your%20measurement%20guide%20and%20pricing.%20%F0%9F%A4%8E',
     featured: false,
     status:   'available',
@@ -98,7 +98,7 @@ const products = [
     desc:     'Technology you actually want to wear. Tracks your vitals without announcing itself — minimal design, maximum function.',
     type:     'Accessory — Smart Wearable',
     colours:  [],
-    price:    'Made to Order — DM for pricing',
+    price:    'DM for pricing',
     whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Cherry%20Smart%20Band.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E',
     featured: false,
     status:   'available',
@@ -115,7 +115,7 @@ const products = [
     desc:     'Not decoration. A statement. The finishing detail that signals everything without saying anything.',
     type:     'Accessory — Jewellery',
     colours:  [],
-    price:    'Made to Order — DM for pricing',
+    price:    'DM for pricing',
     whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Imperial%20Gold%20Chain.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E',
     featured: false,
     status:   'available',
@@ -131,7 +131,7 @@ const products = [
     img:      'images/Brand identity & pitch deck design for Soma.jpeg',
     desc:     'The cap that signals everything. Clean construction, considered detail, unmistakable presence.',
     type:     'Accessory — Cap',
-    price:    'Made to Order — DM for pricing',
+    price:    'DM for pricing',
     whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Interface%20Cap.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E',
     featured: false,
     status:   'available',
@@ -146,7 +146,7 @@ const products = [
     img:      'images/Ankara Dress.jpeg',
     desc:     'A stunning Ankara-inspired gown that combines traditional patterns with modern silhouettes.',
     type:     'Dresses — Gown',
-    price:    'Made to Order — DM for pricing',
+    price:    'DM for pricing',
     whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Ankara%20Gown.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E',
     featured: false,
     status:   'available',
@@ -161,7 +161,7 @@ const products = [
     img:      'images/lace gown.jpeg',
     desc:     'A elegant lace gown with a high neckline, perfect for formal occasions.',
     type:     'Dresses — Gown',
-    price:    'Made to Order — DM for pricing',
+    price:    'DM for pricing',
     whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Lace%20High%20Neck%20Gown.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E',
     featured: false,
     status:   'available',
@@ -176,7 +176,7 @@ const products = [
     img: 'images/blazzer.jpeg',
     desc: 'A stylish blazer that combines classic tailoring with contemporary design elements.',
     type: 'Outerwear — Blazer',
-    price: 'Made to Order — DM for pricing',
+    price: 'DM for pricing',
     whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Blazzer%20Fashion.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E',
   },
   {
@@ -188,7 +188,7 @@ const products = [
     img: 'images/rose pletteted gown.jpeg',
     desc: 'A beautiful asymmetric gown with a rose-inspired design, perfect for special occasions.',
     type: 'Dresses — Gown',
-    price: 'Made to Order — DM for pricing',
+    price: 'DM for pricing',
     whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Asymmetric%20Rose%20Gown.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
   },
   {
@@ -200,7 +200,7 @@ const products = [
     img: 'images/prom gown.jpeg',
     desc: 'A stunning prom gown that will make you the center of attention.',
     type: 'Dresses — Gown',
-    price: 'Made to Order — DM for pricing',
+    price: 'DM for pricing',
     whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Prom%20Gown.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
   },
   {
@@ -212,7 +212,7 @@ const products = [
     img: 'images/Chiffon Long Sleeve Dress.jpeg',
     desc: 'A graceful chiffon gown perfect for elegant evening events.',
     type: 'Dresses — Gown',
-    price: 'Made to Order — DM for pricing',
+    price: 'DM for pricing',
     whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Chiffon%20Evening%20Gown.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
   },
   {
@@ -224,7 +224,7 @@ const products = [
     img: 'images/assymetric gown.jpeg',
     desc: 'A modern asymmetric gown with a unique design, perfect for special occasions.',
     type: 'Dresses — Gown',
-    price: 'Made to Order — DM for pricing',
+    price: 'DM for pricing',
     whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Asymmetric%20Gown.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
   },
   {
@@ -236,7 +236,7 @@ const products = [
     img: 'images/button down gown.jpeg',
     desc: 'A sophisticated v-neck gown with a button closure, perfect for formal events.',
     type: 'Dresses — Gown',
-    price: 'Made to Order — DM for pricing',
+    price: 'DM for pricing',
     whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20V-Neck%20Button%20Gown.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
   },
   {
@@ -248,7 +248,7 @@ const products = [
     img: 'images/chic.jpeg',
     desc: 'A stylish ankaara gown with a classic design, perfect for formal events.',
     type: 'Dresses — Gown',
-    price: 'Made to Order — DM for pricing',
+    price: 'DM for pricing',
     whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Classy%20Ankaara%20Gown.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
   },
   {
@@ -260,7 +260,115 @@ const products = [
     img: 'images/round neck lace gown.jpeg',
     desc: 'A elegant lace gown with a high neck design, perfect for formal events.',
     type: 'Dresses — Gown',
-    price: 'Made to Order — DM for pricing',
+    price: 'DM for pricing',
     whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Lace%20High%20Neck%20Gown.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
+  },
+  {
+    id: 'Velvet Evening Gown',
+    name: 'Velvet Evening Gown',
+    category: 'Fashion · Dresses',
+    filter: 'fashion',
+    tag: null,
+    img: 'images/velvet evening gown.jpeg',
+    desc: 'A luxurious velvet gown perfect for elegant evening events.',
+    type: 'Dresses — Gown',
+    price: 'DM for pricing',
+    whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Velvet%20Evening%20Gown.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
+  },
+  {
+    id: 'V-Neck Velvet Gown',
+    name: 'V-Neck Velvet Gown',
+    category: 'Fashion · Dresses',
+    filter: 'fashion',
+    tag: null,
+    img: 'images/V-NECK PETAL STRAPLESS VELVET MAXI DRESS IN RED - Burgundy Red _ S.jpeg',
+    desc: 'A sophisticated v-neck velvet gown, perfect for formal events.',
+    type: 'Dresses — Gown',
+    price: 'DM for pricing',
+    whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20V-Neck%20Velvet%20Gown.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
+  },
+  {
+    id: 'Velvet Gown',
+    name: 'Velvet Gown',
+    category: 'Fashion · Dresses',
+    filter: 'fashion',
+    tag: null,
+    img: 'images/Burgundy Velvet Long Bridesmaid Dress_ Long Sleeve….jpeg',
+    desc: 'A luxurious velvet gown perfect for elegant evening events.',
+    type: 'Dresses — Gown',
+    price: 'DM for pricing',
+    whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Velvet%20Gown.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
+  },
+  {
+    id: 'Spring Dress',
+    name: 'Spring Dress',
+    category: 'Fashion · Dresses',
+    filter: 'fashion',
+    tag: null,
+    img: 'images/Warm spring retro dress 👗.jpeg',
+    desc: 'A warm and retro spring dress, perfect for casual outings.',
+    type: 'Dresses — Gown',
+    price: 'DM for pricing',
+    whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Spring%20Dress.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
+  },
+  {
+    id: 'Pink Dress',
+    name: 'Pink Dress',
+    category: 'Fashion · Dresses',
+    filter: 'fashion',
+    tag: null,
+    img: 'images/Pink Dress.jpeg',
+    desc: 'A beautiful pink dress, perfect for special occasions.',
+    type: 'Dresses — Gown',
+    price: 'DM for pricing',
+    whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Pink%20Dress.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
+  },
+  {
+    id: 'Red Dress',
+    name: 'Red Dress',
+    category: 'Fashion · Dresses',
+    filter: 'fashion',
+    tag: null,
+    img: 'images/Beautiful Dress by ⚜️ @ulkerhuseynovaofficial ⚜️.jpeg',
+    desc: 'A beautiful red dress, perfect for special occasions.',
+    type: 'Dresses — Gown',
+    price: 'DM for pricing',
+    whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Red%20Dress.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
+  },
+  {
+    id: 'Mesh Gown',
+    name: 'Mesh Gown',
+     category: 'Fashion · Dresses',
+    filter: 'fashion',
+    tag: null,
+    img: 'images/Modern African Print Elegance 🌍 _ Sculpted Fit & Bold Colors.jpeg',
+    desc: 'A beautiful mesh gown, perfect for special occasions.',
+    type: 'Dresses — Gown',
+    price: 'DM for pricing',
+    whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Mesh%20Gown.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
+  },
+  {
+    id: 'Orbit',
+    name: 'Orbit',
+    category: 'Fashion · Two Piece',
+    filter: 'fashion',
+    tag: null,
+    img: 'images/Orbit.jpeg',
+    desc: 'A stunning two-piece, perfect for special occasions.',
+    type: 'Two Piece',
+    price: 'DM for pricing',
+    whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Orbit%20Dress.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
+  },
+  {
+   id: 'Two Piece',
+   name: 'Trending Two Piece',
+   category: 'Fashion · Two Piece',
+   filter: 'fashion',
+   tag: null,
+   img: 'images/Trending outfit 2 piece.jpeg',
+   desc: 'A stunning two-piece, perfect for special occasions.',
+   type: 'Two Piece',
+   price: 'DM for pricing',
+   whatsapp: 'Hi%20%C3%8E%C3%A6m%2C%20I%27d%20like%20to%20order%20the%20Two%20Piece.%20Please%20send%20me%20pricing%20details.%20%F0%9F%A4%8E'
   }
 ];
