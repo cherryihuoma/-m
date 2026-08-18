@@ -2805,3 +2805,129 @@ select.form-input {
     font-size: 36px;
   }
 }
+/* ─── FORM SPACING FIXES ─────────────────────────────── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;  /* Add margin between form groups */
+}
+
+.form-group:last-of-type {
+  margin-bottom: 0;
+}
+
+.form-label {
+  font-family: var(--font-m);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+
+.form-input {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 12px 16px;
+  font-family: var(--font-s);
+  font-size: 16px;
+  color: var(--text);
+  outline: none;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+  width: 100%;  /* Ensure full width */
+}
+
+.form-input:focus {
+  border-color: var(--gold-use);
+  background: var(--surface2);
+}
+
+.form-input::placeholder {
+  color: var(--text3);
+}
+
+textarea.form-input {
+  resize: vertical;
+  min-height: 110px;
+}
+
+/* Colour preference spacing */
+.colour-preference {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.colour-option {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  cursor: none;
+  transition: all 0.25s var(--ease);
+  flex-shrink: 0;
+}
+
+.colour-option:hover {
+  transform: scale(1.2);
+  border-color: var(--gold-use);
+}
+
+.colour-option.selected {
+  border-color: var(--gold-use);
+  box-shadow: 0 0 0 2px rgba(198, 162, 90, 0.3);
+  transform: scale(1.1);
+}
+
+/* Form note spacing */
+.form-note {
+  font-family: var(--font-m);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--text3);
+  text-align: center;
+  margin-top: 16px;
+  line-height: 1.6;
+}
+
+/* Submit button spacing */
+.btn-fullwidth {
+  width: 100%;
+  margin-top: 24px;
+  text-align: center;
+}
+
+/* Contact form subtitle */
+.form-subtitle {
+  font-family: var(--font-s);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text3);
+  margin-bottom: 24px;
+}
+
+/* General contact details spacing */
+.general-contact {
+  margin-top: 32px;
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+
+.general-contact summary {
+  font-family: var(--font-m);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-use);
+  cursor: none;
+  padding: 8px 0;
+  transition: color 0.2s;
+  margin-bottom: 8px;
+}
+
+.general-contact summary:hover {
+  color: var(--text);
+}
