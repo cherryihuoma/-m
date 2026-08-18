@@ -1506,7 +1506,6 @@ footer::before {
   background: var(--gold-use);
   transition: transform 0.35s var(--ease);
 }
-
 /* ─── SPLASH ───────────────────────────────────────────── */
 .splash {
   position: fixed;
@@ -1514,6 +1513,7 @@ footer::before {
   z-index: 9999;
   pointer-events: all;
 }
+
 .splash-left,
 .splash-right {
   position: absolute;
@@ -1524,18 +1524,23 @@ footer::before {
   transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
   z-index: 1;
 }
+
 .splash-left {
   left: 0;
 }
+
 .splash-right {
   right: 0;
 }
+
 .splash.exit .splash-left {
   transform: translateX(-100%);
 }
+
 .splash.exit .splash-right {
   transform: translateX(100%);
 }
+
 .splash-content {
   position: absolute;
   inset: 0;
@@ -1548,9 +1553,11 @@ footer::before {
   pointer-events: none;
   transition: opacity 0.4s ease;
 }
+
 .splash.exit .splash-content {
   opacity: 0;
 }
+
 .splash::before {
   content: "";
   position: absolute;
@@ -1570,26 +1577,31 @@ footer::before {
   transform: scaleX(0);
   transform-origin: left;
 }
+
 @keyframes splashLine {
   to {
     transform: scaleX(1);
   }
 }
+
+/* Logo image styling */
 .splash-logo {
-  font-family: var(--font-d);
-  font-size: clamp(72px, 14vw, 160px);
-  font-weight: 300;
-  line-height: 0.88;
-  letter-spacing: -0.02em;
-  color: #f5e9e2;
   opacity: 0;
   margin-bottom: 20px;
   animation: splashUp 0.8s 0.5s var(--ease) forwards;
 }
-.splash-logo em {
-  font-style: italic;
-  color: #c0392b;
+
+.splash-logo-img {
+  width: 150px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 0 20px rgba(198, 162, 90, 0.3));
 }
+
+.splash-logo em {
+  display: none;
+}
+
 .splash-tagline {
   font-family: var(--font-d);
   font-style: italic;
@@ -1600,6 +1612,7 @@ footer::before {
   margin-bottom: 48px;
   animation: splashFade 0.6s 0.8s ease forwards;
 }
+
 .splash-bar-wrap {
   width: 200px;
   height: 1px;
@@ -1609,6 +1622,7 @@ footer::before {
   opacity: 0;
   animation: splashFade 0.4s 1s ease forwards;
 }
+
 .splash-bar {
   position: absolute;
   top: 0;
@@ -1619,6 +1633,7 @@ footer::before {
   transition: width 0.05s linear;
   box-shadow: 0 0 8px rgba(198, 162, 90, 0.4);
 }
+
 .splash-percent {
   font-family: var(--font-m);
   font-size: 13px;
@@ -1627,11 +1642,13 @@ footer::before {
   opacity: 0;
   animation: splashFade 0.4s 1s ease forwards;
 }
+
 @keyframes splashFade {
   to {
     opacity: 1;
   }
 }
+
 @keyframes splashUp {
   from {
     opacity: 0;
@@ -1642,10 +1659,18 @@ footer::before {
     transform: translateY(0);
   }
 }
+
 body.splash-active {
   overflow: hidden;
 }
-
+.nav-logo-img {
+  height: 80px;
+  width: auto;
+  display: block;
+}
+.nav-logo em {
+  display: none;
+}
 /* ─── ARTICLE PAGE ─────────────────────────────────────── */
 .article-layout {
   max-width: 720px;
@@ -2598,5 +2623,185 @@ body.splash-active {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+/* ─── CONTACT PAGE UPGRADES ─────────────────────────────── */
+.contact-process {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.contact-process-label {
+  font-family: var(--font-m);
+  font-size: 13px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold-use);
+  margin-bottom: 16px;
+}
+
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.process-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.process-num {
+  font-family: var(--font-m);
+  font-size: 12px;
+  color: var(--gold-use);
+  width: 24px;
+}
+
+.process-text {
+  font-family: var(--font-s);
+  font-size: 14px;
+  color: var(--text2);
+}
+
+.form-subtitle {
+  font-family: var(--font-s);
+  font-size: 14px;
+  color: var(--text3);
+  margin-bottom: 20px;
+}
+
+.colour-preference {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.colour-option {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  cursor: none; /* Since you're using custom cursor */
+  transition: all 0.25s var(--ease);
+}
+
+.colour-option:hover {
+  transform: scale(1.2);
+  border-color: var(--gold-use);
+}
+
+.colour-option.selected {
+  border-color: var(--gold-use);
+  box-shadow: 0 0 0 2px rgba(198, 162, 90, 0.3);
+  transform: scale(1.1);
+}
+
+.form-note {
+  font-family: var(--font-m);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--text3);
+  text-align: center;
+  margin-top: 12px;
+}
+
+.general-contact {
+  margin-top: 24px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+.general-contact summary {
+  font-family: var(--font-m);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-use);
+  cursor: none; /* Since you're using custom cursor */
+  padding: 8px 0;
+  transition: color 0.2s;
+}
+
+.general-contact summary:hover {
+  color: var(--text);
+}
+
+/* Simplified select styling without SVG */
+select.form-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 40px;
+  /* Simple arrow using border */
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--gold-use) 50%),
+    linear-gradient(135deg, var(--gold-use) 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) 50%,
+    calc(100% - 15px) 50%;
+  background-size:
+    5px 5px,
+    5px 5px;
+  background-repeat: no-repeat;
+}
+/* ─── HOW IT WORKS PAGE ─────────────────────────────────── */
+.how-it-works-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+
+.hiw-step {
+  display: flex;
+  gap: 32px;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.hiw-num {
+  font-family: var(--font-d);
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--accent);
+  line-height: 1;
+  min-width: 80px;
+}
+
+.hiw-title {
+  font-family: var(--font-d);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.hiw-desc {
+  font-family: var(--font-s);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text2);
+  max-width: 500px;
+}
+
+.hiw-cta {
+  text-align: center;
+  padding: 60px 24px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .hiw-step {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .hiw-num {
+    font-size: 36px;
   }
 }
