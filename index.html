@@ -49,13 +49,20 @@
         text-align: center;
       }
     </style>
+    <!-- Favicon -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+    <link rel="apple-touch-icon" href="images/favicon.png" />
   </head>
   <body>
     <div class="splash" id="splash">
       <div class="splash-left" id="splashLeft"></div>
       <div class="splash-right" id="splashRight"></div>
       <div class="splash-content" id="splashContent">
-        <div class="splash-logo"><em>Îæm</em></div>
+        <div class="splash-logo">
+          <img src="images/favicon.png" alt="Îæm" class="splash-logo-img" />
+        </div>
         <div class="splash-tagline">Where the algorithm meets the atelier.</div>
         <div class="splash-bar-wrap">
           <div class="splash-bar" id="splashBar"></div>
@@ -74,8 +81,9 @@
           showPage('home');
           return false;
         "
-        ><em>Îæm</em></a
       >
+        <img src="images/favicon.png" alt="Îæm" class="nav-logo-img" />
+      </a>
       <ul class="nav-links">
         <li>
           <a
@@ -121,6 +129,16 @@
           <a
             href="#"
             onclick="
+              showPage('how-it-works');
+              return false;
+            "
+            >How It Works</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            onclick="
               showPage('contact');
               return false;
             "
@@ -150,6 +168,7 @@
       <a href="#" onclick="navTo('shop')">Shop</a>
       <a href="#" onclick="navTo('about')">About</a>
       <a href="#" onclick="navTo('journal')">Journal</a>
+      <a href="#" onclick="navTo('how-it-works')">How It Works</a>
       <a href="#" onclick="navTo('contact')">Contact</a>
       <button class="mobile-theme-toggle" onclick="toggleTheme()">
         <div class="toggle-track"><div class="toggle-thumb"></div></div>
@@ -1014,54 +1033,273 @@
               <span class="cc-val">Îæmhq</span>
             </a>
           </div>
+
+          <!-- How It Works Teaser -->
+          <div class="contact-process">
+            <p class="contact-process-label">How It Works</p>
+            <div class="process-steps">
+              <div class="process-step">
+                <span class="process-num">01</span>
+                <span class="process-text">Browse & Enquire</span>
+              </div>
+              <div class="process-step">
+                <span class="process-num">02</span>
+                <span class="process-text">Measurements Confirmed</span>
+              </div>
+              <div class="process-step">
+                <span class="process-num">03</span>
+                <span class="process-text">Made to Order</span>
+              </div>
+              <div class="process-step">
+                <span class="process-num">04</span>
+                <span class="process-text">Delivered to You</span>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div class="contact-right">
-          <form action="https://formspree.io/f/mlgzgqdn" method="post">
-            <p class="contact-form-label">Send a Message</p>
+          <!-- Order Enquiry Form -->
+          <form
+            action="https://formspree.io/f/mlgzgqdn"
+            method="post"
+            id="orderForm"
+          >
+            <p class="contact-form-label">Order Enquiry</p>
+            <p class="form-subtitle">
+              Tell us what you're interested in. We'll respond within 24 hours.
+            </p>
+
             <div class="form-group">
-              <label class="form-label" for="name">Name</label>
+              <label class="form-label" for="fullName">Full Name *</label>
               <input
                 class="form-input"
                 type="text"
-                id="name"
-                placeholder="Your name"
-                name="name"
+                id="fullName"
+                name="fullName"
+                placeholder="Your full name"
+                required
               />
             </div>
+
             <div class="form-group">
-              <label class="form-label" for="email">Email</label>
+              <label class="form-label" for="whatsapp">WhatsApp Number *</label>
               <input
                 class="form-input"
-                type="email"
-                id="email"
-                placeholder="your@email.com"
-                name="email"
+                type="tel"
+                id="whatsapp"
+                name="whatsapp"
+                placeholder="+234..."
+                required
               />
             </div>
+
             <div class="form-group">
-              <label class="form-label" for="subject">Subject</label>
-              <input
+              <label class="form-label" for="productInterest"
+                >Product Interest *</label
+              >
+              <select
                 class="form-input"
-                type="text"
-                id="subject"
-                placeholder="Collaboration / Press / General"
-                name="subject"
-              />
+                id="productInterest"
+                name="productInterest"
+                required
+              >
+                <option value="">Select a product...</option>
+                <option value="empire-jacket">The Empire Jacket</option>
+                <option value="silk-tee">Satin Circuits Tee</option>
+                <option value="two-piece">Two Piece Set</option>
+                <option value="coffee-trench">Coffee Trench</option>
+                <option value="smart-band">Cherry Smart Band</option>
+                <option value="gold-chain">Imperial Gold Chain</option>
+                <option value="interface-cap">Interface Cap</option>
+                <option value="ankara-gown">Ankara Gown</option>
+                <option value="lace-high-neck-gown">Lace High Neck Gown</option>
+                <option value="blazzer-fashion">Blazzer Fashion</option>
+                <option value="asymmetric-rose-gown">
+                  Asymmetric Rose Gown
+                </option>
+                <option value="prom-gown">Prom Gown</option>
+                <option value="chiffon-evening-gown">
+                  Chiffon Evening Gown
+                </option>
+                <option value="asymmetric-gown">Asymmetric Gown</option>
+                <option value="v-neck-button-gown">V-Neck Button Gown</option>
+                <option value="classy-ankara-gown">Classy Ankara Gown</option>
+                <option value="lace-round-neck-gown">
+                  Lace Round Neck Gown
+                </option>
+                <option value="velvet-evening-gown">Velvet Evening Gown</option>
+                <option value="v-neck-velvet-gown">V-Neck Velvet Gown</option>
+                <option value="velvet-gown">Velvet Gown</option>
+                <option value="spring-dress">Spring Dress</option>
+                <option value="pink-dress">Pink Dress</option>
+                <option value="red-dress">Red Dress</option>
+                <option value="mesh-gown">Mesh Gown</option>
+                <option value="orbit-two-piece">Orbit Two Piece</option>
+                <option value="trending-two-piece">Trending Two Piece</option>
+                <option value="velvet-dress">Velvet Dress</option>
+                <option value="bubu-gown">Bubu Gown</option>
+                <option value="jumpsuit">Jumpsuit</option>
+                <option value="gingham-gathers">Gingham Gathers</option>
+                <option value="custom">Custom Piece</option>
+                <option value="other">Other</option>
+              </select>
             </div>
+
             <div class="form-group">
-              <label class="form-label">Message</label>
+              <label class="form-label" for="colourPreference"
+                >Colour Preference</label
+              >
+              <div class="colour-preference">
+                <button
+                  type="button"
+                  class="colour-option"
+                  data-colour="Coffee Brown"
+                  style="background: #4b2e2b"
+                  title="Coffee Brown"
+                ></button>
+                <button
+                  type="button"
+                  class="colour-option"
+                  data-colour="Soft Black"
+                  style="background: #1c1412"
+                  title="Soft Black"
+                ></button>
+                <button
+                  type="button"
+                  class="colour-option"
+                  data-colour="Cream"
+                  style="background: #f5e9e2; border: 1px solid #ccc"
+                  title="Cream"
+                ></button>
+                <button
+                  type="button"
+                  class="colour-option"
+                  data-colour="Cherry Red"
+                  style="background: #8b0000"
+                  title="Cherry Red"
+                ></button>
+                <button
+                  type="button"
+                  class="colour-option"
+                  data-colour="Navy Blue"
+                  style="background: #000080"
+                  title="Navy Blue"
+                ></button>
+                <button
+                  type="button"
+                  class="colour-option"
+                  data-colour="Forest Green"
+                  style="background: #003314"
+                  title="Forest Green"
+                ></button>
+                <input
+                  type="hidden"
+                  id="selectedColour"
+                  name="selectedColour"
+                  value=""
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="source"
+                >How did you hear about Îæm?</label
+              >
+              <select class="form-input" id="source" name="source">
+                <option value="">Select...</option>
+                <option value="instagram">Instagram</option>
+                <option value="tiktok">TikTok</option>
+                <option value="facebook">Facebook</option>
+                <option value="referral">Referral</option>
+                <option value="website">Website</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="notes">Additional Notes</label>
               <textarea
                 class="form-input"
-                placeholder="Tell us what you're building..."
-                id="message"
-                name="message"
+                id="notes"
+                name="notes"
+                placeholder="Tell us about your size, occasion, timeline, or anything else..."
               ></textarea>
             </div>
+
+            <input
+              type="hidden"
+              name="_subject"
+              value="New Îæm Order Enquiry"
+            />
             <input type="hidden" name="_gotcha" />
             <button type="submit" class="btn-primary btn-fullwidth">
-              Send Message
+              Submit Enquiry
             </button>
+            <p class="form-note">
+              We'll contact you within 24 hours to confirm details and
+              measurements.
+            </p>
           </form>
+
+          <!-- General Contact Form (collapsible) -->
+          <details class="general-contact">
+            <summary>General Enquiries / Collaborations</summary>
+            <form
+              action="https://formspree.io/f/mlgzgqdn"
+              method="post"
+              style="margin-top: 20px"
+            >
+              <div class="form-group">
+                <label class="form-label" for="name">Name</label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="name"
+                  placeholder="Your name"
+                  name="name"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input
+                  class="form-input"
+                  type="email"
+                  id="email"
+                  placeholder="your@email.com"
+                  name="email"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="subject">Subject</label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="subject"
+                  placeholder="Collaboration / Press / General"
+                  name="subject"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Message</label>
+                <textarea
+                  class="form-input"
+                  placeholder="Tell us what you're building..."
+                  id="message"
+                  name="message"
+                ></textarea>
+              </div>
+              <input
+                type="hidden"
+                name="_subject"
+                value="New Îæm General Enquiry"
+              />
+              <input type="hidden" name="_gotcha" />
+              <button type="submit" class="btn-primary btn-fullwidth">
+                Send Message
+              </button>
+            </form>
+          </details>
         </div>
       </div>
     </div>
@@ -1125,6 +1363,20 @@
             >
               Order via WhatsApp
             </a>
+            <p class="modal-note" style="margin-top: 8px">
+              Or use our
+              <a
+                href="#"
+                onclick="
+                  closeModalBtn();
+                  showPage('contact');
+                  return false;
+                "
+                style="color: var(--gold-use); text-decoration: underline"
+                >order enquiry form</a
+              >
+            </p>
+            <br />
             <p class="modal-note">
               We'll confirm your size, measurements, and delivery details
               personally.
@@ -1134,6 +1386,83 @@
       </div>
     </div>
 
+    <!-- ═══ HOW IT WORKS PAGE ═══ -->
+    <div class="page" id="page-how-it-works">
+      <div class="page-header">
+        <p class="page-header-eyebrow">The Îæm Process</p>
+        <h1 class="page-header-title">How It <em>Works</em></h1>
+      </div>
+
+      <div class="how-it-works-container">
+        <div class="hiw-step">
+          <div class="hiw-num">01</div>
+          <div class="hiw-content">
+            <h3 class="hiw-title">Browse & Enquire</h3>
+            <p class="hiw-desc">
+              Explore the collection. When something speaks to you, submit an
+              enquiry or message us directly on WhatsApp. Tell us what you're
+              interested in and any preferences you have.
+            </p>
+          </div>
+        </div>
+
+        <div class="hiw-step">
+          <div class="hiw-num">02</div>
+          <div class="hiw-content">
+            <h3 class="hiw-title">Measurements & Confirmation</h3>
+            <p class="hiw-desc">
+              We send you a simple measurement guide. You provide your
+              measurements, we confirm the details, agree on pricing, and your
+              order is confirmed.
+            </p>
+          </div>
+        </div>
+
+        <div class="hiw-step">
+          <div class="hiw-num">03</div>
+          <div class="hiw-content">
+            <h3 class="hiw-title">Made to Order</h3>
+            <p class="hiw-desc">
+              Your piece is crafted specifically for you. This isn't mass
+              production — it's precision work. We keep you updated throughout
+              the process.
+            </p>
+          </div>
+        </div>
+
+        <div class="hiw-step">
+          <div class="hiw-num">04</div>
+          <div class="hiw-content">
+            <h3 class="hiw-title">Quality Check & Delivery</h3>
+            <p class="hiw-desc">
+              Every piece goes through a final quality check before delivery. We
+              ensure it meets the Îæm standard — then it's on its way to you.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hiw-cta">
+        <a
+          href="#"
+          class="btn-primary"
+          onclick="
+            showPage('shop');
+            return false;
+          "
+          >Browse Collection</a
+        >
+        <a
+          href="#"
+          class="btn-secondary"
+          onclick="
+            showPage('contact');
+            return false;
+          "
+          >Start an Enquiry</a
+        >
+      </div>
+    </div>
     <script src="products.js"></script>
     <script src="script.js"></script>
   </body>
