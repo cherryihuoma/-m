@@ -548,8 +548,63 @@ function initSwatchHost(host) {
 
 document.querySelectorAll('.pi-swatch-host').forEach(initSwatchHost);
 
+// ─── ORDER FORM COLOUR SELECTION ─────────────────────────
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('colour-option')) {
+    // Remove selected from all
+    document.querySelectorAll('.colour-option').forEach(el => {
+      el.classList.remove('selected');
+    });
+    
+    // Add selected to clicked
+    e.target.classList.add('selected');
+    
+    // Update hidden input
+    const selectedColour = e.target.dataset.colour;
+    document.getElementById('selectedColour').value = selectedColour;
+  }
+});
+
 // ─── BOOT — render grids from products.js ─────────────────
 document.addEventListener('DOMContentLoaded', function () {
   buildFeaturedGrid();
   buildShopGrid();
+});
+
+// ─── ORDER FORM COLOUR SELECTION ─────────────────────────
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('colour-option')) {
+    // Remove selected from all
+    document.querySelectorAll('.colour-option').forEach(el => {
+      el.classList.remove('selected');
+    });
+    
+    // Add selected to clicked
+    e.target.classList.add('selected');
+    
+    // Update hidden input
+    const selectedColour = e.target.dataset.colour;
+    document.getElementById('selectedColour').value = selectedColour;
+  }
+});
+
+// ─── ORDER FORM SUBMISSION HANDLING ──────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+  const orderForm = document.getElementById('orderForm');
+  if (orderForm) {
+    orderForm.addEventListener('submit', function(e) {
+      // Formspree will handle the submission
+      // This is for tracking in console
+      console.log('Order enquiry submitted:', {
+        name: document.getElementById('fullName').value,
+        whatsapp: document.getElementById('whatsapp').value,
+        product: document.getElementById('productInterest').value,
+        colour: document.getElementById('selectedColour').value,
+        source: document.getElementById('source').value,
+        notes: document.getElementById('notes').value
+      });
+      
+      // You can add Google Analytics or other tracking here later
+    });
+  }
 });
