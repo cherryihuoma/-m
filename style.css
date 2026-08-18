@@ -2572,3 +2572,31 @@ body.splash-active {
   font-weight: 300;
   color: var(--text3);
 }
+/* ─── ACCESSIBILITY IMPROVEMENTS ───────────────────────── */
+.modal-box:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--gold-use);
+}
+
+.colour-swatch:focus-visible,
+.pi-swatch:focus-visible {
+  outline: 2px solid var(--gold-use);
+  outline-offset: 2px;
+}
+
+/* Smooth image transitions in modal */
+.modal-img {
+  transition: opacity 0.3s ease;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
