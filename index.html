@@ -138,6 +138,26 @@
           <a
             href="#"
             onclick="
+              showPage('size-guide');
+              return false;
+            "
+            >Size Guide</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            onclick="
+              showPage('order-status');
+              return false;
+            "
+            >Track Order</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            onclick="
               showPage('contact');
               return false;
             "
@@ -168,6 +188,8 @@
       <a href="#" onclick="navTo('about')">About</a>
       <a href="#" onclick="navTo('journal')">Journal</a>
       <a href="#" onclick="navTo('how-it-works')">How It Works</a>
+      <a href="#" onclick="navTo('size-guide')">Size Guide</a>
+      <a href="#" onclick="navTo('order-status')">Track Order</a>
       <a href="#" onclick="navTo('contact')">Contact</a>
       <button class="mobile-theme-toggle" onclick="toggleTheme()">
         <div class="toggle-track"><div class="toggle-thumb"></div></div>
@@ -389,7 +411,15 @@
               aesthetic instincts are the same ones who obsess over systems,
               efficiency, and elegant solutions.
             </p>
-            <a href="#" class="jc-read">Read More</a>
+            <a
+              href="#"
+              class="jc-read"
+              onclick="
+                openArticle(1);
+                return false;
+              "
+              >Read More</a
+            >
           </div>
           <div class="journal-card">
             <div class="jc-date">Apr 14, 2026</div>
@@ -399,7 +429,15 @@
               Why I started Îæm before I had a single product, a team, or an
               office.
             </p>
-            <a href="#" class="jc-read">Read More</a>
+            <a
+              href="#"
+              class="jc-read"
+              onclick="
+                openArticle(2);
+                return false;
+              "
+              >Read More</a
+            >
           </div>
           <div class="journal-card">
             <div class="jc-date">Mar 30, 2026</div>
@@ -409,7 +447,15 @@
               University isn't just where you learn. It's your first audience
               and your first real test of brand.
             </p>
-            <a href="#" class="jc-read">Read More</a>
+            <a
+              href="#"
+              class="jc-read"
+              onclick="
+                openArticle(3);
+                return false;
+              "
+              >Read More</a
+            >
           </div>
         </div>
       </div>
@@ -466,6 +512,36 @@
                   >Journal</a
                 >
               </li>
+              <li>
+                <a
+                  href="#"
+                  onclick="
+                    showPage('how-it-works');
+                    return false;
+                  "
+                  >How It Works</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  onclick="
+                    showPage('size-guide');
+                    return false;
+                  "
+                  >Size Guide</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  onclick="
+                    showPage('order-status');
+                    return false;
+                  "
+                  >Track Order</a
+                >
+              </li>
             </ul>
           </div>
           <div>
@@ -473,31 +549,25 @@
             <ul class="footer-links">
               <li>
                 <a
-                  href="#"
-                  onclick="
-                    showPage('contact');
-                    return false;
-                  "
+                  href="https://www.instagram.com/iaemhq?igsh=MTM0cWx3YXdqaW90eQ=="
+                  target="_blank"
+                  rel="noopener noreferrer"
                   >Instagram</a
                 >
               </li>
               <li>
                 <a
-                  href="#"
-                  onclick="
-                    showPage('contact');
-                    return false;
-                  "
+                  href="https://www.facebook.com/share/14YTqHKTxiT/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   >Facebook</a
                 >
               </li>
               <li>
                 <a
-                  href="#"
-                  onclick="
-                    showPage('contact');
-                    return false;
-                  "
+                  href="https://www.tiktok.com/@iaemhq?_r=1&_t=ZS-96sysF5bQn6"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   >TikTok</a
                 >
               </li>
@@ -993,6 +1063,368 @@
       </div>
     </div>
 
+    <!-- ═══ HOW IT WORKS PAGE ═══ -->
+    <div class="page" id="page-how-it-works">
+      <div class="page-header">
+        <p class="page-header-eyebrow">The Îæm Process</p>
+        <h1 class="page-header-title">How It <em>Works</em></h1>
+      </div>
+
+      <div class="how-it-works-container">
+        <div class="hiw-step">
+          <div class="hiw-num">01</div>
+          <div class="hiw-content">
+            <h3 class="hiw-title">Browse & Enquire</h3>
+            <p class="hiw-desc">
+              Explore the collection. When something speaks to you, submit an
+              enquiry or message us directly on WhatsApp. Tell us what you're
+              interested in and any preferences you have.
+            </p>
+          </div>
+        </div>
+
+        <div class="hiw-step">
+          <div class="hiw-num">02</div>
+          <div class="hiw-content">
+            <h3 class="hiw-title">Measurements & Confirmation</h3>
+            <p class="hiw-desc">
+              We send you a simple measurement guide. You provide your
+              measurements, we confirm the details, agree on pricing, and your
+              order is confirmed.
+            </p>
+          </div>
+        </div>
+
+        <div class="hiw-step">
+          <div class="hiw-num">03</div>
+          <div class="hiw-content">
+            <h3 class="hiw-title">Made to Order</h3>
+            <p class="hiw-desc">
+              Your piece is crafted specifically for you. This isn't mass
+              production — it's precision work. We keep you updated throughout
+              the process.
+            </p>
+          </div>
+        </div>
+
+        <div class="hiw-step">
+          <div class="hiw-num">04</div>
+          <div class="hiw-content">
+            <h3 class="hiw-title">Quality Check & Delivery</h3>
+            <p class="hiw-desc">
+              Every piece goes through a final quality check before delivery. We
+              ensure it meets the Îæm standard — then it's on its way to you.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hiw-cta">
+        <a
+          href="#"
+          class="btn-primary"
+          onclick="
+            showPage('shop');
+            return false;
+          "
+          >Browse Collection</a
+        >
+        <a
+          href="#"
+          class="btn-secondary"
+          onclick="
+            showPage('contact');
+            return false;
+          "
+          >Start an Enquiry</a
+        >
+      </div>
+    </div>
+
+    <!-- ═══ SIZE GUIDE PAGE ═══ -->
+    <div class="page" id="page-size-guide">
+      <div class="page-header">
+        <p class="page-header-eyebrow">Made to Measure</p>
+        <h1 class="page-header-title">The <em>Size Guide</em></h1>
+        <p class="page-header-desc">
+          Îæm doesn't do standard sizing. We do <em>your</em> sizing. Here's how
+          to measure yourself correctly so your piece fits perfectly.
+        </p>
+      </div>
+
+      <div class="size-guide-container">
+        <div class="sg-section">
+          <h2 class="sg-section-title">Why <em>Measure?</em></h2>
+          <div class="sg-why-grid">
+            <div class="sg-why-card">
+              <div class="sg-why-num">01</div>
+              <h3 class="sg-why-title">Perfect Fit</h3>
+              <p class="sg-why-desc">
+                Every body is different. Standard sizes are averages. Your piece
+                should fit YOUR body, not a statistical average.
+              </p>
+            </div>
+            <div class="sg-why-card">
+              <div class="sg-why-num">02</div>
+              <h3 class="sg-why-title">No Returns Needed</h3>
+              <p class="sg-why-desc">
+                When it's made for you from the start, you don't need to return
+                it because it doesn't fit. It already does.
+              </p>
+            </div>
+            <div class="sg-why-card">
+              <div class="sg-why-num">03</div>
+              <h3 class="sg-why-title">Lasts Longer</h3>
+              <p class="sg-why-desc">
+                Well-fitted clothing wears better. No pulling, no stress points,
+                no discomfort. Just clothes that work with your body.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sg-section">
+          <h2 class="sg-section-title">How to <em>Measure</em></h2>
+          <p class="sg-section-desc">
+            You'll need a soft measuring tape. If you don't have one, use a
+            string and measure it against a ruler.
+          </p>
+
+          <div class="sg-measurements-grid">
+            <div class="sg-measure-card">
+              <div class="sg-measure-icon">B</div>
+              <h3 class="sg-measure-title">Bust</h3>
+              <p class="sg-measure-desc">
+                Measure around the fullest part of your bust. Keep the tape
+                parallel to the floor and relaxed — don't pull tight.
+              </p>
+              <div class="sg-measure-tip">
+                Tip: Wear a non-padded bra for accuracy
+              </div>
+            </div>
+
+            <div class="sg-measure-card">
+              <div class="sg-measure-icon">W</div>
+              <h3 class="sg-measure-title">Waist</h3>
+              <p class="sg-measure-desc">
+                Find your natural waist — the narrowest part, usually above your
+                belly button. Measure around it comfortably.
+              </p>
+              <div class="sg-measure-tip">
+                Tip: Don't suck in — we want your real measurements
+              </div>
+            </div>
+
+            <div class="sg-measure-card">
+              <div class="sg-measure-icon">H</div>
+              <h3 class="sg-measure-title">Hips</h3>
+              <p class="sg-measure-desc">
+                Measure around the fullest part of your hips and buttocks. Keep
+                feet together and tape parallel to the floor.
+              </p>
+              <div class="sg-measure-tip">
+                Tip: This is usually 7-9 inches below your waist
+              </div>
+            </div>
+
+            <div class="sg-measure-card">
+              <div class="sg-measure-icon">SH</div>
+              <h3 class="sg-measure-title">Shoulders</h3>
+              <p class="sg-measure-desc">
+                Measure from the edge of one shoulder to the other, across your
+                back. Keep the tape slightly loose.
+              </p>
+              <div class="sg-measure-tip">
+                Tip: Best measured by someone else
+              </div>
+            </div>
+
+            <div class="sg-measure-card">
+              <div class="sg-measure-icon">L</div>
+              <h3 class="sg-measure-title">Length</h3>
+              <p class="sg-measure-desc">
+                Depends on the piece. For dresses: from shoulder to desired hem.
+                For trousers: from waist to desired length.
+              </p>
+              <div class="sg-measure-tip">
+                Tip: Wear shoes you'll wear with the piece
+              </div>
+            </div>
+
+            <div class="sg-measure-card">
+              <div class="sg-measure-icon">A</div>
+              <h3 class="sg-measure-title">Arms</h3>
+              <p class="sg-measure-desc">
+                For sleeved pieces. Measure from shoulder point to wrist, with
+                arm slightly bent.
+              </p>
+              <div class="sg-measure-tip">
+                Tip: Keep elbow slightly bent for movement ease
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sg-section">
+          <h2 class="sg-section-title">Pro <em>Tips</em></h2>
+          <div class="sg-tips-list">
+            <div class="sg-tip-item">
+              <span class="sg-tip-num">01</span>
+              <p>
+                Take measurements over lightweight clothing or directly on skin
+              </p>
+            </div>
+            <div class="sg-tip-item">
+              <span class="sg-tip-num">02</span>
+              <p>
+                Keep the tape snug but not tight — you should be able to fit one
+                finger underneath
+              </p>
+            </div>
+            <div class="sg-tip-item">
+              <span class="sg-tip-num">03</span>
+              <p>Measure twice. If numbers differ, take the average</p>
+            </div>
+            <div class="sg-tip-item">
+              <span class="sg-tip-num">04</span>
+              <p>
+                Don't measure yourself in a rush — take your time for accuracy
+              </p>
+            </div>
+            <div class="sg-tip-item">
+              <span class="sg-tip-num">05</span>
+              <p>
+                If you're unsure, ask someone to help. It's always more accurate
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sg-section">
+          <h2 class="sg-section-title">What We <em>Need</em></h2>
+          <p class="sg-section-desc">
+            When you order, we'll ask for these measurements depending on your
+            piece:
+          </p>
+
+          <div class="sg-requirements">
+            <div class="sg-req-card">
+              <h3 class="sg-req-title">For Tops & Jackets</h3>
+              <ul class="sg-req-list">
+                <li>Bust</li>
+                <li>Waist</li>
+                <li>Shoulders</li>
+                <li>Arm length</li>
+                <li>Desired length</li>
+              </ul>
+            </div>
+
+            <div class="sg-req-card">
+              <h3 class="sg-req-title">For Dresses & Gowns</h3>
+              <ul class="sg-req-list">
+                <li>Bust</li>
+                <li>Waist</li>
+                <li>Hips</li>
+                <li>Shoulders</li>
+                <li>Desired length</li>
+              </ul>
+            </div>
+
+            <div class="sg-req-card">
+              <h3 class="sg-req-title">For Trousers & Two Pieces</h3>
+              <ul class="sg-req-list">
+                <li>Waist</li>
+                <li>Hips</li>
+                <li>Inseam</li>
+                <li>Desired length</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="sg-cta">
+          <h3 class="sg-cta-title">Ready to get <em>measured?</em></h3>
+          <p class="sg-cta-desc">
+            Once you've taken your measurements, we'll guide you through
+            everything else.
+          </p>
+          <div class="sg-cta-buttons">
+            <a
+              href="#"
+              class="btn-primary"
+              onclick="
+                showPage('shop');
+                return false;
+              "
+              >Browse Collection</a
+            >
+            <a
+              href="#"
+              class="btn-secondary"
+              onclick="
+                showPage('contact');
+                return false;
+              "
+              >Start an Enquiry</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ ORDER STATUS PAGE ═══ -->
+    <div class="page" id="page-order-status">
+      <div class="page-header">
+        <p class="page-header-eyebrow">Track Your Order</p>
+        <h1 class="page-header-title">Order <em>Status</em></h1>
+        <p class="page-header-desc">
+          Enter your Order ID to check where your piece is in the production
+          process.
+        </p>
+      </div>
+
+      <div class="order-status-container">
+        <div class="order-status-form">
+          <form id="orderStatusForm" onsubmit="checkOrderStatus(event)">
+            <div class="form-group">
+              <label class="form-label" for="orderId">Order ID</label>
+              <input
+                class="form-input"
+                type="text"
+                id="orderId"
+                placeholder="e.g., IAEM-001"
+                required
+              />
+            </div>
+            <button type="submit" class="btn-primary btn-fullwidth">
+              Check Status
+            </button>
+          </form>
+
+          <div class="order-result" id="orderResult">
+            <div class="order-id" id="resultOrderId"></div>
+            <div class="order-status-badge" id="resultStatus"></div>
+            <div class="order-details" id="resultDetails"></div>
+          </div>
+        </div>
+
+        <div class="order-status-info">
+          <p class="order-status-note">
+            Don't have your Order ID?
+            <a
+              href="#"
+              onclick="
+                showPage('contact');
+                return false;
+              "
+              >Contact us</a
+            >
+            with your name and WhatsApp number.
+          </p>
+        </div>
+      </div>
+    </div>
+
     <!-- ═══ CONTACT PAGE ═══ -->
     <div class="page" id="page-contact">
       <div class="contact-layout">
@@ -1012,6 +1444,8 @@
             </a>
             <a
               href="https://www.tiktok.com/@iaemhq?_r=1&_t=ZS-96sysF5bQn6"
+              target="_blank"
+              rel="noopener noreferrer"
               class="contact-channel"
             >
               <span class="cc-icon">TikTok</span>
@@ -1019,6 +1453,8 @@
             </a>
             <a
               href="https://www.instagram.com/iaemhq?igsh=MTM0cWx3YXdqaW90eQ=="
+              target="_blank"
+              rel="noopener noreferrer"
               class="contact-channel"
             >
               <span class="cc-icon">Instagram</span>
@@ -1026,6 +1462,8 @@
             </a>
             <a
               href="https://www.facebook.com/share/14YTqHKTxiT/"
+              target="_blank"
+              rel="noopener noreferrer"
               class="contact-channel"
             >
               <span class="cc-icon">Facebook</span>
@@ -1033,7 +1471,6 @@
             </a>
           </div>
 
-          <!-- How It Works Teaser -->
           <div class="contact-process">
             <p class="contact-process-label">How It Works</p>
             <div class="process-steps">
@@ -1058,7 +1495,6 @@
         </div>
 
         <div class="contact-right">
-          <!-- Order Enquiry Form -->
           <form
             action="https://formspree.io/f/mlgzgqdn"
             method="post"
@@ -1241,7 +1677,6 @@
             </p>
           </form>
 
-          <!-- General Contact Form (collapsible) -->
           <details class="general-contact">
             <summary>General Enquiries / Collaborations</summary>
             <form
@@ -1385,83 +1820,6 @@
       </div>
     </div>
 
-    <!-- ═══ HOW IT WORKS PAGE ═══ -->
-    <div class="page" id="page-how-it-works">
-      <div class="page-header">
-        <p class="page-header-eyebrow">The Îæm Process</p>
-        <h1 class="page-header-title">How It <em>Works</em></h1>
-      </div>
-
-      <div class="how-it-works-container">
-        <div class="hiw-step">
-          <div class="hiw-num">01</div>
-          <div class="hiw-content">
-            <h3 class="hiw-title">Browse & Enquire</h3>
-            <p class="hiw-desc">
-              Explore the collection. When something speaks to you, submit an
-              enquiry or message us directly on WhatsApp. Tell us what you're
-              interested in and any preferences you have.
-            </p>
-          </div>
-        </div>
-
-        <div class="hiw-step">
-          <div class="hiw-num">02</div>
-          <div class="hiw-content">
-            <h3 class="hiw-title">Measurements & Confirmation</h3>
-            <p class="hiw-desc">
-              We send you a simple measurement guide. You provide your
-              measurements, we confirm the details, agree on pricing, and your
-              order is confirmed.
-            </p>
-          </div>
-        </div>
-
-        <div class="hiw-step">
-          <div class="hiw-num">03</div>
-          <div class="hiw-content">
-            <h3 class="hiw-title">Made to Order</h3>
-            <p class="hiw-desc">
-              Your piece is crafted specifically for you. This isn't mass
-              production — it's precision work. We keep you updated throughout
-              the process.
-            </p>
-          </div>
-        </div>
-
-        <div class="hiw-step">
-          <div class="hiw-num">04</div>
-          <div class="hiw-content">
-            <h3 class="hiw-title">Quality Check & Delivery</h3>
-            <p class="hiw-desc">
-              Every piece goes through a final quality check before delivery. We
-              ensure it meets the Îæm standard — then it's on its way to you.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="hiw-cta">
-        <a
-          href="#"
-          class="btn-primary"
-          onclick="
-            showPage('shop');
-            return false;
-          "
-          >Browse Collection</a
-        >
-        <a
-          href="#"
-          class="btn-secondary"
-          onclick="
-            showPage('contact');
-            return false;
-          "
-          >Start an Enquiry</a
-        >
-      </div>
-    </div>
     <script src="products.js"></script>
     <script src="script.js"></script>
   </body>
