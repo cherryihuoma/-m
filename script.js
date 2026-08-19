@@ -707,13 +707,18 @@ async function checkOrderStatus(event) {
       
       document.getElementById('resultStatus').className = 'order-status-badge ' + statusClass;
       
-      // Build details text
+        // Build details text
       let detailsText = data.details || 'No details available.';
       if (data.dateUpdated) {
-        detailsText += `\n\nLast updated: ${data.dateUpdated}`;
+        const rawDate = data.dateUpdated;
+        const cleanDate = new Date(rawDate).toLocaleDateString('en-GB', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+        detailsText += `\n\nLast updated: ${cleanDate}`;
       }
       document.getElementById('resultDetails').textContent = detailsText;
-    }
     
     result.classList.add('visible');
   } catch (error) {
