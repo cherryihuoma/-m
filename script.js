@@ -659,6 +659,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
 // ─── ORDER STATUS SYSTEM (Google Sheets Powered) ────────
 const ORDER_API_URL = 'https://script.google.com/macros/s/AKfycbzaPpUIhBFVou4dHQsom3bn2_bM45a_h9u91PFh0OFWPyHvOOV_XqseczNEHJGayBE-hA/exec';
 
@@ -707,10 +708,16 @@ async function checkOrderStatus(event) {
       
       document.getElementById('resultStatus').className = 'order-status-badge ' + statusClass;
       
-      // Build details text
+      // Build details text with clean date
       let detailsText = data.details || 'No details available.';
       if (data.dateUpdated) {
-        detailsText += `\n\nLast updated: ${data.dateUpdated}`;
+        const rawDate = data.dateUpdated;
+        const cleanDate = new Date(rawDate).toLocaleDateString('en-GB', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+        detailsText += `\n\nLast updated: ${cleanDate}`;
       }
       document.getElementById('resultDetails').textContent = detailsText;
     }
@@ -728,3 +735,9 @@ async function checkOrderStatus(event) {
     button.disabled = false;
   }
 }
+
+// ─── BOOT — render grids from products.js ─────────────────
+document.addEventListener('DOMContentLoaded', function () {
+  buildFeaturedGrid();
+  buildShopGrid();
+});
