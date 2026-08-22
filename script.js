@@ -705,8 +705,40 @@ async function checkOrderStatus(event) {
           statusClass = 'status-delivered';
           break;
       }
+            document.getElementById('resultStatus').className = 'order-status-badge ' + statusClass;
       
-      document.getElementById('resultStatus').className = 'order-status-badge ' + statusClass;
+      // Show product image
+      const productDisplay = document.getElementById('orderProductDisplay');
+      const productImg = document.getElementById('orderProductImg');
+      const productName = document.getElementById('orderProductName');
+      const productColour = document.getElementById('orderProductColour');
+      
+            if (productDisplay && data.product) {
+        const matchedProduct = Object.values(productMap).find(p => 
+          p.name.toLowerCase().includes(data.product.toLowerCase())
+        );
+        if (matchedProduct) {
+          // Find the colour-specific image
+          let colourImage = matchedProduct.img; // Default image
+          const customerColour = data.colour || '';
+          
+          if (customerColour && matchedProduct.colours && matchedProduct.colours.length > 0) {
+            const matchedColour = matchedProduct.colours.find(c => 
+              c.name.toLowerCase().includes(customerColour.toLowerCase())
+            );
+            if (matchedColour) {
+              colourImage = matchedColour.img;
+            }
+          }
+          
+          productImg.src = colourImage;
+          productName.textContent = matchedProduct.name;
+          productColour.textContent = 'Colour: ' + (data.colour || 'Not specified');
+          productDisplay.style.display = 'flex';
+        } else {
+          productDisplay.style.display = 'none';
+        }
+      }
       
       // Build details text with clean date
       let detailsText = data.details || 'No details available.';
