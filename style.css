@@ -3083,3 +3083,48 @@ body.splash-active {
     scroll-behavior: auto !important;
   }
 }
+/* ─── ORDER PRODUCT DISPLAY ─────────────────────────── */
+.order-product-display {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 16px;
+  background: var(--surface);
+  border-radius: 4px;
+}
+
+.order-product-img-wrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.order-product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.order-product-info {
+  flex: 1;
+}
+
+.order-product-name {
+  font-family: var(--font-d);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.order-product-colour {
+  font-family: var(--font-m);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-use);
+}
