@@ -14,13 +14,13 @@
   "lang":"en-GB",
   "icons":[
     {
-      "src":"images/favicon.png",
+      "src":"images/rsz_23file_000000002d388246bf1c1f47951ec6a9.png",
       "sizes":"192*192",
       "type":"image/png",
       "purpose":"any maskable"
     },
     {
-      "src":"images/favicon.png",
+      "src":"images/rsz_13file_000000002d388246bf1c1f47951ec6a9.png",
       "sizes":"512*512",
       "type":"image/png",
       "purpose":"any maskable"
@@ -34,7 +34,7 @@
       "description":"Browse the Îæm collection",
       "url":"/index.html#shop",
       "icons":[{
-        "src":"images/favicon.png",
+        "src":"images/rsz_23file_000000002d388246bf1c1f47951ec6a9.png",
         "sizes":"192*192"
       }]
     },
@@ -45,7 +45,7 @@
       "url":"/index.html#track order",
       "icons":[
         {
-          "src":"images/favicon.png",
+          "src":"images/rsz_23file_000000002d388246bf1c1f47951ec6a9.png",
           "sizes":"192*192"
         }
       ]
