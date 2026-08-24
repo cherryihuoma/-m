@@ -767,7 +767,33 @@ async function checkOrderStatus(event) {
     button.disabled = false;
   }
 }
+// ─── INSTALL PROMPT ──────────────────────────────────────
+let deferredPrompt;
 
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const installBtn = document.getElementById('installBtn');
+  if (installBtn) {
+    installBtn.style.display = 'block';
+  }
+});
+
+function installApp() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted install');
+        const installBtn = document.getElementById('installBtn');
+        if (installBtn) installBtn.style.display = 'none';
+      }
+      deferredPrompt = null;
+    });
+  } else {
+    alert('Install option not available yet. Use your browser menu → Install app.');
+  }
+}
 // ─── BOOT — render grids from products.js ─────────────────
 document.addEventListener('DOMContentLoaded', function () {
   buildFeaturedGrid();
