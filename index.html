@@ -22,6 +22,16 @@
     />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0d0500" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="Îæm" />
+    <link rel="apple-touch-icon" href="/images/icon-192.png" />
+
     <!-- Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;700;800&family=DM+Mono:ital,wght@0,300;1,300&display=swap"
@@ -72,6 +82,32 @@
     <div class="cursor" id="cursor"></div>
     <div class="cursor-ring" id="cursorRing"></div>
 
+    <!-- Install App Button -->
+    <button
+      id="installBtn"
+      onclick="installApp()"
+      style="
+        display: none;
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 9998;
+        background: var(--accent);
+        color: #f5e9e2;
+        border: none;
+        padding: 14px 22px;
+        border-radius: 2px;
+        font-family: var(--font-s);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        cursor: pointer;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      "
+    >
+      Install App
+    </button>
     <nav>
       <a
         href="#"
@@ -1401,20 +1437,29 @@
             </button>
           </form>
 
-                    <div class="order-result" id="orderResult">
+          <div class="order-result" id="orderResult">
             <div class="order-id" id="resultOrderId"></div>
             <div class="order-status-badge" id="resultStatus"></div>
-            
-            <div class="order-product-display" id="orderProductDisplay" style="display:none;">
+
+            <div
+              class="order-product-display"
+              id="orderProductDisplay"
+              style="display: none"
+            >
               <div class="order-product-img-wrap">
-                <img src="" alt="" id="orderProductImg" class="order-product-img" />
+                <img
+                  src=""
+                  alt=""
+                  id="orderProductImg"
+                  class="order-product-img"
+                />
               </div>
               <div class="order-product-info">
                 <p class="order-product-name" id="orderProductName"></p>
                 <p class="order-product-colour" id="orderProductColour"></p>
               </div>
             </div>
-            
+
             <div class="order-details" id="resultDetails"></div>
           </div>
         </div>
@@ -1833,5 +1878,51 @@
 
     <script src="products.js"></script>
     <script src="script.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then((reg) => {
+              console.log("[Îæm] Service worker registered:", reg.scope);
+              setInterval(() => reg.update(), 60000);
+              reg.addEventListener("updatefound", () => {
+                const newWorker = reg.installing;
+                newWorker.addEventListener("statechange", () => {
+                  if (
+                    newWorker.state === "installed" &&
+                    navigator.serviceWorker.controller
+                  ) {
+                    showUpdateBanner();
+                  }
+                });
+              });
+            })
+            .catch((err) => console.warn("[Îæm] SW registration failed:", err));
+        });
+      }
+
+      function showUpdateBanner() {
+        const banner = document.createElement("div");
+        banner.style.cssText = `
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      background: var(--surface2); border: 1px solid var(--border);
+      padding: 14px 24px; border-radius: 2px; z-index: 9999;
+      font-family: var(--font-m); font-size: 11px; letter-spacing: 0.15em;
+      color: var(--text); display: flex; align-items: center; gap: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    `;
+        banner.innerHTML = `
+      <span>New version available</span>
+      <button onclick="window.location.reload()" style="
+        background: var(--accent); color: #f5e9e2; border: none;
+        padding: 6px 14px; font-family: var(--font-m); font-size: 10px;
+        letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer;
+        border-radius: 2px;
+      ">Refresh</button>
+    `;
+        document.body.appendChild(banner);
+      }
+    </script>
   </body>
 </html>
