@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" data-theme="night">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Îæm — Offline</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;700;800&family=DM+Mono:ital,wght@0,300;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .offline-wrap {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 48px 24px;
+        text-align: center;
+        gap: 24px;
+      }
+      .offline-logo {
+        font-family: var(--font-d);
+        font-size: clamp(48px, 10vw, 96px);
+        font-weight: 300;
+        font-style: italic;
+        color: var(--accent);
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+      .offline-eyebrow {
+        font-family: var(--font-m);
+        font-size: 11px;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: var(--gold-use);
+        opacity: 0.7;
+      }
+      .offline-title {
+        font-family: var(--font-d);
+        font-size: clamp(28px, 5vw, 48px);
+        font-weight: 300;
+        color: var(--text);
+        line-height: 1.1;
+        margin-bottom: 8px;
+      }
+      .offline-body {
+        font-family: var(--font-s);
+        font-size: 15px;
+        line-height: 1.9;
+        color: var(--text2);
+        max-width: 420px;
+      }
+      .offline-divider {
+        width: 40px;
+        height: 1px;
+        background: var(--gold-use);
+        opacity: 0.3;
+      }
+      .offline-note {
+        font-family: var(--font-m);
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        color: var(--text3);
+      }
+      .btn-retry {
+        background: var(--accent);
+        color: #f5e9e2;
+        font-family: var(--font-s);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        padding: 14px 32px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+        margin-top: 8px;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .btn-retry:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(139, 26, 26, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="offline-wrap">
+      <div class="offline-logo">Îæm</div>
+      <p class="offline-eyebrow">Tech · Fashion</p>
+      <div class="offline-divider"></div>
+      <h1 class="offline-title">You're offline right now.</h1>
+      <p class="offline-body">
+        The Îæm website has been saved to your device — most pages will load
+        normally. Some features like order tracking require an internet
+        connection to work.
+      </p>
+      <button class="btn-retry" onclick="window.location.reload()">
+        Try Again
+      </button>
+      <div class="offline-divider"></div>
+      <p class="offline-note">
+        To order or enquire, WhatsApp us at +234 807 897 0306
+      </p>
+    </div>
+
+    <script>
+      // Auto-reload when connection returns
+      window.addEventListener("online", () => window.location.reload());
+
+      // Theme
+      const saved = localStorage.getItem("iaem-theme") || "night";
+      document.documentElement.dataset.theme = saved;
+    </script>
+  </body>
+</html>

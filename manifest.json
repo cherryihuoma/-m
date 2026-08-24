@@ -1,0 +1,54 @@
+{
+  "name": "Îæm — Tech · Fashion",
+  "short_name": "Îæm",
+  "description": "Where code meets cloth. Premium made-to-order fashion from Nigeria.",
+  "start_url":"/index.html",
+  "scope":"/",
+  "display":"standalone",
+  "orientation":"portrait-primary",
+  "background-color":"#0d0500",
+  "theme_color":"#0d0500",
+  "categories":[
+    "shopping", "lifestyle", "fashion"
+  ],
+  "lang":"en-GB",
+  "icons":[
+    {
+      "src":"images/favicon.png",
+      "sizes":"192*192",
+      "type":"image/png",
+      "purpose":"any maskable"
+    },
+    {
+      "src":"images/favicon.png",
+      "sizes":"512*512",
+      "type":"image/png",
+      "purpose":"any maskable"
+    }
+  ],
+  "screenshots":[],
+  "shortcuts":[
+    {
+      "name":"Shop",
+      "short_name":"Shop",
+      "description":"Browse the Îæm collection",
+      "url":"/index.html#shop",
+      "icons":[{
+        "src":"images/favicon.png",
+        "sizes":"192*192"
+      }]
+    },
+    {
+      "name":"Track Order",
+      "short_name":"Track",
+      "description":"Track your Îæm order",
+      "url":"/index.html#track order",
+      "icons":[
+        {
+          "src":"images/favicon.png",
+          "sizes":"192*192"
+        }
+      ]
+    }
+  ]
+}
