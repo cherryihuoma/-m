@@ -495,7 +495,22 @@
           </div>
         </div>
       </div>
-
+        <!-- Email Capture -->
+      <div class="email-capture" style="text-align:center; padding:60px 24px; max-width:500px; margin:0 auto;">
+        <h3 style="font-family:var(--font-d); font-size:28px; font-weight:300; color:var(--text); margin-bottom:8px;">
+          Join the Îæm <em style="color:var(--accent);">Inner Circle</em>
+        </h3>
+        <p style="font-family:var(--font-s); font-size:14px; color:var(--text2); margin-bottom:24px;">
+          Early access to drops. No spam.
+        </p>
+        <form action="https://formspree.io/f/mlgzgqdn" method="post" style="display:flex; flex-direction:column; gap:12px;">
+          <input type="hidden" name="_subject" value="New Îæm Inner Circle Subscription" />
+          <input class="form-input" type="text" name="name" placeholder="Your name" required />
+          <input class="form-input" type="email" name="email" placeholder="your@email.com" required />
+          <input type="hidden" name="_gotcha" />
+          <button type="submit" class="btn-primary btn-fullwidth">Join</button>
+        </form>
+      </div>
       <footer>
         <div class="footer-grid">
           <div>
@@ -1882,7 +1897,8 @@
                   if (
                     newWorker.state === "installed" &&
                     navigator.serviceWorker.controller
-                  ) {
+                  ) 
+                  {
                     showUpdateBanner();
                   }
                 });
