@@ -1,1918 +1,801 @@
-<!doctype html>
-<html lang="en" data-theme="night">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Îæm — Tech · Fashion</title>
-    <meta
-      name="description"
-      content="A brand built at the intersection of silicon and silk."
-    />
-    <meta name="robots" content="index, follow" />
-    <meta name="author" content="ÎæmCherry" />
-    <meta property="og:title" content="Îæm — Tech · Fashion · Empire" />
-    <meta property="og:description" content="Where code meets cloth." />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Îæm" />
-    <meta property="og:locale" content="en_GB" />
-    <meta name="twitter:title" content="Îæm — Tech · Fashion · Empire" />
-    <meta
-      name="twitter:description"
-      content="Where code meets cloth. A fashion tech brand built for those who refuse to separate how they think from how they show up."
-    />
-    <meta name="twitter:card" content="summary_large_image" />
+/*
+ * Îæm — Tech · Fashion · Empire
+ * © 2026 Îæm. All rights reserved.
+ * contact: iaemhq@gmail.com
+ */
 
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#0d0500" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
-    <meta name="apple-mobile-web-app-title" content="Îæm" />
-    <link rel="apple-touch-icon" href="/images/icon-192.png" />
+// ─── CURSOR ───────────────────────────────────────────────
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
 
-    <!-- Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;700;800&family=DM+Mono:ital,wght@0,300;1,300&display=swap"
-      rel="stylesheet"
-    />
+let mx = 0, my = 0, rx = 0, ry = 0;
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css" />
+document.addEventListener('mousemove', e => {
+  mx = e.clientX;
+  my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top = my + 'px';
+});
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/favicon.png" />
-    <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
-    <link rel="apple-touch-icon" href="images/favicon.png" />
+(function animRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px';
+  ring.style.top = ry + 'px';
+  requestAnimationFrame(animRing);
+})();
 
-    <style>
-      .page-header-title-large {
-        font-size: clamp(40px, 5vw, 72px);
+document.querySelectorAll('a, button, .product-card, .journal-card, .jf-card, .at-card').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.width = '16px';
+    cursor.style.height = '16px';
+    ring.style.width = '48px';
+    ring.style.height = '48px';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.width = '8px';
+    cursor.style.height = '8px';
+    ring.style.width = '32px';
+    ring.style.height = '32px';
+  });
+});
+
+// ─── NAVIGATION ───────────────────────────────────────────
+function showPage(n) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const targetPage = document.getElementById('page-' + n);
+  if (targetPage) {
+    targetPage.classList.add('active');
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─── THEME ────────────────────────────────────────────────
+(function () {
+  const saved = localStorage.getItem('iaem-theme') || 'night';
+  document.documentElement.dataset.theme = saved;
+
+  const label = document.getElementById('themeLabel');
+  const labelM = document.getElementById('themeLabelMobile');
+  if (label) label.textContent = saved === 'night' ? 'Night' : 'Day';
+  if (labelM) labelM.textContent = saved === 'night' ? 'Night' : 'Day';
+
+  const thumb = document.querySelector('.toggle-thumb');
+  if (thumb && saved === 'day') thumb.style.transform = 'translateX(14px)';
+})();
+
+function toggleTheme() {
+  const h = document.documentElement;
+  const label = document.getElementById('themeLabel');
+  const labelM = document.getElementById('themeLabelMobile');
+  const isNight = h.dataset.theme === 'night';
+
+  h.dataset.theme = isNight ? 'day' : 'night';
+  localStorage.setItem('iaem-theme', h.dataset.theme);
+
+  if (label) label.textContent = isNight ? 'Day' : 'Night';
+  if (labelM) labelM.textContent = isNight ? 'Day' : 'Night';
+
+  const thumb = document.querySelector('.toggle-thumb');
+  if (thumb) thumb.style.transform = isNight ? 'translateX(14px)' : 'translateX(0)';
+}
+
+// ─── HAMBURGER / MOBILE MENU ──────────────────────────────
+function toggleMenu() {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+function navTo(page) {
+  showPage(page);
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+document.addEventListener('click', function (e) {
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('mobileMenu');
+  if (!btn.contains(e.target) && !menu.contains(e.target)) {
+    btn.classList.remove('open');
+    menu.classList.remove('open');
+  }
+});
+
+// ─── SPLASH SCREEN ────────────────────────────────────────
+function initSplash() {
+  const bar = document.getElementById('splashBar');
+  const percent = document.getElementById('splashPercent');
+  const splash = document.getElementById('splash');
+
+  if (!bar || !percent || !splash) return;
+
+  document.body.classList.add('splash-active');
+
+  let progress = 0;
+
+  const interval = setInterval(() => {
+    const step = progress < 70 ? 2.2 : progress < 90 ? 0.8 : 0.3;
+    progress = Math.min(progress + step, 99);
+    bar.style.width = progress + '%';
+    percent.textContent = Math.floor(progress) + '%';
+  }, 40);
+
+  setTimeout(() => {
+    clearInterval(interval);
+    progress = 100;
+    bar.style.width = '100%';
+    percent.textContent = '100%';
+
+    setTimeout(() => {
+      splash.classList.add('exit');
+      document.body.classList.remove('splash-active');
+      setTimeout(() => splash.remove(), 1000);
+    }, 400);
+  }, 2800);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSplash);
+} else {
+  initSplash();
+}
+
+// ─── JOURNAL ARTICLES ─────────────────────────────────────
+const articles = [
+  {
+    id: 1,
+    date: 'Apr 28, 2026',
+    tag: 'Tech × Fashion',
+    title: 'Why the most stylish people I know all think like engineers',
+    subtitle: 'There\'s a pattern I keep noticing. The people with the sharpest aesthetic instincts are the same ones who obsess over systems.',
+    img: 'images/fashiontech.jpg',
+    imgPlaceholder: 'Tech',
+    body: `
+      <p>There's a pattern I keep noticing. The people with the sharpest aesthetic instincts are the same ones who obsess over systems, efficiency, and elegant solutions. It's not a coincidence.</p>
+      <p>When you think about it, <strong>design and engineering are solving the same problem</strong> — how do you take something complex and make it feel inevitable? A well-written function and a perfectly tailored jacket both do this. They both look easy from the outside. They're not.</p>
+      <blockquote>The best designers I know think in systems. The best engineers I know think in aesthetics.</blockquote>
+      <h2>The overlap nobody talks about</h2>
+      <p>Fashion people talk about proportion, weight, tension, and balance. Engineers talk about load, stress, tolerance, and equilibrium. Different words. Same conversation.</p>
+      <div class="article-divider"></div>
+      <p><strong>That's what Îæm is built on.</strong> Not fashion. Not tech. The refusal to choose.</p>
+    `
+  },
+  {
+    id: 2,
+    date: 'Apr 14, 2026',
+    tag: 'Brand',
+    title: 'Building in public before the doors open',
+    subtitle: 'Why I started Îæm before I had a single product, a team, or an office.',
+    img: 'images/brandtech.jpg',
+    imgPlaceholder: 'Brand',
+    body: `
+      <p>Most people wait until everything is ready before they show the world what they're building. I think that's the wrong move.</p>
+      <p>I started Îæm with nothing but a name, a color palette, and a point of view. No products. No team. No funding. Just a clear idea of what this brand stands for and the discipline to document it from day one.</p>
+      <blockquote>The process is the brand. The work is the proof.</blockquote>
+      <h2>Why building in public works</h2>
+      <p>When you build in public, you're not just marketing — you're <strong>creating the origin story in real time</strong>.</p>
+      <div class="article-divider"></div>
+      <p><strong>Start before you're ready. Document everything.</strong> That's the whole strategy.</p>
+    `
+  },
+  {
+    id: 3,
+    date: 'Mar 30, 2026',
+    tag: 'Empire',
+    title: 'The campus is the first market',
+    subtitle: 'University isn\'t just where you learn. It\'s your first audience and first real test of brand.',
+    img: 'images/empiretech.jpg',
+    imgPlaceholder: 'Empire',
+    body: `
+      <p>Every empire needs a first territory. For Îæm, that territory is campus.</p>
+      <p>Think about what a university actually is — hundreds of people with opinions, taste, and the desire to be seen. They're early adopters by nature. They take risks. They talk. <strong>If your brand works on campus, it works.</strong></p>
+      <h2>The campus advantage</h2>
+      <p>On campus you have direct access to your audience every single day. You can test ideas in real time.</p>
+      <blockquote>You don't need a store. You need a presence.</blockquote>
+      <div class="article-divider"></div>
+      <p><strong>The campus is the first market. And I intend to own it.</strong></p>
+    `
+  },
+  {
+    id: 4,
+    date: 'Mar 15, 2026',
+    tag: 'Fashion',
+    title: 'Coffee brown and why warm colours own the room',
+    subtitle: 'Colour psychology, brand identity, and why I chose a shade most brands are afraid of.',
+    img: 'images/colortech.jpg',
+    imgPlaceholder: 'Fashion',
+    body: `
+      <p>Most brands default to black, white, or navy when they want to signal premium. It's safe. It's familiar. It's also completely forgettable.</p>
+      <p>I chose coffee brown — <strong>#4B2E2B</strong> — as the main colour of Îæm. People thought I was making a mistake. I knew I wasn't.</p>
+      <h2>What warm colours actually do</h2>
+      <p>Warm colours create psychological safety. They signal approachability without sacrificing authority. Brown in particular carries connotations of <em>craft, earth, reliability, and richness</em>.</p>
+      <blockquote>The most powerful colour choice is the one nobody else was brave enough to make.</blockquote>
+      <div class="article-divider"></div>
+      <p><strong>Colour is the first thing people feel before they read a single word.</strong> Make it count.</p>
+    `
+  },
+  {
+    id: 5,
+    date: 'Mar 01, 2026',
+    tag: 'Tech',
+    title: 'What wearable tech gets wrong about fashion people',
+    subtitle: 'Tech companies keep making wearables for engineers. Nobody asked them to.',
+    img: 'images/fashiontech2.jpg',
+    imgPlaceholder: 'Tech',
+    body: `
+      <p>Every major tech company has tried to crack wearables. Most of them have failed — not technically, but culturally. The reason is simple: <strong>they design for engineers, not for people who care how they look.</strong></p>
+      <p>The Apple Watch is a remarkable piece of engineering. It is also, depending on the band, either aggressively sporty or aggressively corporate. There is no in-between. There is no elegance.</p>
+      <h2>What fashion people actually want</h2>
+      <p>Fashion people want technology that disappears into the garment. They want function that doesn't announce itself.</p>
+      <blockquote>The best technology is invisible. The best fashion is unforgettable.</blockquote>
+      <div class="article-divider"></div>
+      <p><strong>That's the product Îæm is moving toward.</strong> Tech that a fashion person would actually choose.</p>
+    `
+  },
+  {
+    id: 6,
+    date: 'Feb 20, 2026',
+    tag: 'Empire',
+    title: 'The name: why Îæm means what it means',
+    subtitle: 'A breakdown of the thinking behind the characters, the pronunciation, and the intention.',
+    img: 'images/brandtech2.jpg',
+    imgPlaceholder: 'Empire',
+    body: `
+      <p>People always ask about the name. The characters. The spelling. What it means, how you say it, why it looks like that.</p>
+      <p>The answer is intentional on every level.</p>
+      <h2>The characters</h2>
+      <p>The <strong>Î</strong> — a capital I with a circumflex — signals that this is not standard English. It belongs to multiple languages and to none of them completely.</p>
+      <p>The <strong>æ</strong> — an ash ligature — is one of the oldest characters in the Latin alphabet. It's ancient and modern simultaneously.</p>
+      <blockquote>Identity doesn't have to be legible to everyone. It has to be unmistakable to the right ones.</blockquote>
+      <div class="article-divider"></div>
+      <p><strong>The name was always right. We just needed to exist to prove it.</strong></p>
+    `
+  }
+];
+
+// ─── OPEN ARTICLE ─────────────────────────────────────────
+function openArticle(id) {
+  const article = articles.find(a => a.id === id);
+  if (!article) return;
+
+  document.getElementById('articleDate').textContent = article.date;
+  document.getElementById('articleTag').textContent = article.tag;
+  document.getElementById('articleTitle').textContent = article.title;
+  document.getElementById('articleSubtitle').textContent = article.subtitle;
+  document.getElementById('articleBody').innerHTML = article.body;
+
+  const heroImg = document.getElementById('articleHeroImg');
+  heroImg.innerHTML = article.img
+    ? `<img src="${article.img}" alt="${article.title}" loading="lazy"/>`
+    : `<div class="article-img-placeholder">${article.imgPlaceholder}</div>`;
+
+  const others = articles.filter(a => a.id !== id).slice(0, 2);
+  document.getElementById('articleNextGrid').innerHTML = others.map(a => `
+    <a href="#" class="article-next-card" onclick="openArticle(${a.id}); return false;">
+      <span class="anc-tag">${a.tag}</span>
+      <div class="anc-title">${a.title}</div>
+    </a>
+  `).join('');
+
+  showPage('article');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─── PRODUCTS — loaded from products.js ───────────────────
+const productMap = {};
+products.forEach(p => {
+  p.status = p.status || 'available';
+  p.season = p.season || 'ss2026';
+  p.featured = p.featured || false;
+  p.colours = p.colours || [];
+  productMap[p.id] = p;
+});
+
+// ─── SHOP PAGINATION ──────────────────────────────────────
+const SHOP_PER_PAGE = 6;
+let shopPage = 1;
+let shopFiltered = [...products];
+
+const activeFilters = {
+  category: 'all',
+  season: 'all',
+  status: 'all'
+};
+
+function buildProductCard(p) {
+  const hasColours = Array.isArray(p.colours) && p.colours.length >= 2;
+  const coloursAttr = hasColours
+    ? `data-colours='${JSON.stringify(p.colours).replace(/'/g, "&#39;")}'`
+    : '';
+  const tagHTML = p.tag ? `<div class="product-tag-overlay">${p.tag}</div>` : '';
+  const imgInner = hasColours
+    ? `<img class="pi-layer pi-layer-a" src="${p.colours[0].img}" alt="${p.name}" loading="lazy" />
+       <img class="pi-layer pi-layer-b" src="${p.colours[1].img}" alt="${p.name}" loading="lazy" />
+       ${tagHTML}
+       <div class="pi-swatches"></div>`
+    : `<img src="${p.img}" alt="${p.name}" loading="lazy" />${tagHTML}`;
+
+  const card = document.createElement('div');
+  card.className = 'product-card shop-product-card';
+  card.dataset.category = p.filter;
+  card.dataset.season = p.season;
+  card.dataset.status = p.status;
+  card.setAttribute('onclick', `openProduct('${p.id}')`);
+  card.innerHTML = `
+    <div class="product-img ${hasColours ? 'pi-swatch-host' : ''}" ${hasColours ? 'data-auto="true"' : ''} ${coloursAttr}>
+      ${imgInner}
+    </div>
+    <div class="product-info">
+      <div class="product-category">${p.category}</div>
+      <div class="product-name">${p.name}</div>
+      <button type="button" class="btn-view">View Details</button>
+    </div>`;
+  return card;
+}
+
+function renderShopPage() {
+  const grid = document.querySelector('#page-shop .shop-grid');
+  const loadMoreBtn = document.getElementById('shopLoadMore');
+  const countEl = document.getElementById('shopCount');
+  const noResults = document.getElementById('shopNoResults');
+  if (!grid) return;
+
+  const total = shopFiltered.length;
+  const visible = shopPage * SHOP_PER_PAGE;
+
+  grid.innerHTML = '';
+  shopFiltered.slice(0, visible).forEach(p => {
+    grid.appendChild(buildProductCard(p));
+  });
+
+  grid.querySelectorAll('.pi-swatch-host').forEach(initSwatchHost);
+
+  if (loadMoreBtn) {
+    if (visible < total) {
+      loadMoreBtn.style.display = 'flex';
+      const remaining = total - visible;
+      loadMoreBtn.textContent = `Load More — ${Math.min(SHOP_PER_PAGE, remaining)} more`;
+    } else {
+      loadMoreBtn.style.display = 'none';
+    }
+  }
+
+  if (countEl) {
+    countEl.textContent = `Showing ${Math.min(visible, total)} of ${total} piece${total !== 1 ? 's' : ''}`;
+  }
+
+  if (noResults) {
+    noResults.style.display = total === 0 ? 'block' : 'none';
+  }
+}
+
+function applyShopFilters() {
+  shopPage = 1;
+  shopFiltered = products.filter(p => {
+    const catMatch = activeFilters.category === 'all' || activeFilters.category === p.filter;
+    const seasonMatch = activeFilters.season === 'all' || activeFilters.season === p.season;
+    const statusMatch = activeFilters.status === 'all' || activeFilters.status === p.status;
+    return catMatch && seasonMatch && statusMatch;
+  });
+  renderShopPage();
+}
+
+function shopLoadMore() {
+  shopPage++;
+  renderShopPage();
+  const grid = document.querySelector('#page-shop .shop-grid');
+  const cards = grid.querySelectorAll('.product-card');
+  const firstNew = cards[(shopPage - 1) * SHOP_PER_PAGE];
+  if (firstNew) firstNew.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function buildShopGrid() {
+  const gridWrap = document.querySelector('.shop-grid-wrap');
+  if (!gridWrap) return;
+
+  if (!document.getElementById('shopLoadMore')) {
+    const controls = document.createElement('div');
+    controls.className = 'shop-controls';
+    controls.innerHTML = `
+      <p class="shop-count" id="shopCount"></p>
+      <div class="shop-no-results" id="shopNoResults" style="display:none;">No products match these filters.</div>
+      <button type="button" class="btn-load-more" id="shopLoadMore" onclick="shopLoadMore()" style="display:none;">
+        Load More
+      </button>`;
+    gridWrap.appendChild(controls);
+  }
+
+  document.querySelectorAll('.shop-sidebar .filter-item').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const group = this.dataset.group;
+      const filter = this.dataset.filter;
+      if (!group || !filter) return;
+
+      activeFilters[group] = filter;
+
+      document.querySelectorAll(`.shop-sidebar [data-group="${group}"]`).forEach(l => {
+        l.classList.remove('active');
+      });
+      this.classList.add('active');
+      applyShopFilters();
+    });
+  });
+
+  applyShopFilters();
+}
+
+// ─── RENDER HOME FEATURED ─────────────────────────────────
+function buildFeaturedGrid() {
+  const grid = document.querySelector('.featured-grid');
+  if (!grid) return;
+
+  const featured = products.filter(p => p.featured);
+  grid.innerHTML = '';
+
+  featured.forEach(p => {
+    const hasColours = Array.isArray(p.colours) && p.colours.length >= 2;
+    const coloursAttr = hasColours
+      ? `data-colours='${JSON.stringify(p.colours).replace(/'/g, "&#39;")}'`
+      : '';
+    const tagHTML = p.tag ? `<div class="product-tag-overlay">${p.tag}</div>` : '';
+    const imgInner = hasColours
+      ? `<img class="pi-layer pi-layer-a" src="${p.colours[0].img}" alt="${p.name}" loading="lazy" />
+         <img class="pi-layer pi-layer-b" src="${p.colours[1].img}" alt="${p.name}" loading="lazy" />
+         ${tagHTML}
+         <div class="pi-swatches"></div>`
+      : `<img src="${p.img}" alt="${p.name}" loading="lazy" />${tagHTML}`;
+
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.setAttribute('onclick', `openProduct('${p.id}')`);
+    card.innerHTML = `
+      <div class="product-img ${hasColours ? 'pi-swatch-host' : ''}" ${hasColours ? 'data-auto="true"' : ''} ${coloursAttr}>
+        ${imgInner}
+      </div>
+      <div class="product-info">
+        <div class="product-category">${p.category}</div>
+        <div class="product-name">${p.name}</div>
+        <button type="button" class="btn-view">View Details</button>
+      </div>`;
+    grid.appendChild(card);
+  });
+
+  document.querySelectorAll('.featured-grid .pi-swatch-host').forEach(initSwatchHost);
+}
+
+// ─── OPEN PRODUCT MODAL ───────────────────────────────────
+function openProduct(id) {
+  const p = productMap[id];
+  if (!p) return;
+
+  document.getElementById('modalImg').src = p.img;
+  document.getElementById('modalImg').alt = p.name;
+  document.getElementById('modalTag').textContent = p.tag || '';
+  document.getElementById('modalTag').style.display = p.tag ? 'block' : 'none';
+  document.getElementById('modalCategory').textContent = p.category;
+  document.getElementById('modalName').textContent = p.name;
+  document.getElementById('modalDesc').textContent = p.desc;
+  document.getElementById('modalType').textContent = p.type;
+  document.getElementById('modalPrice').textContent = p.price;
+
+  const coloursEl = document.getElementById('modalColours');
+  const coloursRow = document.getElementById('modalColoursRow');
+  const colours = Array.isArray(p.colours) ? p.colours : [];
+
+  if (colours.length > 0) {
+    coloursEl.innerHTML = colours.map((c, i) => `
+      <div
+        class="colour-swatch${i === 0 ? ' selected' : ''}"
+        style="background:${c.hex};"
+        title="${c.name}"
+        role="button"
+        aria-label="Select ${c.name} colour"
+        tabindex="0"
+        onclick="selectModalColour(this, '${id}', ${i})"
+        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectModalColour(this,'${id}',${i});}"
+      ></div>
+    `).join('');
+    coloursRow.style.display = 'flex';
+  } else {
+    coloursEl.innerHTML = '';
+    coloursRow.style.display = 'none';
+  }
+
+  document.getElementById('modalWhatsapp').href =
+    `https://wa.me/2348078970306?text=${p.whatsapp}`;
+
+  document.getElementById('productModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.querySelector('.modal-box').focus();
+}
+
+// ─── COLOUR SELECTION IN MODAL ────────────────────────────
+function selectModalColour(el, productId, colourIndex) {
+  const container = document.getElementById('modalColours');
+  container.querySelectorAll('.colour-swatch').forEach(s => s.classList.remove('selected'));
+  el.classList.add('selected');
+
+  const p = productMap[productId];
+  if (p && p.colours && p.colours[colourIndex]) {
+    const img = document.getElementById('modalImg');
+    img.style.opacity = '0';
+    setTimeout(() => {
+      img.src = p.colours[colourIndex].img;
+      img.style.opacity = '1';
+    }, 200);
+  }
+}
+
+// ─── CLOSE PRODUCT MODAL ──────────────────────────────────
+function closeModalBtn() {
+  document.getElementById('productModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('productModal')) closeModalBtn();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModalBtn();
+});
+
+// ─── PRODUCT IMAGE SWATCH SYSTEM ──────────────────────────
+function crossfadeTo(host, imgSrc) {
+  const a = host.querySelector('.pi-layer-a');
+  const b = host.querySelector('.pi-layer-b');
+  if (!a || !b) return;
+  const showingB = host.classList.contains('pi-show-b');
+
+  if (showingB) {
+    a.src = imgSrc;
+    const flip = () => host.classList.remove('pi-show-b');
+    a.onload = flip;
+    if (a.complete) flip();
+  } else {
+    b.src = imgSrc;
+    const flip = () => host.classList.add('pi-show-b');
+    b.onload = flip;
+    if (b.complete) flip();
+  }
+}
+
+function setActiveSwatch(host, index) {
+  host.querySelectorAll('.pi-swatch').forEach((s, i) => {
+    s.classList.toggle('pi-active', i === index);
+  });
+}
+
+function initSwatchHost(host) {
+  let colours;
+  try {
+    colours = JSON.parse(host.dataset.colours);
+  } catch (e) {
+    return;
+  }
+  if (!colours || colours.length < 2) return;
+
+  const swatchContainer = host.querySelector('.pi-swatches');
+  if (!swatchContainer) return;
+
+  let currentIndex = 0;
+  let autoTimer = null;
+  let isAuto = true;
+
+  colours.forEach((colour, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'pi-swatch' + (i === 0 ? ' pi-active' : '');
+    dot.style.background = colour.hex;
+    dot.dataset.name = colour.name;
+    dot.setAttribute('title', colour.name);
+    dot.setAttribute('role', 'button');
+    dot.setAttribute('aria-label', `Switch to ${colour.name}`);
+
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      stopAuto();
+      switchTo(i);
+    });
+
+    swatchContainer.appendChild(dot);
+  });
+
+  function switchTo(index) {
+    if (index === currentIndex) return;
+    currentIndex = index;
+    setActiveSwatch(host, currentIndex);
+    crossfadeTo(host, colours[currentIndex].img);
+  }
+
+  function startAuto() {
+    isAuto = true;
+    host.dataset.auto = 'true';
+    autoTimer = setInterval(() => {
+      const next = (currentIndex + 1) % colours.length;
+      currentIndex = next;
+      setActiveSwatch(host, currentIndex);
+      crossfadeTo(host, colours[currentIndex].img);
+    }, 3500);
+  }
+
+  function stopAuto() {
+    isAuto = false;
+    host.dataset.auto = 'false';
+    clearInterval(autoTimer);
+  }
+
+  host.addEventListener('mouseenter', () => { if (isAuto) clearInterval(autoTimer); });
+  host.addEventListener('mouseleave', () => { if (isAuto) startAuto(); });
+
+  startAuto();
+}
+
+// ─── ORDER FORM COLOUR SELECTION ──────────────────────────
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('colour-option')) {
+    document.querySelectorAll('.colour-option').forEach(el => {
+      el.classList.remove('selected');
+    });
+    e.target.classList.add('selected');
+    const selectedColour = e.target.dataset.colour;
+    document.getElementById('selectedColour').value = selectedColour;
+  }
+});
+
+// ─── ORDER FORM SUBMISSION HANDLING ───────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+  const orderForm = document.getElementById('orderForm');
+  if (orderForm) {
+    orderForm.addEventListener('submit', function(e) {
+      console.log('Order enquiry submitted:', {
+        name: document.getElementById('fullName').value,
+        whatsapp: document.getElementById('whatsapp').value,
+        product: document.getElementById('productInterest').value,
+        colour: document.getElementById('selectedColour').value,
+        source: document.getElementById('source').value,
+        notes: document.getElementById('notes').value
+      });
+    });
+  }
+});
+
+// ─── ORDER STATUS SYSTEM (Google Sheets Powered) ────────
+const ORDER_API_URL = 'https://script.google.com/macros/s/AKfycbzaPpUIhBFVou4dHQsom3bn2_bM45a_h9u91PFh0OFWPyHvOOV_XqseczNEHJGayBE-hA/exec?key=iaem-2026-secret';
+
+async function checkOrderStatus(event) {
+  event.preventDefault();
+  
+  const orderId = document.getElementById('orderId').value.trim().toUpperCase();
+  const result = document.getElementById('orderResult');
+  const button = event.target.querySelector('button');
+  
+  button.textContent = 'Checking...';
+  button.disabled = true;
+  
+  try {
+    const response = await fetch(`${ORDER_API_URL}&id=${orderId}`);
+    const data = await response.json();
+    
+    if (data.error) {
+      document.getElementById('resultOrderId').textContent = 'Order not found';
+      document.getElementById('resultStatus').textContent = 'Please check your Order ID';
+      document.getElementById('resultStatus').className = 'order-status-badge status-enquiry';
+      document.getElementById('resultDetails').textContent = 'If you believe this is an error, contact us on WhatsApp.';
+    } else {
+      document.getElementById('resultOrderId').textContent = 'Order ' + data.orderId;
+      document.getElementById('resultStatus').textContent = data.status;
+      
+      // Show customer name
+      const customerNameEl = document.getElementById('resultCustomerName');
+      if (customerNameEl && data.customerName) {
+        const firstName = data.customerName.trim().split(' ')[0];
+        customerNameEl.textContent = 'Hi, ' + firstName + '!';
+        customerNameEl.style.display = 'block';
       }
-      .no-margin-bottom {
-        margin-bottom: 0;
+      
+      // Set status class
+      let statusClass = 'status-enquiry';
+      const statusLower = (data.status || '').toLowerCase();
+      switch(statusLower) {
+        case 'confirmed': statusClass = 'status-confirmed'; break;
+        case 'in production': statusClass = 'status-production'; break;
+        case 'complete': statusClass = 'status-complete'; break;
+        case 'shipped': statusClass = 'status-shipped'; break;
+        case 'out for delivery': statusClass = 'status-out-for-delivery'; break;
+        case 'delivered': statusClass = 'status-delivered'; break;
+        case 'enquiry': statusClass = 'status-enquiry'; break;
       }
-      .footer-bottom-centered {
-        max-width: 1200px;
-        margin: 0 auto;
+      document.getElementById('resultStatus').className = 'order-status-badge ' + statusClass;
+      
+      // Show product image
+      const productDisplay = document.getElementById('orderProductDisplay');
+      const productImg = document.getElementById('orderProductImg');
+      const productName = document.getElementById('orderProductName');
+      const productColour = document.getElementById('orderProductColour');
+      
+      if (productDisplay && data.product) {
+        const matchedProduct = Object.values(productMap).find(p => 
+          p.name.toLowerCase().includes(data.product.toLowerCase())
+        );
+        if (matchedProduct) {
+          let colourImage = matchedProduct.img;
+          const customerColour = data.colour || '';
+          
+          if (customerColour && matchedProduct.colours && matchedProduct.colours.length > 0) {
+            const matchedColour = matchedProduct.colours.find(c => 
+              c.name.toLowerCase().includes(customerColour.toLowerCase())
+            );
+            if (matchedColour) {
+              colourImage = matchedColour.img;
+            }
+          }
+          
+          productImg.src = colourImage;
+          productName.textContent = matchedProduct.name;
+          productColour.textContent = 'Colour: ' + (data.colour || 'Not specified');
+          productDisplay.style.display = 'flex';
+        } else {
+          productDisplay.style.display = 'none';
+        }
       }
-      .btn-fullwidth {
-        width: 100%;
-        margin-top: 8px;
-        text-align: center;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="splash" id="splash">
-      <div class="splash-left" id="splashLeft"></div>
-      <div class="splash-right" id="splashRight"></div>
-      <div class="splash-content" id="splashContent">
-        <div class="splash-logo">
-          <img src="images/favicon.png" alt="Îæm" class="splash-logo-img" />
-        </div>
-        <div class="splash-tagline">Where the algorithm meets the atelier.</div>
-        <div class="splash-bar-wrap">
-          <div class="splash-bar" id="splashBar"></div>
-        </div>
-        <div class="splash-percent" id="splashPercent">0%</div>
-      </div>
-    </div>
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-ring" id="cursorRing"></div>
-
-    <!-- Install App Button -->
-    <button
-      id="installBtn"
-      onclick="installApp()"
-      style="
-        display: none;
-        position: fixed;
-        bottom: 24px;
-        right: 24px;
-        z-index: 9998;
-        background: var(--accent);
-        color: #f5e9e2;
-        border: none;
-        padding: 14px 22px;
-        border-radius: 2px;
-        font-family: var(--font-s);
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        cursor: pointer;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-      "
-    >
-      Install App
-    </button>
-    <nav>
-      <a
-        href="#"
-        class="nav-logo"
-        onclick="
-          showPage('home');
-          return false;
-        "
-      >
-        <img src="images/favicon.png" alt="Îæm" class="nav-logo-img" />
-      </a>
-      <ul class="nav-links">
-        <li>
-          <a
-            href="#"
-            onclick="
-              showPage('home');
-              return false;
-            "
-            >Home</a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            onclick="
-              showPage('shop');
-              return false;
-            "
-            >Shop</a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            onclick="
-              showPage('about');
-              return false;
-            "
-            >About</a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            onclick="
-              showPage('journal');
-              return false;
-            "
-            >Journal</a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            onclick="
-              showPage('how-it-works');
-              return false;
-            "
-            >How It Works</a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            onclick="
-              showPage('size-guide');
-              return false;
-            "
-            >Size Guide</a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            onclick="
-              showPage('order-status');
-              return false;
-            "
-            >Track Order</a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            onclick="
-              showPage('contact');
-              return false;
-            "
-            >Contact</a
-          >
-        </li>
-      </ul>
-      <button
-        type="button"
-        class="hamburger"
-        id="hamburger"
-        onclick="toggleMenu()"
-        aria-label="Menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <button type="button" class="theme-toggle" onclick="toggleTheme()">
-        <div class="toggle-track"><div class="toggle-thumb"></div></div>
-        <span id="themeLabel">Night</span>
-      </button>
-    </nav>
-
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#" onclick="navTo('home')">Home</a>
-      <a href="#" onclick="navTo('shop')">Shop</a>
-      <a href="#" onclick="navTo('about')">About</a>
-      <a href="#" onclick="navTo('journal')">Journal</a>
-      <a href="#" onclick="navTo('how-it-works')">How It Works</a>
-      <a href="#" onclick="navTo('size-guide')">Size Guide</a>
-      <a href="#" onclick="navTo('order-status')">Track Order</a>
-      <a href="#" onclick="navTo('contact')">Contact</a>
-      <button class="mobile-theme-toggle" onclick="toggleTheme()">
-        <div class="toggle-track"><div class="toggle-thumb"></div></div>
-        <span id="themeLabelMobile">Night</span>
-      </button>
-    </div>
-
-    <!-- ═══ HOME PAGE ═══ -->
-    <div class="page active" id="page-home">
-      <section class="hero">
-        <div class="hero-left">
-          <p class="hero-eyebrow">Tech · Fashion</p>
-          <h1 class="hero-name"><em>Îæm</em></h1>
-          <p class="hero-tagline">Where code meets cloth.</p>
-          <p class="hero-desc">
-            A brand built at the intersection of silicon and silk — for those
-            who refuse to separate how they think from how they show up in the
-            world.
-          </p>
-          <div class="hero-ctas">
-            <a
-              href="#"
-              class="btn-primary"
-              onclick="
-                showPage('shop');
-                return false;
-              "
-              >Shop Collection</a
-            >
-            <a
-              href="#"
-              class="btn-secondary"
-              onclick="
-                showPage('about');
-                return false;
-              "
-              >Our Story</a
-            >
-          </div>
-          <div class="hero-meta-divider"></div>
-          <div class="hero-meta">
-            <div class="hero-meta-item">
-              <span class="hero-meta-num">SS26</span>
-              <span class="hero-meta-label">Current Season</span>
-            </div>
-            <div class="hero-meta-item">
-              <span class="hero-meta-num">∞</span>
-              <span class="hero-meta-label">Possibilities</span>
-            </div>
-            <div class="hero-meta-item">
-              <span class="hero-meta-num">01</span>
-              <span class="hero-meta-label">Brand. One Vision.</span>
-            </div>
-          </div>
-        </div>
-        <div class="hero-right">
-          <div class="lookbook-grid">
-            <div class="lb-item lb-1">
-              <div class="lb-deco lb-deco-1"></div>
-              <div class="lb-content">
-                <span class="lb-tag">Tech</span>
-                <div class="lb-name">The Interface<br />Collection</div>
-              </div>
-            </div>
-            <div class="lb-item lb-2">
-              <div class="lb-deco lb-deco-2"></div>
-              <div class="lb-content">
-                <span class="lb-tag">Fashion</span>
-                <div class="lb-name">Silk<br />Circuits</div>
-              </div>
-            </div>
-            <div class="lb-item lb-3">
-              <div class="lb-content">
-                <span class="lb-tag">New</span>
-                <div class="lb-name">Empire<br />Jacket</div>
-              </div>
-            </div>
-            <div class="lb-item lb-4">
-              <div class="lb-content">
-                <span class="lb-tag">Coming</span>
-                <div class="lb-name">The Drop<br />SS26</div>
-              </div>
-            </div>
-          </div>
-          <div class="hero-right-wm">Îæm</div>
-        </div>
-        <div class="scroll-hint">Scroll to explore</div>
-      </section>
-
-      <div class="intro-strip">
-        <div class="strip-inner">
-          <span class="strip-item">Tech · Fashion · Empire</span
-          ><span class="strip-dot"></span>
-          <span class="strip-item">Where Silicon Meets Silk</span
-          ><span class="strip-dot"></span>
-          <span class="strip-item">Premium. Fearless. Iconic.</span
-          ><span class="strip-dot"></span>
-          <span class="strip-item">Îæm — SS 2026</span
-          ><span class="strip-dot"></span>
-          <span class="strip-item">Built at the Edge</span
-          ><span class="strip-dot"></span>
-          <span class="strip-item">Precision · Duality · Authority</span
-          ><span class="strip-dot"></span>
-          <span class="strip-item">Tech · Fashion · Empire</span
-          ><span class="strip-dot"></span>
-          <span class="strip-item">Where Silicon Meets Silk</span
-          ><span class="strip-dot"></span>
-          <span class="strip-item">Premium. Fearless. Iconic.</span
-          ><span class="strip-dot"></span>
-          <span class="strip-item">Îæm — SS 2026</span
-          ><span class="strip-dot"></span>
-          <span class="strip-item">Built at the Edge</span
-          ><span class="strip-dot"></span>
-          <span class="strip-item">Precision · Duality · Authority</span
-          ><span class="strip-dot"></span>
-        </div>
-      </div>
-
-      <div class="about-teaser">
-        <div>
-          <p class="at-label">Who We Are</p>
-          <h2 class="at-headline">Not a brand.<br />A <em>statement.</em></h2>
-          <p class="at-body">
-            Îæm was born from the refusal to choose between two worlds. The
-            coder who dresses sharply. The designer who thinks in systems. The
-            founder who walks into any room and owns it before saying a word.
-          </p>
-          <a
-            href="#"
-            class="btn-secondary"
-            onclick="
-              showPage('about');
-              return false;
-            "
-            >Read Our Story</a
-          >
-        </div>
-        <div class="at-right">
-          <div class="at-card">
-            <div class="at-card-num">01</div>
-            <div class="at-card-label">Precision</div>
-            <div class="at-card-desc">
-              Every decision is intentional. Every detail earns its place.
-            </div>
-          </div>
-          <div class="at-card">
-            <div class="at-card-num">02</div>
-            <div class="at-card-label">Duality</div>
-            <div class="at-card-desc">
-              Two languages. One conversation. Infinite expression.
-            </div>
-          </div>
-          <div class="at-card">
-            <div class="at-card-num">03</div>
-            <div class="at-card-label">Authority</div>
-            <div class="at-card-desc">
-              We set the moment. We don't wait for permission.
-            </div>
-          </div>
-          <div class="at-card">
-            <div class="at-card-num">04</div>
-            <div class="at-card-label">Warmth</div>
-            <div class="at-card-desc">
-              Premium doesn't mean cold. It means considered.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="featured">
-        <div class="featured-header">
-          <h2 class="featured-title">Featured <em>Drops</em></h2>
-          <a
-            href="#"
-            class="btn-secondary"
-            onclick="
-              showPage('shop');
-              return false;
-            "
-            >View All</a
-          >
-        </div>
-
-        <div class="featured-grid">
-          <!-- products rendered by script.js from products.js -->
-        </div>
-      </div>
-
-      <div class="manifesto">
-        <p class="manifesto-quote">
-          "The most powerful thing you can wear is the <em>certainty</em> that
-          you belong in every room."
-        </p>
-        <p class="manifesto-attr">Îæm Manifesto — 2026</p>
-      </div>
-
-      <div class="journal-teaser">
-        <div class="jt-header">
-          <h2 class="section-title">From the <em>Journal</em></h2>
-          <a
-            href="#"
-            class="btn-secondary"
-            onclick="
-              showPage('journal');
-              return false;
-            "
-            >All Posts</a
-          >
-        </div>
-        <div class="journal-grid">
-          <div class="journal-card">
-            <div class="jc-date">Apr 28, 2026</div>
-            <span class="jc-tag">Tech × Fashion</span>
-            <h3 class="jc-title">
-              Why the most stylish people I know all think like engineers
-            </h3>
-            <p class="jc-excerpt">
-              There's a pattern I keep noticing. The people with the sharpest
-              aesthetic instincts are the same ones who obsess over systems,
-              efficiency, and elegant solutions.
-            </p>
-            <a
-              href="#"
-              class="jc-read"
-              onclick="
-                openArticle(1);
-                return false;
-              "
-              >Read More</a
-            >
-          </div>
-          <div class="journal-card">
-            <div class="jc-date">Apr 14, 2026</div>
-            <span class="jc-tag">Brand</span>
-            <h3 class="jc-title">Building in public before the doors open</h3>
-            <p class="jc-excerpt">
-              Why I started Îæm before I had a single product, a team, or an
-              office.
-            </p>
-            <a
-              href="#"
-              class="jc-read"
-              onclick="
-                openArticle(2);
-                return false;
-              "
-              >Read More</a
-            >
-          </div>
-          <div class="journal-card">
-            <div class="jc-date">Mar 30, 2026</div>
-            <span class="jc-tag">Empire</span>
-            <h3 class="jc-title">The campus is the first market</h3>
-            <p class="jc-excerpt">
-              University isn't just where you learn. It's your first audience
-              and your first real test of brand.
-            </p>
-            <a
-              href="#"
-              class="jc-read"
-              onclick="
-                openArticle(3);
-                return false;
-              "
-              >Read More</a
-            >
-          </div>
-        </div>
-      </div>
-
-      <footer>
-        <div class="footer-grid">
-          <div>
-            <div class="footer-brand-name"><em>Îæm</em></div>
-            <p class="footer-brand-desc">
-              A tech + fashion brand built for those who operate at the edge.
-              Premium. Fearless. Iconic.
-            </p>
-          </div>
-          <div>
-            <div class="footer-col-title">Navigate</div>
-            <ul class="footer-links">
-              <li>
-                <a
-                  href="#"
-                  onclick="
-                    showPage('home');
-                    return false;
-                  "
-                  >Home</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onclick="
-                    showPage('shop');
-                    return false;
-                  "
-                  >Shop</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onclick="
-                    showPage('about');
-                    return false;
-                  "
-                  >About</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onclick="
-                    showPage('journal');
-                    return false;
-                  "
-                  >Journal</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onclick="
-                    showPage('how-it-works');
-                    return false;
-                  "
-                  >How It Works</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onclick="
-                    showPage('size-guide');
-                    return false;
-                  "
-                  >Size Guide</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onclick="
-                    showPage('order-status');
-                    return false;
-                  "
-                  >Track Order</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div>
-            <div class="footer-col-title">Connect</div>
-            <ul class="footer-links">
-              <li>
-                <a
-                  href="https://www.instagram.com/iaemhq?igsh=MTM0cWx3YXdqaW90eQ=="
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Instagram</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://www.facebook.com/share/14YTqHKTxiT/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Facebook</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://www.tiktok.com/@iaemhq?_r=1&_t=ZS-96sysF5bQn6"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >TikTok</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onclick="
-                    showPage('contact');
-                    return false;
-                  "
-                  >Contact</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div>
-            <div class="footer-col-title">Brand</div>
-            <ul class="footer-links">
-              <li><a href="#">Press Kit</a></li>
-              <li><a href="T and C.html">Terms &amp; Conditions</a></li>
-              <li><a href="P and P.html">Privacy Policy</a></li>
-              <li>
-                <a
-                  href="#"
-                  onclick="
-                    showPage('contact');
-                    return false;
-                  "
-                  >Collaborations</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onclick="
-                    showPage('about');
-                    return false;
-                  "
-                  >Brand Values</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <span class="footer-copy">© 2026 Îæm. All rights reserved.</span>
-          <span class="footer-copy">// tech.fashion.empire</span>
-        </div>
-      </footer>
-    </div>
-
-    <!-- ═══ SHOP PAGE ═══ -->
-    <div class="page" id="page-shop">
-      <div class="page-header">
-        <p class="page-header-eyebrow">SS 2026 Collection</p>
-        <h1 class="page-header-title">The <em>Shop</em></h1>
-      </div>
-      <div class="shop-layout">
-        <div class="shop-sidebar">
-          <div class="sidebar-label">Category</div>
-          <a
-            href="#"
-            class="filter-item active"
-            data-group="category"
-            data-filter="all"
-            >All</a
-          >
-          <a
-            href="#"
-            class="filter-item"
-            data-group="category"
-            data-filter="fashion"
-            >Fashion</a
-          >
-          <a
-            href="#"
-            class="filter-item"
-            data-group="category"
-            data-filter="tech"
-            >Tech</a
-          >
-          <a
-            href="#"
-            class="filter-item"
-            data-group="category"
-            data-filter="accessories"
-            >Accessories</a
-          >
-          <a
-            href="#"
-            class="filter-item"
-            data-group="category"
-            data-filter="wearables"
-            >Wearables</a
-          >
-
-          <div class="sidebar-label">Season</div>
-          <a
-            href="#"
-            class="filter-item active"
-            data-group="season"
-            data-filter="all"
-            >SS 2026</a
-          >
-          <a
-            href="#"
-            class="filter-item"
-            data-group="season"
-            data-filter="archive"
-            >Archive</a
-          >
-
-          <div class="sidebar-label">Status</div>
-          <a
-            href="#"
-            class="filter-item active"
-            data-group="status"
-            data-filter="all"
-            >All</a
-          >
-          <a
-            href="#"
-            class="filter-item"
-            data-group="status"
-            data-filter="available"
-            >Available</a
-          >
-          <a
-            href="#"
-            class="filter-item"
-            data-group="status"
-            data-filter="coming-soon"
-            >Coming Soon</a
-          >
-        </div>
-
-        <div class="shop-grid-wrap">
-          <div class="shop-grid">
-            <!-- products rendered by script.js from products.js -->
-          </div>
-        </div>
-
-        <div class="shop-detail-panel" id="shopDetailPanel">
-          <div class="sdp-empty" id="sdpEmpty">
-            <div class="sdp-empty-icon">Îæm</div>
-            <p class="sdp-empty-text">Select a product to view details</p>
-          </div>
-          <div class="sdp-content" id="sdpContent" style="display: none">
-            <div class="sdp-img-wrap">
-              <img src="" alt="" id="sdpImg" class="sdp-img" />
-              <div class="sdp-tag" id="sdpTag"></div>
-            </div>
-            <div class="sdp-info">
-              <p class="sdp-category" id="sdpCategory"></p>
-              <h2 class="sdp-name" id="sdpName"></h2>
-              <div class="sdp-divider"></div>
-              <p class="sdp-desc" id="sdpDesc"></p>
-              <div class="sdp-details">
-                <div class="sdp-detail-item">
-                  <span class="sdp-detail-label">Type</span>
-                  <span class="sdp-detail-val" id="sdpType"></span>
-                </div>
-                <div class="sdp-detail-item">
-                  <span class="sdp-detail-label">Choose Colour</span>
-                  <div class="sdp-colours" id="sdpColours"></div>
-                </div>
-                <div class="sdp-detail-item">
-                  <span class="sdp-detail-label">Sizing</span>
-                  <span class="sdp-detail-val"
-                    >Made to your exact measurements — no standard sizing. We
-                    send a simple measurement guide on order.</span
-                  >
-                </div>
-                <div class="sdp-detail-item">
-                  <span class="sdp-detail-label">Production</span>
-                  <span class="sdp-detail-val"
-                    >Made to order — crafted specifically for you</span
-                  >
-                </div>
-                <div class="sdp-detail-item">
-                  <span class="sdp-detail-label">Delivery</span>
-                  <span class="sdp-detail-val"
-                    >7 to 21 days from measurement confirmation</span
-                  >
-                </div>
-              </div>
-              <div class="sdp-price-row">
-                <span class="sdp-price-label">Price</span>
-                <span class="sdp-price-val" id="sdpPrice"></span>
-              </div>
-              <a
-                href="#"
-                class="btn-whatsapp"
-                id="sdpWhatsapp"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Order via WhatsApp
-              </a>
-              <p class="sdp-note">
-                We'll confirm your size, measurements, and delivery details
-                personally.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <footer>
-        <div class="footer-bottom footer-bottom-centered">
-          <span class="footer-copy"
-            >© 2026 Îæm. All Rights Reserved. Part Of Cherychoicy Classic
-            Communication</span
-          >
-          <span class="footer-copy">// tech.fashion</span>
-        </div>
-      </footer>
-    </div>
-
-    <!-- ═══ ABOUT PAGE ═══ -->
-    <div class="page" id="page-about">
-      <div class="about-layout">
-        <div class="about-hero">
-          <div class="about-hero-left">
-            <p class="page-header-eyebrow">Who We Are</p>
-            <h1 class="page-header-title page-header-title-large">
-              Built at the <em>edge.</em>
-            </h1>
-            <p class="at-body no-margin-bottom">
-              Îæm is not a fashion brand that dabbles in tech. It is not a tech
-              brand that makes merch. It is something that didn't have a name
-              before — so we named it ourselves.
-            </p>
-          </div>
-          <div class="about-hero-right">
-            <div class="about-portrait-placeholder">
-              <div class="app-initials">Îæm</div>
-            </div>
-          </div>
-        </div>
-        <div class="about-pillars">
-          <div class="pillar">
-            <div class="pillar-num">01</div>
-            <div class="pillar-title">Precision</div>
-            <div class="pillar-desc">
-              Every pixel, every stitch, every line of code is intentional. No
-              noise — only decisions.
-            </div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-num">02</div>
-            <div class="pillar-title">Duality</div>
-            <div class="pillar-desc">
-              Tech and fashion are the same conversation spoken in different
-              languages. We are fluent in both.
-            </div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-num">03</div>
-            <div class="pillar-title">Authority</div>
-            <div class="pillar-desc">
-              We define the moment and move on before the crowd arrives.
-            </div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-num">04</div>
-            <div class="pillar-title">Warmth</div>
-            <div class="pillar-desc">
-              Coffee brown grounds everything. Premium is not cold — it is
-              considered, layered, and rich.
-            </div>
-          </div>
-        </div>
-        <div class="about-body">
-          <div class="about-body-label">The Story</div>
-          <div class="about-body-text">
-            <p>
-              Îæm started with a refusal. A refusal to pick a lane. To be the
-              developer who dresses like a developer. To be the fashion person
-              who doesn't understand systems. To be told that two things can't
-              live inside one identity.
-            </p>
-            <p>
-              <strong>The name itself is a statement.</strong> Îæm — the
-              characters are intentional, the spelling is intentional, the
-              pronunciation is yours to decide. Identity doesn't have to be
-              legible to everyone. It has to be unmistakable to the right ones.
-            </p>
-            <p>
-              The brand was conceived before a single product existed. Because a
-              real empire is built on a foundation first — on clarity of vision,
-              on the discipline of aesthetics, on understanding who you are
-              before you ask anyone else to believe in you.
-            </p>
-            <p>
-              <strong>We are building in public.</strong> Every decision, every
-              drop, every journal entry is part of the record. The process is
-              the brand. The work is the proof.
-            </p>
-            <p>
-              If you're reading this and you feel it — the duality, the
-              ambition, the refusal to be one thing — then you already
-              understand what Îæm is. You've probably always understood it. You
-              just didn't have a name for it yet.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══ JOURNAL PAGE ═══ -->
-    <div class="page" id="page-journal">
-      <div class="page-header">
-        <p class="page-header-eyebrow">Thoughts from the intersection</p>
-        <h1 class="page-header-title">The <em>Journal</em></h1>
-      </div>
-      <div class="journal-layout">
-        <div class="journal-full-grid">
-          <div class="jf-card">
-            <div class="jf-img">
-              <img src="images/fashiontech.jpg" alt="FashionTech" />
-            </div>
-            <div class="jf-body">
-              <div class="jc-date">Apr 28, 2026</div>
-              <span class="jc-tag">Tech × Fashion</span>
-              <h3 class="jc-title">
-                Why the most stylish people I know all think like engineers
-              </h3>
-              <p class="jc-excerpt">
-                There's a pattern I keep noticing. The people with the sharpest
-                aesthetic instincts obsess over systems.
-              </p>
-              <a
-                href="#"
-                class="jc-read"
-                onclick="
-                  openArticle(1);
-                  return false;
-                "
-                >Read More</a
-              >
-            </div>
-          </div>
-          <div class="jf-card">
-            <div class="jf-img">
-              <img src="images/brandtech.jpg" alt="BrandTech" />
-            </div>
-            <div class="jf-body">
-              <div class="jc-date">Apr 14, 2026</div>
-              <span class="jc-tag">Brand</span>
-              <h3 class="jc-title">Building in public before the doors open</h3>
-              <p class="jc-excerpt">
-                Why I started Îæm before I had a product, a team, or an office.
-              </p>
-              <a
-                href="#"
-                class="jc-read"
-                onclick="
-                  openArticle(2);
-                  return false;
-                "
-                >Read More</a
-              >
-            </div>
-          </div>
-          <div class="jf-card">
-            <div class="jf-img">
-              <img src="images/empiretech.jpg" alt="EmpireTech" />
-            </div>
-            <div class="jf-body">
-              <div class="jc-date">Mar 30, 2026</div>
-              <span class="jc-tag">Empire</span>
-              <h3 class="jc-title">The campus is the first market</h3>
-              <p class="jc-excerpt">
-                University isn't just where you learn. It's your first audience
-                and first real test of brand.
-              </p>
-              <a
-                href="#"
-                class="jc-read"
-                onclick="
-                  openArticle(3);
-                  return false;
-                "
-                >Read More</a
-              >
-            </div>
-          </div>
-          <div class="jf-card">
-            <div class="jf-img">
-              <img src="images/colortech.jpg" alt="ColorTech" />
-            </div>
-            <div class="jf-body">
-              <div class="jc-date">Mar 15, 2026</div>
-              <span class="jc-tag">Fashion</span>
-              <h3 class="jc-title">
-                Coffee brown and why warm colours own the room
-              </h3>
-              <p class="jc-excerpt">
-                Colour psychology, brand identity, and why I chose a shade most
-                brands are afraid of.
-              </p>
-              <a
-                href="#"
-                class="jc-read"
-                onclick="
-                  openArticle(4);
-                  return false;
-                "
-                >Read More</a
-              >
-            </div>
-          </div>
-          <div class="jf-card">
-            <div class="jf-img">
-              <img src="images/fashiontech2.jpg" alt="FashionTech" />
-            </div>
-            <div class="jf-body">
-              <div class="jc-date">Mar 01, 2026</div>
-              <span class="jc-tag">Tech</span>
-              <h3 class="jc-title">
-                What wearable tech gets wrong about fashion people
-              </h3>
-              <p class="jc-excerpt">
-                Tech companies keep making wearables for engineers. Nobody asked
-                them to.
-              </p>
-              <a
-                href="#"
-                class="jc-read"
-                onclick="
-                  openArticle(5);
-                  return false;
-                "
-                >Read More</a
-              >
-            </div>
-          </div>
-          <div class="jf-card">
-            <div class="jf-img">
-              <img src="images/brandtech2.jpg" alt="ÎæmTech" />
-            </div>
-            <div class="jf-body">
-              <div class="jc-date">Feb 20, 2026</div>
-              <span class="jc-tag">Empire</span>
-              <h3 class="jc-title">The name: why Îæm means what it means</h3>
-              <p class="jc-excerpt">
-                A breakdown of the thinking behind the characters, the
-                pronunciation, and the intention.
-              </p>
-              <a
-                href="#"
-                class="jc-read"
-                onclick="
-                  openArticle(6);
-                  return false;
-                "
-                >Read More</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══ ARTICLE PAGE ═══ -->
-    <div class="page" id="page-article">
-      <div class="article-layout">
-        <div class="article-back">
-          <a
-            href="#"
-            onclick="
-              showPage('journal');
-              return false;
-            "
-            >← Back to Journal</a
-          >
-        </div>
-        <div class="article-header">
-          <div class="article-meta-row">
-            <span class="article-date" id="articleDate"></span>
-            <span class="article-tag" id="articleTag"></span>
-          </div>
-          <h1 class="article-title" id="articleTitle"></h1>
-          <p class="article-subtitle" id="articleSubtitle"></p>
-        </div>
-        <div class="article-hero-img" id="articleHeroImg"></div>
-        <div class="article-body" id="articleBody"></div>
-        <div class="article-footer">
-          <div class="article-footer-label">Continue Reading</div>
-          <div class="article-next-grid" id="articleNextGrid"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══ HOW IT WORKS PAGE ═══ -->
-    <div class="page" id="page-how-it-works">
-      <div class="page-header">
-        <p class="page-header-eyebrow">The Îæm Process</p>
-        <h1 class="page-header-title">How It <em>Works</em></h1>
-      </div>
-
-      <div class="how-it-works-container">
-        <div class="hiw-step">
-          <div class="hiw-num">01</div>
-          <div class="hiw-content">
-            <h3 class="hiw-title">Browse & Enquire</h3>
-            <p class="hiw-desc">
-              Explore the collection. When something speaks to you, submit an
-              enquiry or message us directly on WhatsApp. Tell us what you're
-              interested in and any preferences you have.
-            </p>
-          </div>
-        </div>
-
-        <div class="hiw-step">
-          <div class="hiw-num">02</div>
-          <div class="hiw-content">
-            <h3 class="hiw-title">Measurements & Confirmation</h3>
-            <p class="hiw-desc">
-              We send you a simple measurement guide. You provide your
-              measurements, we confirm the details, agree on pricing, and your
-              order is confirmed.
-            </p>
-          </div>
-        </div>
-
-        <div class="hiw-step">
-          <div class="hiw-num">03</div>
-          <div class="hiw-content">
-            <h3 class="hiw-title">Made to Order</h3>
-            <p class="hiw-desc">
-              Your piece is crafted specifically for you. This isn't mass
-              production — it's precision work. We keep you updated throughout
-              the process.
-            </p>
-          </div>
-        </div>
-
-        <div class="hiw-step">
-          <div class="hiw-num">04</div>
-          <div class="hiw-content">
-            <h3 class="hiw-title">Quality Check & Delivery</h3>
-            <p class="hiw-desc">
-              Every piece goes through a final quality check before delivery. We
-              ensure it meets the Îæm standard — then it's on its way to you.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="hiw-cta">
-        <a
-          href="#"
-          class="btn-primary"
-          onclick="
-            showPage('shop');
-            return false;
-          "
-          >Browse Collection</a
-        >
-        <a
-          href="#"
-          class="btn-secondary"
-          onclick="
-            showPage('contact');
-            return false;
-          "
-          >Start an Enquiry</a
-        >
-      </div>
-    </div>
-
-    <!-- ═══ SIZE GUIDE PAGE ═══ -->
-    <div class="page" id="page-size-guide">
-      <div class="page-header">
-        <p class="page-header-eyebrow">Made to Measure</p>
-        <h1 class="page-header-title">The <em>Size Guide</em></h1>
-        <p class="page-header-desc">
-          Îæm doesn't do standard sizing. We do <em>your</em> sizing. Here's how
-          to measure yourself correctly so your piece fits perfectly.
-        </p>
-      </div>
-
-      <div class="size-guide-container">
-        <div class="sg-section">
-          <h2 class="sg-section-title">Why <em>Measure?</em></h2>
-          <div class="sg-why-grid">
-            <div class="sg-why-card">
-              <div class="sg-why-num">01</div>
-              <h3 class="sg-why-title">Perfect Fit</h3>
-              <p class="sg-why-desc">
-                Every body is different. Standard sizes are averages. Your piece
-                should fit YOUR body, not a statistical average.
-              </p>
-            </div>
-            <div class="sg-why-card">
-              <div class="sg-why-num">02</div>
-              <h3 class="sg-why-title">No Returns Needed</h3>
-              <p class="sg-why-desc">
-                When it's made for you from the start, you don't need to return
-                it because it doesn't fit. It already does.
-              </p>
-            </div>
-            <div class="sg-why-card">
-              <div class="sg-why-num">03</div>
-              <h3 class="sg-why-title">Lasts Longer</h3>
-              <p class="sg-why-desc">
-                Well-fitted clothing wears better. No pulling, no stress points,
-                no discomfort. Just clothes that work with your body.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="sg-section">
-          <h2 class="sg-section-title">How to <em>Measure</em></h2>
-          <p class="sg-section-desc">
-            You'll need a soft measuring tape. If you don't have one, use a
-            string and measure it against a ruler.
-          </p>
-
-          <div class="sg-measurements-grid">
-            <div class="sg-measure-card">
-              <div class="sg-measure-icon">B</div>
-              <h3 class="sg-measure-title">Bust</h3>
-              <p class="sg-measure-desc">
-                Measure around the fullest part of your bust. Keep the tape
-                parallel to the floor and relaxed — don't pull tight.
-              </p>
-              <div class="sg-measure-tip">
-                Tip: Wear a non-padded bra for accuracy
-              </div>
-            </div>
-
-            <div class="sg-measure-card">
-              <div class="sg-measure-icon">W</div>
-              <h3 class="sg-measure-title">Waist</h3>
-              <p class="sg-measure-desc">
-                Find your natural waist — the narrowest part, usually above your
-                belly button. Measure around it comfortably.
-              </p>
-              <div class="sg-measure-tip">
-                Tip: Don't suck in — we want your real measurements
-              </div>
-            </div>
-
-            <div class="sg-measure-card">
-              <div class="sg-measure-icon">H</div>
-              <h3 class="sg-measure-title">Hips</h3>
-              <p class="sg-measure-desc">
-                Measure around the fullest part of your hips and buttocks. Keep
-                feet together and tape parallel to the floor.
-              </p>
-              <div class="sg-measure-tip">
-                Tip: This is usually 7-9 inches below your waist
-              </div>
-            </div>
-
-            <div class="sg-measure-card">
-              <div class="sg-measure-icon">SH</div>
-              <h3 class="sg-measure-title">Shoulders</h3>
-              <p class="sg-measure-desc">
-                Measure from the edge of one shoulder to the other, across your
-                back. Keep the tape slightly loose.
-              </p>
-              <div class="sg-measure-tip">
-                Tip: Best measured by someone else
-              </div>
-            </div>
-
-            <div class="sg-measure-card">
-              <div class="sg-measure-icon">L</div>
-              <h3 class="sg-measure-title">Length</h3>
-              <p class="sg-measure-desc">
-                Depends on the piece. For dresses: from shoulder to desired hem.
-                For trousers: from waist to desired length.
-              </p>
-              <div class="sg-measure-tip">
-                Tip: Wear shoes you'll wear with the piece
-              </div>
-            </div>
-
-            <div class="sg-measure-card">
-              <div class="sg-measure-icon">A</div>
-              <h3 class="sg-measure-title">Arms</h3>
-              <p class="sg-measure-desc">
-                For sleeved pieces. Measure from shoulder point to wrist, with
-                arm slightly bent.
-              </p>
-              <div class="sg-measure-tip">
-                Tip: Keep elbow slightly bent for movement ease
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="sg-section">
-          <h2 class="sg-section-title">Pro <em>Tips</em></h2>
-          <div class="sg-tips-list">
-            <div class="sg-tip-item">
-              <span class="sg-tip-num">01</span>
-              <p>
-                Take measurements over lightweight clothing or directly on skin
-              </p>
-            </div>
-            <div class="sg-tip-item">
-              <span class="sg-tip-num">02</span>
-              <p>
-                Keep the tape snug but not tight — you should be able to fit one
-                finger underneath
-              </p>
-            </div>
-            <div class="sg-tip-item">
-              <span class="sg-tip-num">03</span>
-              <p>Measure twice. If numbers differ, take the average</p>
-            </div>
-            <div class="sg-tip-item">
-              <span class="sg-tip-num">04</span>
-              <p>
-                Don't measure yourself in a rush — take your time for accuracy
-              </p>
-            </div>
-            <div class="sg-tip-item">
-              <span class="sg-tip-num">05</span>
-              <p>
-                If you're unsure, ask someone to help. It's always more accurate
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="sg-section">
-          <h2 class="sg-section-title">What We <em>Need</em></h2>
-          <p class="sg-section-desc">
-            When you order, we'll ask for these measurements depending on your
-            piece:
-          </p>
-
-          <div class="sg-requirements">
-            <div class="sg-req-card">
-              <h3 class="sg-req-title">For Tops & Jackets</h3>
-              <ul class="sg-req-list">
-                <li>Bust</li>
-                <li>Waist</li>
-                <li>Shoulders</li>
-                <li>Arm length</li>
-                <li>Desired length</li>
-              </ul>
-            </div>
-
-            <div class="sg-req-card">
-              <h3 class="sg-req-title">For Dresses & Gowns</h3>
-              <ul class="sg-req-list">
-                <li>Bust</li>
-                <li>Waist</li>
-                <li>Hips</li>
-                <li>Shoulders</li>
-                <li>Desired length</li>
-              </ul>
-            </div>
-
-            <div class="sg-req-card">
-              <h3 class="sg-req-title">For Trousers & Two Pieces</h3>
-              <ul class="sg-req-list">
-                <li>Waist</li>
-                <li>Hips</li>
-                <li>Inseam</li>
-                <li>Desired length</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="sg-cta">
-          <h3 class="sg-cta-title">Ready to get <em>measured?</em></h3>
-          <p class="sg-cta-desc">
-            Once you've taken your measurements, we'll guide you through
-            everything else.
-          </p>
-          <div class="sg-cta-buttons">
-            <a
-              href="#"
-              class="btn-primary"
-              onclick="
-                showPage('shop');
-                return false;
-              "
-              >Browse Collection</a
-            >
-            <a
-              href="#"
-              class="btn-secondary"
-              onclick="
-                showPage('contact');
-                return false;
-              "
-              >Start an Enquiry</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══ ORDER STATUS PAGE ═══ -->
-    <div class="page" id="page-order-status">
-      <div class="page-header">
-        <p class="page-header-eyebrow">Track Your Order</p>
-        <h1 class="page-header-title">Order <em>Status</em></h1>
-        <p class="page-header-desc">
-          Enter your Order ID to check where your piece is in the production
-          process.
-        </p>
-      </div>
-
-      <div class="order-status-container">
-        <div class="order-status-form">
-          <form id="orderStatusForm" onsubmit="checkOrderStatus(event)">
-            <div class="form-group">
-              <label class="form-label" for="orderId">Order ID</label>
-              <input
-                class="form-input"
-                type="text"
-                id="orderId"
-                placeholder="e.g., IAEM-001"
-                required
-              />
-            </div>
-            <button type="submit" class="btn-primary btn-fullwidth">
-              Check Status
-            </button>
-          </form>
-                    <div class="order-result" id="orderResult">
-            <div class="order-id" id="resultOrderId"></div>
-            <div class="order-status-badge" id="resultStatus"></div>
-            <div class="order-customer-name" id="resultCustomerName" style="display:none;"></div>
-
-            <div class="order-product-display" id="orderProductDisplay" style="display:none;">
-              <div class="order-product-img-wrap">
-                <img src="" alt="" id="orderProductImg" class="order-product-img" />
-              </div>
-              <div class="order-product-info">
-                <p class="order-product-name" id="orderProductName"></p>
-                <p class="order-product-colour" id="orderProductColour"></p>
-              </div>
-            </div>
-
-            <div class="order-details" id="resultDetails"></div>
-          </div>
-
-        <div class="order-status-info">
-          <p class="order-status-note">
-            Don't have your Order ID?
-            <a
-              href="#"
-              onclick="
-                showPage('contact');
-                return false;
-              "
-              >Contact us</a
-            >
-            with your name and WhatsApp number.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══ CONTACT PAGE ═══ -->
-    <div class="page" id="page-contact">
-      <div class="contact-layout">
-        <div class="contact-left">
-          <p class="page-header-eyebrow">Get in Touch</p>
-          <h1 class="contact-headline">
-            Let's build<br />something <em>real.</em>
-          </h1>
-          <p class="at-body no-margin-bottom">
-            Collaborations, press, styling partnerships, or just a conversation
-            — the door is open for those who mean it.
-          </p>
-          <div class="contact-channels">
-            <a href="mailto:iaemhq@gmail.com" class="contact-channel">
-              <span class="cc-icon">Email</span>
-              <span class="cc-val">iaemhq@gmail.com</span>
-            </a>
-            <a
-              href="https://www.tiktok.com/@iaemhq?_r=1&_t=ZS-96sysF5bQn6"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="contact-channel"
-            >
-              <span class="cc-icon">TikTok</span>
-              <span class="cc-val">Îæm</span>
-            </a>
-            <a
-              href="https://www.instagram.com/iaemhq?igsh=MTM0cWx3YXdqaW90eQ=="
-              target="_blank"
-              rel="noopener noreferrer"
-              class="contact-channel"
-            >
-              <span class="cc-icon">Instagram</span>
-              <span class="cc-val">Îæmhq</span>
-            </a>
-            <a
-              href="https://www.facebook.com/share/14YTqHKTxiT/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="contact-channel"
-            >
-              <span class="cc-icon">Facebook</span>
-              <span class="cc-val">Îæmhq</span>
-            </a>
-          </div>
-
-          <div class="contact-process">
-            <p class="contact-process-label">How It Works</p>
-            <div class="process-steps">
-              <div class="process-step">
-                <span class="process-num">01</span>
-                <span class="process-text">Browse & Enquire</span>
-              </div>
-              <div class="process-step">
-                <span class="process-num">02</span>
-                <span class="process-text">Measurements Confirmed</span>
-              </div>
-              <div class="process-step">
-                <span class="process-num">03</span>
-                <span class="process-text">Made to Order</span>
-              </div>
-              <div class="process-step">
-                <span class="process-num">04</span>
-                <span class="process-text">Delivered to You</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="contact-right">
-          <form
-            action="https://formspree.io/f/mlgzgqdn"
-            method="post"
-            id="orderForm"
-          >
-            <p class="contact-form-label">Order Enquiry</p>
-            <p class="form-subtitle">
-              Tell us what you're interested in. We'll respond within 24 hours.
-            </p>
-
-            <div class="form-group">
-              <label class="form-label" for="fullName">Full Name *</label>
-              <input
-                class="form-input"
-                type="text"
-                id="fullName"
-                name="fullName"
-                placeholder="Your full name"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="whatsapp">WhatsApp Number *</label>
-              <input
-                class="form-input"
-                type="tel"
-                id="whatsapp"
-                name="whatsapp"
-                placeholder="+234..."
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="productInterest"
-                >Product Interest *</label
-              >
-              <select
-                class="form-input"
-                id="productInterest"
-                name="productInterest"
-                required
-              >
-                <option value="">Select a product...</option>
-                <option value="empire-jacket">The Empire Jacket</option>
-                <option value="silk-tee">Satin Circuits Tee</option>
-                <option value="two-piece">Two Piece Set</option>
-                <option value="coffee-trench">Coffee Trench</option>
-                <option value="smart-band">Cherry Smart Band</option>
-                <option value="gold-chain">Imperial Gold Chain</option>
-                <option value="interface-cap">Interface Cap</option>
-                <option value="ankara-gown">Ankara Gown</option>
-                <option value="lace-high-neck-gown">Lace High Neck Gown</option>
-                <option value="blazzer-fashion">Blazzer Fashion</option>
-                <option value="asymmetric-rose-gown">
-                  Asymmetric Rose Gown
-                </option>
-                <option value="prom-gown">Prom Gown</option>
-                <option value="chiffon-evening-gown">
-                  Chiffon Evening Gown
-                </option>
-                <option value="asymmetric-gown">Asymmetric Gown</option>
-                <option value="v-neck-button-gown">V-Neck Button Gown</option>
-                <option value="classy-ankara-gown">Classy Ankara Gown</option>
-                <option value="lace-round-neck-gown">
-                  Lace Round Neck Gown
-                </option>
-                <option value="velvet-evening-gown">Velvet Evening Gown</option>
-                <option value="v-neck-velvet-gown">V-Neck Velvet Gown</option>
-                <option value="velvet-gown">Velvet Gown</option>
-                <option value="spring-dress">Spring Dress</option>
-                <option value="pink-dress">Pink Dress</option>
-                <option value="red-dress">Red Dress</option>
-                <option value="mesh-gown">Mesh Gown</option>
-                <option value="orbit-two-piece">Orbit Two Piece</option>
-                <option value="trending-two-piece">Trending Two Piece</option>
-                <option value="velvet-dress">Velvet Dress</option>
-                <option value="bubu-gown">Bubu Gown</option>
-                <option value="jumpsuit">Jumpsuit</option>
-                <option value="gingham-gathers">Gingham Gathers</option>
-                <option value="custom">Custom Piece</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="colourPreference"
-                >Colour Preference</label
-              >
-              <div class="colour-preference">
-                <button
-                  type="button"
-                  class="colour-option"
-                  data-colour="Coffee Brown"
-                  style="background: #4b2e2b"
-                  title="Coffee Brown"
-                ></button>
-                <button
-                  type="button"
-                  class="colour-option"
-                  data-colour="Soft Black"
-                  style="background: #1c1412"
-                  title="Soft Black"
-                ></button>
-                <button
-                  type="button"
-                  class="colour-option"
-                  data-colour="Cream"
-                  style="background: #f5e9e2; border: 1px solid #ccc"
-                  title="Cream"
-                ></button>
-                <button
-                  type="button"
-                  class="colour-option"
-                  data-colour="Cherry Red"
-                  style="background: #8b0000"
-                  title="Cherry Red"
-                ></button>
-                <button
-                  type="button"
-                  class="colour-option"
-                  data-colour="Navy Blue"
-                  style="background: #000080"
-                  title="Navy Blue"
-                ></button>
-                <button
-                  type="button"
-                  class="colour-option"
-                  data-colour="Forest Green"
-                  style="background: #003314"
-                  title="Forest Green"
-                ></button>
-                <input
-                  type="hidden"
-                  id="selectedColour"
-                  name="selectedColour"
-                  value=""
-                />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="source"
-                >How did you hear about Îæm?</label
-              >
-              <select class="form-input" id="source" name="source">
-                <option value="">Select...</option>
-                <option value="instagram">Instagram</option>
-                <option value="tiktok">TikTok</option>
-                <option value="facebook">Facebook</option>
-                <option value="referral">Referral</option>
-                <option value="website">Website</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="notes">Additional Notes</label>
-              <textarea
-                class="form-input"
-                id="notes"
-                name="notes"
-                placeholder="Tell us about your size, occasion, timeline, or anything else..."
-              ></textarea>
-            </div>
-
-            <input
-              type="hidden"
-              name="_subject"
-              value="New Îæm Order Enquiry"
-            />
-            <input type="hidden" name="_gotcha" />
-            <button type="submit" class="btn-primary btn-fullwidth">
-              Submit Enquiry
-            </button>
-            <p class="form-note">
-              We'll contact you within 24 hours to confirm details and
-              measurements.
-            </p>
-          </form>
-
-          <details class="general-contact">
-            <summary>General Enquiries / Collaborations</summary>
-            <form
-              action="https://formspree.io/f/mlgzgqdn"
-              method="post"
-              style="margin-top: 20px"
-            >
-              <div class="form-group">
-                <label class="form-label" for="name">Name</label>
-                <input
-                  class="form-input"
-                  type="text"
-                  id="name"
-                  placeholder="Your name"
-                  name="name"
-                />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="email">Email</label>
-                <input
-                  class="form-input"
-                  type="email"
-                  id="email"
-                  placeholder="your@email.com"
-                  name="email"
-                />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="subject">Subject</label>
-                <input
-                  class="form-input"
-                  type="text"
-                  id="subject"
-                  placeholder="Collaboration / Press / General"
-                  name="subject"
-                />
-              </div>
-              <div class="form-group">
-                <label class="form-label">Message</label>
-                <textarea
-                  class="form-input"
-                  placeholder="Tell us what you're building..."
-                  id="message"
-                  name="message"
-                ></textarea>
-              </div>
-              <input
-                type="hidden"
-                name="_subject"
-                value="New Îæm General Enquiry"
-              />
-              <input type="hidden" name="_gotcha" />
-              <button type="submit" class="btn-primary btn-fullwidth">
-                Send Message
-              </button>
-            </form>
-          </details>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══ PRODUCT MODAL ═══ -->
-    <div class="modal-overlay" id="productModal" onclick="closeModal(event)">
-      <div class="modal-box">
-        <button type="button" class="modal-close" onclick="closeModalBtn()">
-          ✕
-        </button>
-        <div class="modal-inner">
-          <div class="modal-img-wrap">
-            <img src="" alt="" id="modalImg" class="modal-img" />
-            <div class="modal-tag" id="modalTag"></div>
-          </div>
-          <div class="modal-info">
-            <p class="modal-category" id="modalCategory"></p>
-            <h2 class="modal-name" id="modalName"></h2>
-            <div class="modal-divider"></div>
-            <p class="modal-desc" id="modalDesc"></p>
-            <div class="modal-details">
-              <div class="modal-detail-item">
-                <span class="modal-detail-label">Type</span>
-                <span class="modal-detail-val" id="modalType"></span>
-              </div>
-              <div class="modal-detail-item" id="modalColoursRow">
-                <span class="modal-detail-label">Choose Colour</span>
-                <div class="modal-colours" id="modalColours"></div>
-              </div>
-              <div class="modal-detail-item">
-                <span class="modal-detail-label">Sizing</span>
-                <span class="modal-detail-val">
-                  Made to your exact measurements — no standard sizing. When you
-                  order via WhatsApp we send you a simple measurement guide.
-                  Your piece is crafted to fit you perfectly.
-                </span>
-              </div>
-              <div class="modal-detail-item">
-                <span class="modal-detail-label">Production</span>
-                <span class="modal-detail-val"
-                  >Made to order — crafted specifically for you</span
-                >
-              </div>
-              <div class="modal-detail-item">
-                <span class="modal-detail-label">Delivery</span>
-                <span class="modal-detail-val"
-                  >7 to 21 days from measurement confirmation</span
-                >
-              </div>
-            </div>
-            <div class="modal-price-row">
-              <span class="modal-price-label">Price</span>
-              <span class="modal-price-val" id="modalPrice"></span>
-            </div>
-            <a
-              href="#"
-              class="btn-whatsapp modal-whatsapp"
-              id="modalWhatsapp"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Order via WhatsApp
-            </a>
-            <p class="modal-note" style="margin-top: 8px">
-              Or use our
-              <a
-                href="#"
-                onclick="
-                  closeModalBtn();
-                  showPage('contact');
-                  return false;
-                "
-                style="color: var(--gold-use); text-decoration: underline"
-                >order enquiry form</a
-              >
-            </p>
-            <br />
-            <p class="modal-note">
-              We'll confirm your size, measurements, and delivery details
-              personally.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <script src="products.js"></script>
-    <script src="script.js"></script>
-    <script>
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker
-            .register("/service-worker.js")
-            .then((reg) => {
-              console.log("[Îæm] Service worker registered:", reg.scope);
-              setInterval(() => reg.update(), 60000);
-              reg.addEventListener("updatefound", () => {
-                const newWorker = reg.installing;
-                newWorker.addEventListener("statechange", () => {
-                  if (
-                    newWorker.state === "installed" &&
-                    navigator.serviceWorker.controller
-                  ) {
-                    showUpdateBanner();
-                  }
-                });
-              });
-            })
-            .catch((err) => console.warn("[Îæm] SW registration failed:", err));
+      
+      // Build details text with clean date
+      let detailsText = data.details || 'No details available.';
+      if (data.dateUpdated) {
+        const rawDate = data.dateUpdated;
+        const cleanDate = new Date(rawDate).toLocaleDateString('en-GB', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
         });
+        detailsText += `\n\nLast updated: ${cleanDate}`;
       }
+      document.getElementById('resultDetails').textContent = detailsText;
+    }
+    
+    result.classList.add('visible');
+  } catch (error) {
+    console.error('Error checking order:', error);
+    document.getElementById('resultOrderId').textContent = 'Error';
+    document.getElementById('resultStatus').textContent = 'Something went wrong';
+    document.getElementById('resultStatus').className = 'order-status-badge status-enquiry';
+    document.getElementById('resultDetails').textContent = 'Please try again or contact us on WhatsApp.';
+    result.classList.add('visible');
+  } finally {
+    button.textContent = 'Check Status';
+    button.disabled = false;
+  }
+}
+// ─── INSTALL PROMPT ──────────────────────────────────────
+let deferredPrompt;
 
-      function showUpdateBanner() {
-        const banner = document.createElement("div");
-        banner.style.cssText = `
-      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-      background: var(--surface2); border: 1px solid var(--border);
-      padding: 14px 24px; border-radius: 2px; z-index: 9999;
-      font-family: var(--font-m); font-size: 11px; letter-spacing: 0.15em;
-      color: var(--text); display: flex; align-items: center; gap: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-    `;
-        banner.innerHTML = `
-      <span>New version available</span>
-      <button onclick="window.location.reload()" style="
-        background: var(--accent); color: #f5e9e2; border: none;
-        padding: 6px 14px; font-family: var(--font-m); font-size: 10px;
-        letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer;
-        border-radius: 2px;
-      ">Refresh</button>
-    `;
-        document.body.appendChild(banner);
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const installBtn = document.getElementById('installBtn');
+  if (installBtn) {
+    installBtn.style.display = 'block';
+  }
+});
+
+function installApp() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted install');
+        const installBtn = document.getElementById('installBtn');
+        if (installBtn) installBtn.style.display = 'none';
       }
-    </script>
-  </body>
-</html>
+      deferredPrompt = null;
+    });
+  } else {
+    alert('Install option not available yet. Use your browser menu → Install app.');
+  }
+}
+// ─── BOOT — render grids from products.js ─────────────────
+document.addEventListener('DOMContentLoaded', function () {
+  buildFeaturedGrid();
+  buildShopGrid();
+});
