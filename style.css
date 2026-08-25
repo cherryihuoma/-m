@@ -3128,3 +3128,20 @@ body.splash-active {
   text-transform: uppercase;
   color: var(--gold-use);
 }
+.status-shipped {
+  background: rgba(0, 128, 128, 0.3);
+  color: #40e0d0;
+}
+
+.status-out-for-delivery {
+  background: rgba(255, 140, 0, 0.3);
+  color: #ffa500;
+}
+.order-customer-name {
+  font-family: var(--font-d);
+  font-size: 22px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text);
+  margin-bottom: 12px;
+}
